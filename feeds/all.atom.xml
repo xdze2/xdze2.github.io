@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>xdze2</title><link href="http://xdze2.github.io/" rel="alternate"></link><link href="http://xdze2.github.io/feeds/all.atom.xml" rel="self"></link><id>http://xdze2.github.io/</id><updated>2010-10-04T18:40:00+02:00</updated><entry><title>Hi you !!</title><link href="http://xdze2.github.io/my-super-post.html" rel="alternate"></link><updated>2010-10-04T18:40:00+02:00</updated><author><name>Me</name></author><id>tag:xdze2.github.io,2010-10-03:my-super-post.html</id><summary type="html">&lt;p&gt;Hello the world !!&lt;/p&gt;
+</summary><category term="thats"></category><category term="awesome"></category></entry></feed>
