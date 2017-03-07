@@ -60,9 +60,9 @@ nav#menu ul {
 div#content {
     padding: 0;
     margin-left:200px;
-    min-width: 400px;
-    width:60%;
-    max-width: 700px;
+    min-width: 700px;
+    width:100%;
+    max-width: 940px;
     font-family: serif;
     line-height: 1.5;
 }
