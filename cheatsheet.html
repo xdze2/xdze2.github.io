@@ -3,7 +3,7 @@
 <head>
           <title>xdze2</title>
         <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
 
 
     <meta name="tags" content="python" />
@@ -11,9 +11,9 @@
 
 </head>
 
-<body id="index" class="home">
+<body>
         <div id="side">
-            <header id="banner" class="body">
+            <header id="banner" >
                     <img src="/theme/images/header.png" />
                     <h1><a href="/">xdze2 <strong></strong></a></h1>
             </header><!-- /#banner -->
@@ -23,23 +23,29 @@
                   <li class="active"><a href="/category/code.html">code</a></li>
                   <li><a href="/category/optimization.html">optimization</a></li>
                   <li><a href="/category/physique.html">physique</a></li>
-                  <li><a href="/category/statistique.html">statistique</a></li>
-                  <li><a href="/category/yeah.html">yeah</a></li>
+                  <li><a href="/category/statistiques.html">statistiques</a></li>
             </ul></nav><!-- /#menu -->
         </div>
         <div id="content">
-<section id="content" class="body">
+<section id="article">
+
   <header>
-    <h2 class="entry-title">
-      <a href="/cheatsheet.html" rel="bookmark"
-         title="Permalink to code cheatsheet">code cheatsheet</a></h2>
- 
- <abbr class="published" title="2017-03-03T11:00:00+01:00">
-   ven. 03 mars 2017
- </abbr>
+      <img src="/theme/images/doc22.png"    />
+      <span>
+      <h1 class="entry-title">code cheatsheet</h2>
+      <span class='summary_date' title="2017-03-03T11:00:00+01:00">
+        mars 2017
+      </span>
+      <span class='summary_date' >
+        Code
+      </span>
+      <a href='/home/etienne/xdze2_website/content/cheatsheet.ipynb' class='summary_date'>src</a>
+  </span>
   </header>
 
-  <div class="entry-content">
+
+
+  <div class="article-content">
     
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -63,7 +69,7 @@ python -m SimpleHTTPServer</code></pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [3]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -356,6 +362,54 @@ iIiIiIiIiIiIiIiIiIiIiIiIFIX/A2ki24RDOD2fAAAAAElFTkSuQmCC
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Enregistrer-un-NumpyArray">Enregistrer un NumpyArray<a class="anchor-link" href="#Enregistrer-un-NumpyArray">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span class="c"># Save</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">{</span><span class="s">'hello'</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)),</span> <span class="s">'u'</span><span class="p">:</span><span class="mi">34</span><span class="p">}</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">'test.npy'</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span> 
+
+<span class="c"># Read</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">'test.npy'</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{'u': 34, 'hello': array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])}
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
@@ -398,20 +452,12 @@ iIiIiIiIiIiIiIiIiIiIiIiIFIX/A2ki24RDOD2fAAAAAElFTkSuQmCC
 
   </div><!-- /.entry-content -->
 
-  <footer class="post-info">
-    <address class="vcard author">
-          <a class="url fn" href="/author/xdze2.html">xdze2</a>
-    </address>
-    <abbr class="published" title="2017-03-03T11:00:00+01:00">
-      ven. 03 mars 2017
-    </abbr>
 
-  </footer><!-- /.post-info -->
 
 </section>
         </div>
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
+        <footer id="sitefooter">
+                <address id="about">
                 Proudly powered by <a href="http://getpelican.com/">Pelican</a>.
                 </address><!-- /#about -->
         </footer><!-- /#contentinfo -->

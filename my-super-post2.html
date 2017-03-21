@@ -3,41 +3,47 @@
 <head>
           <title>xdze2</title>
         <meta charset="utf-8" />
-    <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
 
 
 
 </head>
 
-<body id="index" class="home">
+<body>
         <div id="side">
-            <header id="banner" class="body">
+            <header id="banner" >
                     <img src="/theme/images/header.png" />
                     <h1><a href="/">xdze2 <strong></strong></a></h1>
             </header><!-- /#banner -->
             <nav id="menu"><ul>
-                  <li><a href="/category/about.html">about</a></li>
+                  <li class="active"><a href="/category/about.html">about</a></li>
                   <li><a href="/category/bookmark.html">bookmark</a></li>
                   <li><a href="/category/code.html">code</a></li>
                   <li><a href="/category/optimization.html">optimization</a></li>
                   <li><a href="/category/physique.html">physique</a></li>
-                  <li><a href="/category/statistique.html">statistique</a></li>
-                  <li class="active"><a href="/category/yeah.html">yeah</a></li>
+                  <li><a href="/category/statistiques.html">statistiques</a></li>
             </ul></nav><!-- /#menu -->
         </div>
         <div id="content">
-<section id="content" class="body">
+<section id="article">
+
   <header>
-    <h2 class="entry-title">
-      <a href="/my-super-post2.html" rel="bookmark"
-         title="Permalink to Est-ce que c'est un article ?">Est-ce que c'est un article ?</a></h2>
- 
- <abbr class="published" title="2016-10-03T10:20:00+02:00">
-   lun. 03 octobre 2016
- </abbr>
+      <img src="/theme/images/doc22.png"    />
+      <span>
+      <h1 class="entry-title">Est-ce que c'est un article ?</h2>
+      <span class='summary_date' title="2016-10-03T10:20:00+02:00">
+        octobre 2016
+      </span>
+      <span class='summary_date' >
+        About
+      </span>
+      <a href='/home/etienne/xdze2_website/content/about/unArticle.rst' class='summary_date'>src</a>
+  </span>
   </header>
 
-  <div class="entry-content">
+
+
+  <div class="article-content">
     <p>These are just a few of the commands available by default, so feel free to explore fabfile.py and see what other commands are available. More importantly, don’t hesitate to customize fabfile.py to suit your specific needs and preferences.
 These are just a few of the commands available by default, so feel free to explore fabfile.py and see what other commands are available. More importantly, don’t hesitate to customize fabfile.py to suit your specific needs and preferences.</p>
 <p>While the pelican command is the canonical way to generate your site, automation tools can be used to streamline the generation and publication flow. One of the questions asked during the pelican-quickstart process pertains to whether you want to automate site generation and publication. If you answered “yes” to that question, a fabfile.py and Makefile will be generated in the root of your project. These files, pre-populated with certain information gleaned from other answers provided during the pelican-quickstart process, are meant as a starting point and should be customized to fit your particular needs and usage patterns. If you find one or both of these automation tools to be of limited utility, these files can deleted at any time and will not affect usage of the canonical pelican command.</p>
@@ -49,20 +55,12 @@ These are just a few of the commands available by default, so feel free to explo
 
   </div><!-- /.entry-content -->
 
-  <footer class="post-info">
-    <address class="vcard author">
-          <a class="url fn" href="/author/xdze2.html">xdze2</a>
-    </address>
-    <abbr class="published" title="2016-10-03T10:20:00+02:00">
-      lun. 03 octobre 2016
-    </abbr>
 
-  </footer><!-- /.post-info -->
 
 </section>
         </div>
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
+        <footer id="sitefooter">
+                <address id="about">
                 Proudly powered by <a href="http://getpelican.com/">Pelican</a>.
                 </address><!-- /#about -->
         </footer><!-- /#contentinfo -->
