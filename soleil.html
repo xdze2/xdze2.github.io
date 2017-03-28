@@ -4,12 +4,13 @@
           <title>xdze2</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="/theme/css/monokai.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
 
 
     <meta name="tags" content="physique" />
     <meta name="tags" content="code" />
     <meta name="tags" content="notebook" />
+
 
 </head>
 
@@ -22,7 +23,6 @@
             <nav id="menu"><ul>
                   <li><a href="/category/about.html">about</a></li>
                   <li><a href="/category/bookmark.html">bookmark</a></li>
-                  <li><a href="/category/code.html">code</a></li>
                   <li><a href="/category/optimization.html">optimization</a></li>
                   <li class="active"><a href="/category/physique.html">physique</a></li>
                   <li><a href="/category/statistiques.html">statistiques</a></li>
@@ -41,33 +41,37 @@
       <span class='summary_date' >
         Physique
       </span>
-      <a href='/home/etienne/xdze2_website/content/physique/soleil.ipynb' class='summary_date'>src</a>
+      <a href='/home/etienne/xdze2_website/content/physique/soleil.md' class='summary_date'>src</a>
   </span>
   </header>
 
 
 
   <div class="article-content">
-    
+    <p>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [3]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Position-du-soleil">Position du soleil<a class="anchor-link" href="#Position-du-soleil">¶</a></h1>
+<h1 id="Position-du-soleil">Position du soleil<a class="anchor-link" href="#Position-du-soleil">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -77,6 +81,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>équations et code pour calcul de la hauteur du soleil dans le ciel (et le flux solaire), en fonction de la position sur Terre, et de la date.</p>
+
 </div>
 </div>
 </div>
@@ -85,7 +90,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Calcul-de-l'ensoleillement">Calcul de l'ensoleillement<a class="anchor-link" href="#Calcul-de-l'ensoleillement">¶</a></h2>
+<h2 id="Calcul-de-l'ensoleillement">Calcul de l'ensoleillement<a class="anchor-link" href="#Calcul-de-l'ensoleillement">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -95,6 +100,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>ref: <a href="http://www.plevenon-meteo.info/technique/theorie/enso/ensoleillement.html">http://www.plevenon-meteo.info/technique/theorie/enso/ensoleillement.html</a></p>
+
 </div>
 </div>
 </div>
@@ -103,7 +109,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Déclinaison-solaire">Déclinaison solaire<a class="anchor-link" href="#Déclinaison-solaire">¶</a></h4>
+<h4 id="D&#233;clinaison-solaire">D&#233;clinaison solaire<a class="anchor-link" href="#D&#233;clinaison-solaire">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -114,42 +120,56 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Angle entre équateur et la direction Terre-Soleil:
 du fait de l'inclinaison de l'axe de rotation de la Terre par rapport au plan de l'ecliptique, l'obliquité ($23,4°$).</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [30]:</div>
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">toRad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">toRad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mf">180.0</span>
 
 <span class="n">Delta</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">jour</span><span class="p">:</span> <span class="mf">23.45</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span> <span class="mf">360.0</span><span class="o">/</span><span class="mf">365.0</span><span class="o">*</span><span class="p">(</span> <span class="mf">284.0</span> <span class="o">+</span> <span class="n">jour</span> <span class="p">)</span><span class="o">*</span><span class="n">toRad</span> <span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [31]:</div>
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="c"># Plot</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot</span>
 <span class="n">jours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">364</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">jours</span><span class="p">,</span> <span class="n">Delta</span><span class="p">(</span> <span class="n">jours</span> <span class="p">)</span>  <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">u"jours de l'année"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">u"angle équateur-T/S (°deg)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;jours de l&#39;année&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;angle équateur-T/S (°deg)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">365</span><span class="p">]</span> <span class="p">);</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt"></div>
+
+
+
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtIAAAEQCAYAAACdopOIAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XeYVOX1wPEvRUQECxYgNggaK4JSBcS1oGg02IIl9hZL
@@ -381,18 +401,22 @@ gGHAdsREwRTwJ6LkAWJy3dtEzfFbVfyMJsB9RALdiCjhqFwWcjMxYvwu8B4wLn18JnAEMUFx5fSx
 84APq4i1oknABGAq8DnxB0FV/43Vdfx4DzifqBVvTJR+nEj8QZFpfJIkSWog1iK6W0iSJEnK0C+A
 9ynvbCFJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJ2fp/3NE46tPJPdgAAAAASUVORK5C
 YII=
-">
-</img></div>
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Inclinaison-solaire">Inclinaison solaire<a class="anchor-link" href="#Inclinaison-solaire">¶</a></h4>
+<h4 id="Inclinaison-solaire">Inclinaison solaire<a class="anchor-link" href="#Inclinaison-solaire">&#182;</a></h4>
 </div>
 </div>
 </div>
@@ -402,21 +426,26 @@ YII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>sinAlpha: angle entre l'horizon et le soleil</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [65]:</div>
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">heure_GMT</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">phi</span> <span class="o">=</span> <span class="mf">45.166</span> <span class="c"># Lattitude</span>
-<span class="n">lmdda</span> <span class="o">=</span> <span class="mf">5.71667</span> <span class="c"># Lonngitude E</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">heure_GMT</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="mf">45.166</span> <span class="c1"># Lattitude</span>
+<span class="n">lmdda</span> <span class="o">=</span> <span class="mf">5.71667</span> <span class="c1"># Lonngitude E</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -424,52 +453,70 @@ YII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Remarque: Décalage horaire (longitude): 24h pour 360°, donc 4min par degrée</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [70]:</div>
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="mi">24</span><span class="o">*</span><span class="mi">60</span><span class="o">/</span><span class="mf">360.0</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="mi">24</span><span class="o">*</span><span class="mi">60</span><span class="o">/</span><span class="mf">360.0</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt output_prompt">Out[70]:</div>
+
+
+
 <div class="output_text output_subarea output_execute_result">
-<pre>4.0</pre>
+<pre class="ipynb">4.0</pre>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [67]:</div>
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">sinAlpha</span><span class="p">(</span> <span class="n">phi</span><span class="p">,</span> <span class="n">lmdda</span><span class="p">,</span>  <span class="n">jour</span><span class="p">,</span> <span class="n">heure_GMT</span> <span class="p">):</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">sinAlpha</span><span class="p">(</span> <span class="n">phi</span><span class="p">,</span> <span class="n">lmdda</span><span class="p">,</span>  <span class="n">jour</span><span class="p">,</span> <span class="n">heure_GMT</span> <span class="p">):</span>
     <span class="n">H</span> <span class="o">=</span> <span class="n">heure_GMT</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">lmdda</span><span class="o">/</span><span class="mf">60.0</span>
     <span class="n">eta</span> <span class="o">=</span> <span class="mi">15</span><span class="o">*</span><span class="p">(</span><span class="mi">12</span><span class="o">-</span><span class="n">H</span><span class="p">)</span>
     <span class="n">delta</span> <span class="o">=</span> <span class="n">Delta</span><span class="p">(</span> <span class="n">jour</span> <span class="p">)</span>
     <span class="n">sinAlpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span> <span class="n">phi</span><span class="o">*</span><span class="n">toRad</span> <span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span> <span class="n">delta</span><span class="o">*</span><span class="n">toRad</span> <span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span> <span class="n">phi</span><span class="o">*</span><span class="n">toRad</span> <span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span> <span class="n">delta</span><span class="o">*</span><span class="n">toRad</span> <span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span> <span class="n">eta</span><span class="o">*</span><span class="n">toRad</span> <span class="p">)</span>
     <span class="k">return</span> <span class="n">sinAlpha</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [71]:</div>
+<div class="prompt input_prompt">In&nbsp;[71]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">heures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">102</span> <span class="p">)</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">heures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">102</span> <span class="p">)</span>
 
 <span class="n">sin_alpha_juillet</span> <span class="o">=</span> <span class="n">sinAlpha</span><span class="p">(</span> <span class="n">phi</span><span class="p">,</span> <span class="n">lmdda</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="n">heures</span> <span class="p">)</span>
 <span class="n">alpha_juillet</span> <span class="o">=</span> <span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span> <span class="n">sin_alpha_juillet</span> <span class="p">)</span>
@@ -478,23 +525,31 @@ YII=
 <span class="n">alpha_janvier</span> <span class="o">=</span> <span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span> <span class="n">sin_alpha_janvier</span> <span class="p">)</span>
 
 
-<span class="c"># Plot</span>
+<span class="c1"># Plot</span>
 <span class="n">jours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">364</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">heures</span><span class="p">,</span> <span class="n">alpha_juillet</span> <span class="p">,</span> <span class="s">'r'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'juillet'</span> <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">heures</span><span class="p">,</span> <span class="n">alpha_janvier</span> <span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'janvier'</span> <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">u"heures de la journée"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">u"hauteur du soleil dans le ciel (°)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">heures</span><span class="p">,</span> <span class="n">alpha_juillet</span> <span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;juillet&#39;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">heures</span><span class="p">,</span> <span class="n">alpha_janvier</span> <span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;janvier&#39;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;heures de la journée&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;hauteur du soleil dans le ciel (°)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span> <span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span> <span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt"></div>
+
+
+
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAsoAAAEQCAYAAACp21KUAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xd80/X2x/FXy95LlggUvYLiwp8TZQTZKiAy5IqIgqKI
@@ -773,39 +828,52 @@ LCJy+gpu0nF7YAjwDJYMj8NKNIZiG/ZWALNI3giX+rGGYQnvD1iivR3bmOcBnsBqow+QXOub5AhW
 ajEDOIwlr4X8X3sRGOiPIxb4g7Q39CXF8T4wyf8cqWNN6/aTsQ1/K/3XPeGPG2Aitklxvf97OhNf
 qstJx2eK/Uw/JxERERERp0qhemARERERkVOci5V6dDvbDUVERERERERERERERERERERERERERERE
 REREREREREREREREREREREREHPh/2w1wQ/rS/5gAAAAASUVORK5CYII=
-">
-</img></div>
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [84]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">heures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">102</span> <span class="p">)</span>
+<div class="prompt input_prompt">In&nbsp;[84]:</div>
 
-<span class="c"># Plot</span>
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">heures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">102</span> <span class="p">)</span>
+
+<span class="c1"># Plot</span>
 <span class="n">jours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">364</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="p">)</span>
 
 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">365</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
     <span class="n">alpha</span> <span class="o">=</span> <span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span> <span class="n">sinAlpha</span><span class="p">(</span> <span class="n">phi</span><span class="p">,</span><span class="n">lmdda</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">heures</span> <span class="p">)</span> <span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">heures</span><span class="p">,</span> <span class="n">alpha</span> <span class="p">,</span> <span class="s">'k'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'juillet'</span> <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">heures</span><span class="p">,</span> <span class="n">alpha</span> <span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;juillet&#39;</span> <span class="p">)</span>
 
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">u"heures de la journée"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">u"hauteur du soleil dans le ciel (°)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;heures de la journée&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;hauteur du soleil dans le ciel (°)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span> <span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span> <span class="p">);</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt"></div>
+
+
+
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAsoAAAEQCAYAAACp21KUAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xlcjen7B/BPZV8SnaXTokVSikSKIco6YxBjmbEzWccy
@@ -2173,11 +2241,15 @@ EkaqxSYAF2E4r79z/W42gCdd8/AEcATuC/rUPJYAWO+6Rv25ujt+A4yCv89cY/e65g0Ar8AoUix2
 3dPlYL1ttX+5uV/udRIEQRAEQRCERuV/IfnAgiAIgiAIgmDBD0aqx7jvOlAQBEEQBEEQBEEQBEEQ
 BEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQGoH/DzoNcM+E
 PIr5AAAAAElFTkSuQmCC
-">
-</img></div>
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -2185,15 +2257,17 @@ PIr5AAAAAElFTkSuQmCC
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>...pourquoi le prinptemps est diffférent de l'automne ? (le flux solaire est le même)</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [60]:</div>
+<div class="prompt input_prompt">In&nbsp;[60]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">heures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">102</span> <span class="p">)</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">heures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">102</span> <span class="p">)</span>
 
 <span class="n">sin_alpha</span> <span class="o">=</span> <span class="n">sinAlpha</span><span class="p">(</span> <span class="mf">42.5</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="n">heures</span> <span class="p">)</span>
 <span class="n">alpha_today</span> <span class="o">=</span> <span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span> <span class="n">sin_alpha</span> <span class="p">)</span>
@@ -2202,23 +2276,31 @@ PIr5AAAAAElFTkSuQmCC
 <span class="n">alpha_janvier</span> <span class="o">=</span> <span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span> <span class="n">sin_alpha_janvier</span> <span class="p">)</span>
 
 
-<span class="c"># Plot</span>
+<span class="c1"># Plot</span>
 <span class="n">jours</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">365</span><span class="p">,</span> <span class="mi">364</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">heures</span><span class="p">,</span> <span class="n">alpha_today</span> <span class="p">,</span> <span class="s">'r'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'today'</span> <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">heures</span><span class="p">,</span> <span class="n">alpha_janvier</span> <span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'janvier'</span> <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">u"heures de la journée"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">u"hauteur du soleil dans le ciel (°)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">heures</span><span class="p">,</span> <span class="n">alpha_today</span> <span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;today&#39;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">heures</span><span class="p">,</span> <span class="n">alpha_janvier</span> <span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;janvier&#39;</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;heures de la journée&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;hauteur du soleil dans le ciel (°)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">24</span><span class="p">]</span> <span class="p">);</span>  <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span> <span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt"></div>
+
+
+
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAsoAAAEQCAYAAACp21KUAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xd4U+X7x/F3B2WPArJkFHAPRFEERKmCIAgIMkQUcYFf
@@ -2475,33 +2557,42 @@ MAR4CkuGx2AlGu9jE/aWANPInAiX87GGYgnvz1iivRWbmJcMPIrVRu8ls9Y3wyGs1GIqcABLXos7
 t/0fMNiJIxb4E+8T+jLieBuY4DxHzli9nT8Jm/D3i3Pdo07cAOOwSYprnNd0Ip4c+xnHJ4r9RF8n
 ERERERFXlUP1wCIiIiIi2VTBSj3uPdmJIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIi
 IiIiIiIiIiIu+H+hq+muZ2nUgAAAAABJRU5ErkJggg==
-">
-</img></div>
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">altitude</span><span class="o">=</span><span class="mi">1000</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">altitude</span><span class="o">=</span><span class="mi">1000</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [35]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">Sc</span> <span class="o">=</span> <span class="mi">1367</span> <span class="c"># W/m2</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Sc</span> <span class="o">=</span> <span class="mi">1367</span> <span class="c1"># W/m2</span>
 <span class="n">R_out</span> <span class="o">=</span> <span class="n">Sc</span><span class="o">*</span><span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="mf">0.034</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span> <span class="mf">360.0</span><span class="o">/</span><span class="mf">365.0</span><span class="o">*</span><span class="n">jour</span><span class="o">*</span><span class="n">toRad</span> <span class="p">))</span>
 
-<span class="c"># effet de l'altitude</span>
-<span class="c"># cf. https://fr.wikipedia.org/wiki/Variation_de_la_pression_atmosph%C3%A9rique_avec_l%27altitude</span>
+<span class="c1"># effet de l&#39;altitude</span>
+<span class="c1"># cf. https://fr.wikipedia.org/wiki/Variation_de_la_pression_atmosph%C3%A9rique_avec_l%27altitude</span>
 
 <span class="n">p_pAbs</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.0065</span><span class="o">*</span><span class="n">altitude</span><span class="o">/</span><span class="mf">288.15</span> <span class="p">)</span><span class="o">**</span><span class="mf">5.255</span>
 
@@ -2515,73 +2606,61 @@ IiIiIiIiIiIu+H+hq+muZ2nUgAAAAABJRU5ErkJggg==
 
 <span class="n">R_tot</span> <span class="o">=</span> <span class="n">R_out</span><span class="o">*</span><span class="n">sinAlpha</span><span class="o">*</span><span class="p">(</span> <span class="n">fact_R_diff</span> <span class="o">+</span> <span class="n">fact_R_dir</span><span class="p">)</span>
 
-<span class="n">R_tot</span><span class="p">[</span> <span class="n">R_tot</span><span class="o"><</span><span class="mi">0</span> <span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">R_tot</span><span class="p">[</span> <span class="n">R_tot</span><span class="o">&lt;</span><span class="mi">0</span> <span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">return</span> <span class="n">R_tot</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt"></div>
+
 <div class="output_subarea output_text output_error">
+<pre class="ipynb"><div class="output_subarea output_text output_error">
 <pre>
 <span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
 <span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold"><ipython-input-35-08ea97c02925></span> in <span class="ansi-cyan-fg"><module></span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-35-08ea97c02925&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
 <span class="ansi-green-fg">      1</span> Sc <span class="ansi-yellow-intense-fg ansi-bold">=</span> <span class="ansi-cyan-intense-fg ansi-bold">1367</span> <span class="ansi-red-intense-fg ansi-bold"># W/m2</span>
-<span class="ansi-green-intense-fg ansi-bold">----> 2</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>R_out <span class="ansi-yellow-intense-fg ansi-bold">=</span> Sc<span class="ansi-yellow-intense-fg ansi-bold">*</span><span class="ansi-yellow-intense-fg ansi-bold">(</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span> <span class="ansi-yellow-intense-fg ansi-bold">+</span> <span class="ansi-cyan-intense-fg ansi-bold">0.034</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>np<span class="ansi-yellow-intense-fg ansi-bold">.</span>cos<span class="ansi-yellow-intense-fg ansi-bold">(</span> <span class="ansi-cyan-intense-fg ansi-bold">360.0</span><span class="ansi-yellow-intense-fg ansi-bold">/</span><span class="ansi-cyan-intense-fg ansi-bold">365.0</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>jour<span class="ansi-yellow-intense-fg ansi-bold">*</span>toRad <span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 2</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>R_out <span class="ansi-yellow-intense-fg ansi-bold">=</span> Sc<span class="ansi-yellow-intense-fg ansi-bold">*</span><span class="ansi-yellow-intense-fg ansi-bold">(</span> <span class="ansi-cyan-intense-fg ansi-bold">1</span> <span class="ansi-yellow-intense-fg ansi-bold">+</span> <span class="ansi-cyan-intense-fg ansi-bold">0.034</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>np<span class="ansi-yellow-intense-fg ansi-bold">.</span>cos<span class="ansi-yellow-intense-fg ansi-bold">(</span> <span class="ansi-cyan-intense-fg ansi-bold">360.0</span><span class="ansi-yellow-intense-fg ansi-bold">/</span><span class="ansi-cyan-intense-fg ansi-bold">365.0</span><span class="ansi-yellow-intense-fg ansi-bold">*</span>jour<span class="ansi-yellow-intense-fg ansi-bold">*</span>toRad <span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
 <span class="ansi-green-fg">      3</span> 
-<span class="ansi-green-fg">      4</span> <span class="ansi-red-intense-fg ansi-bold"># effet de l'altitude</span>
+<span class="ansi-green-fg">      4</span> <span class="ansi-red-intense-fg ansi-bold"># effet de l&#39;altitude</span>
 <span class="ansi-green-fg">      5</span> <span class="ansi-red-intense-fg ansi-bold"># cf. https://fr.wikipedia.org/wiki/Variation_de_la_pression_atmosph%C3%A9rique_avec_l%27altitude</span>
 
-<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name 'jour' is not defined</pre>
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;jour&#39; is not defined</pre>
+</div></pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
-</div>
-</div>
-</div>
+
+    </div>
 </div>
 
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script>
+</div>
 
+</div>
+ 
+
+</p>
   </div><!-- /.entry-content -->
 
 

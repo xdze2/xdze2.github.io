@@ -4,11 +4,12 @@
           <title>xdze2</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="/theme/css/monokai.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
 
 
     <meta name="tags" content="python" />
     <meta name="tags" content="physique" />
+
 
 </head>
 
@@ -21,7 +22,6 @@
             <nav id="menu"><ul>
                   <li><a href="/category/about.html">about</a></li>
                   <li><a href="/category/bookmark.html">bookmark</a></li>
-                  <li><a href="/category/code.html">code</a></li>
                   <li><a href="/category/optimization.html">optimization</a></li>
                   <li class="active"><a href="/category/physique.html">physique</a></li>
                   <li><a href="/category/statistiques.html">statistiques</a></li>
@@ -40,20 +40,20 @@
       <span class='summary_date' >
         Physique
       </span>
-      <a href='/home/etienne/xdze2_website/content/physique/story.ipynb' class='summary_date'>src</a>
+      <a href='/home/etienne/xdze2_website/content/physique/story.md' class='summary_date'>src</a>
   </span>
   </header>
 
 
 
   <div class="article-content">
-    
+    <p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Roule-ta-bille">Roule ta bille<a class="anchor-link" href="#Roule-ta-bille">¶</a></h1>
+<h1 id="Roule-ta-bille">Roule ta bille<a class="anchor-link" href="#Roule-ta-bille">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -64,6 +64,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>L'idée est de faire un circuit de bille périodique, sans mécanisme pour remonter la bille autre que la force centrifuge, donnée par la rotation de l'ensemble du circuit. L'énergie vient de la rotation constante de la structure, imposée par un moteur.</p>
 <p>Il n'y a pas de balais, ou de pièce non tournante, qui vient bloquer la bille dans son mouvement, pour la pousser le long d'une rampe.</p>
+
 </div>
 </div>
 </div>
@@ -72,8 +73,9 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Montée">Montée<a class="anchor-link" href="#Montée">¶</a></h2><p><img alt="schema 1" src="/physique/images/schema_montee.jpg" /></p>
+<h2 id="Mont&#233;e">Mont&#233;e<a class="anchor-link" href="#Mont&#233;e">&#182;</a></h2><p><img src="/physique/images/schema_montee.jpg" alt="schema 1"></p>
 <p>Pour la montée la bille est dans une gorge radiale. Les forces en présence sont donc la gravité, la réaction du support et la force centrifuge (en se plaçant dans le référentiel tournant). L'accélération est négligée pour le moment. Si $\theta$ est l'angle du support avec l'horizontal, $g$ l'accélération de la gravité, $\omega$ la vitesse de rotation (rad/s), $r$ le rayon où se trouve la bille, la somme des forces projetée sur l'horizontale donne: (la masse se simplifie)</p>
+
 </div>
 </div>
 </div>
@@ -83,6 +85,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>$g.\tan(\theta) = r.\omega^2$</p>
+
 </div>
 </div>
 </div>
@@ -92,6 +95,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>donc la pente permettant l'équilibre des forces sur la bille est pour chaque position $r$ :</p>
+
 </div>
 </div>
 </div>
@@ -101,6 +105,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>$\theta\left(r\right) = \arctan\left( \frac{\omega^2}{g} r \right)$</p>
+
 </div>
 </div>
 </div>
@@ -110,6 +115,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Si on se limite à un système de rayon $R$, la hauteur maximale atteignable, pour une certaine vitesse de rotation $\omega$ est (merci Wolfram):</p>
+
 </div>
 </div>
 </div>
@@ -124,57 +130,79 @@ $$ h_{max} = \int_0^R \theta(r)dr = R\,\arctan\left( \frac{\omega^2}{g} R\right)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [63]:</div>
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [64]:</div>
+<div class="prompt input_prompt">In&nbsp;[64]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span> <span class="c"># m.s-2</span>
-<span class="n">h_max</span> <span class="o">=</span> <span class="k">lambda</span>  <span class="n">R</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="n">R</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span> <span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">g</span><span class="o">*</span><span class="n">R</span> <span class="p">)</span> <span class="o">-</span> <span class="n">g</span><span class="o">/</span><span class="mf">2.0</span><span class="o">/</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">g</span><span class="o">*</span><span class="n">R</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="mf">9.81</span> <span class="c1"># m.s-2</span>
+<span class="n">h_max</span> <span class="o">=</span> <span class="k">lambda</span>  <span class="n">R</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="n">R</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span> <span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">g</span><span class="o">*</span><span class="n">R</span> <span class="p">)</span> <span class="o">-</span> <span class="n">g</span><span class="o">/</span><span class="mf">2.0</span><span class="o">/</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">g</span><span class="o">*</span><span class="n">R</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> 
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [128]:</div>
+<div class="prompt input_prompt">In&nbsp;[128]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">Rmax</span> <span class="o">=</span> <span class="mi">8</span><span class="n">e</span><span class="o">-</span><span class="mi">2</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Rmax</span> <span class="o">=</span> <span class="mf">8e-2</span>
 <span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">45.0</span><span class="o">/</span><span class="mf">60.0</span>
 
 <span class="n">r_span</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Rmax</span><span class="p">,</span> <span class="mi">55</span><span class="p">)</span>
 <span class="n">profil</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span> <span class="n">h_max</span> <span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">r_span</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">profil</span><span class="p">(</span><span class="n">r_span</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>  <span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">r_span</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">r_span</span><span class="o">*</span><span class="mi">0</span><span class="p">,</span> <span class="s">':'</span>  <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'r (cm)'</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'h_max (cm)'</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'w=%0.2f rad/s'</span><span class="o">%</span><span class="n">w</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'equal'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">r_span</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">profil</span><span class="p">(</span><span class="n">r_span</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>  <span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">r_span</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">r_span</span><span class="o">*</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span>  <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;r (cm)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;h_max (cm)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;w=</span><span class="si">%0.2f</span><span class="s1"> rad/s&#39;</span><span class="o">%</span><span class="k">w</span>); plt.axis(&#39;equal&#39;)
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt output_prompt">Out[128]:</div>
+
+
+
 <div class="output_text output_subarea output_execute_result">
-<pre>(0.0, 8.0, 0.0, 0.80000000000000004)</pre>
+<pre class="ipynb">(0.0, 8.0, 0.0, 0.80000000000000004)</pre>
 </div>
+
 </div>
+
 <div class="output_area">
 <div class="prompt"></div>
+
+
+
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAADhCAYAAAAXpwclAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAG41JREFUeJzt3X20XXV95/H3zRNJyDN5II/chCQQAkEs0ljR3ApVYCrW
@@ -302,37 +330,55 @@ J0Juam9FW5KamgFUkhqju5/j6X2hBc68RzT1SrLtBV4t2d9L8RJ8+lq9tXZQkvJiAJWk7D0HzE3q
 jwFvoTiCOWMQrzeX4giqJDU9A6gkNUbhLMf+BbgyqR8kJiTdT0xC+lofr1H5eml7LLAA2DzonkqS
 JGnYWwJ8r06v9Tbgr+v0WpIkSRrG7qN+C9G31+F1JEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSpBHo
 /wN2fsVO4GJFxgAAAABJRU5ErkJggg==
-">
-</img></div>
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [66]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">w_span</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
-<span class="n">h_max_w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span> <span class="n">h_max</span><span class="p">,</span> <span class="n">excluded</span><span class="o">=</span><span class="p">[</span><span class="s">'R'</span><span class="p">]</span> <span class="p">)</span>
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
 
-<span class="n">R</span> <span class="o">=</span> <span class="mi">10</span><span class="n">e</span><span class="o">-</span><span class="mi">2</span>
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">w_span</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">45</span><span class="p">)</span>
+<span class="n">h_max_w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span> <span class="n">h_max</span><span class="p">,</span> <span class="n">excluded</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="n">R</span> <span class="o">=</span> <span class="mf">10e-2</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span> <span class="n">w_span</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">h_max_w</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">w_span</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>  <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'w/2pi (Hz)'</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'h_max (cm)'</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'R=%0.2f m'</span> <span class="o">%</span> <span class="n">R</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;w/2pi (Hz)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;h_max (cm)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;R=</span><span class="si">%0.2f</span><span class="s1"> m&#39;</span> <span class="o">%</span> <span class="n">R</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt output_prompt">Out[66]:</div>
+
+
+
 <div class="output_text output_subarea output_execute_result">
-<pre><matplotlib.text.text at 0x7f3d81c94790></pre>
+<pre class="ipynb">&lt;matplotlib.text.Text at 0x7f3d81c94790&gt;</pre>
 </div>
+
 </div>
+
 <div class="output_area">
 <div class="prompt"></div>
+
+
+
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYUAAAEfCAYAAACu3tptAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAH7pJREFUeJzt3XmYFOW59/HvMKAcBRRExQUyQhBQEeFEQBFpVBKXoHE7
@@ -479,11 +525,15 @@ pCBhNQtohTXafg18F98GNub8y0n7/hFrd5iA1fu/kPTau8CjwGKsSmpSfHttv+RnY+0Y1LJfLL60
 Ac4H/pPd7Q3d4vt0x9pFRESkAKZRvQ6/NhFgSobHjmC9lLLVAOuV1DCHY4hkTSUFKUY/pnodfm0S
 v+ozEcUaj5vWs19tfoqVWCqyfL+IiIiIiIiIiIiIiIiIiIiIiIiIiIiIS/8fp9ftt42zIHcAAAAA
 SUVORK5CYII=
-">
-</img></div>
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -491,6 +541,7 @@ SUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>Remarque:</em> il est plus interessant d'avoir $w>1-2\,Hz$, mais voir la suite...</p>
+
 </div>
 </div>
 </div>
@@ -500,33 +551,52 @@ SUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Si on compare l'énergie potentiel acquise ($g\,h_{max}$) avec l'énergie cinétique acquise aussi ($(\omega\,R)^2/2$):</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [67]:</div>
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">R</span> <span class="o">=</span> <span class="mi">100</span><span class="n">e</span><span class="o">-</span><span class="mi">2</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="mf">100e-2</span>
 <span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">2</span>
 
-<span class="nb">print</span> <span class="s">'E potentiel:'</span><span class="p">,</span> <span class="n">g</span><span class="o">*</span><span class="n">h_max</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
-<span class="nb">print</span> <span class="s">'E cinétique:'</span><span class="p">,</span> <span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">R</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">2.0</span>
+<span class="nb">print</span> <span class="s1">&#39;E potentiel:&#39;</span><span class="p">,</span> <span class="n">g</span><span class="o">*</span><span class="n">h_max</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="nb">print</span> <span class="s1">&#39;E cinétique:&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">w</span><span class="o">*</span><span class="n">R</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">2.0</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>E potentiel: 13.1063294594
+<pre class="ipynb">E potentiel: 13.1063294594
 E cinétique: 78.9568352087
 </pre>
 </div>
 </div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Descente-(c.a.d.-retour-au-centre)">Descente (c.a.d. retour au centre)<a class="anchor-link" href="#Descente-(c.a.d.-retour-au-centre)">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -535,7 +605,8 @@ E cinétique: 78.9568352087
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id=" Descente-(c.a.d.-retour-au-centre)"> Descente (c.a.d. retour au centre)<a class="anchor-link" href="# Descente-(c.a.d.-retour-au-centre)">¶</a></h3>
+<p><img src="/physique/images/schema_rampes.jpg" alt="schema 2"></p>
+
 </div>
 </div>
 </div>
@@ -544,7 +615,8 @@ E cinétique: 78.9568352087
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img alt="schema 2" src="/physique/images/schema_rampes.jpg" /></p>
+<p><em>Notation pour la trajectoire circulaire de retour</em>, dans le reférentiel fixe (x, y): <img src="/physique/images/schema_notation2.jpg" alt="schema 2"></p>
+
 </div>
 </div>
 </div>
@@ -553,22 +625,14 @@ E cinétique: 78.9568352087
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Notation pour la trajectoire circulaire de retour</em>, dans le reférentiel fixe (x, y): <img alt="schema 2" src="/physique/images/schema_notation2.jpg" /></p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Un bille sur un plateau tournant plat et lisse a des trajectoires stable circulaire (cf publi & video). C.a.d. sans frottement et force extérieure.</p>
+<p>Un bille sur un plateau tournant plat et lisse a des trajectoires stable circulaire (cf publi &amp; video). C.a.d. sans frottement et force extérieure.</p>
 <ul>
 <li>La vitesse de rotation sur cette trajectoire est donnée par $w_c = 2/7 w$, pour une bille pleine (cf. moment d'inertie d'une sphère).</li>
 <li>Le rayon de la trajectoire circulaire est $\rho = |v_0|/w_c$, avec $v_0 = [v_{0x},\, v_{0y}]$ le vecteur vitesse initiale (dans le ref. du labo)</li>
 <li>Le centre du cercle est en $r_c = [  x_0 - v_{0y}/w_c,\, y_0 + v_{0x}/w_c ]$, toujours dans le ref. du labo, avec $[x_0,\, y_0]$ la position initial de la bille. On fixe: $x_0 = R$ et $y_0=0$</li>
 <li>La condition pour que la trajectoire de la bille passe par le centre est: $\rho = |r_c|$</li>
 </ul>
+
 </div>
 </div>
 </div>
@@ -585,6 +649,7 @@ $$ v_{0y} = \frac{R\,w_c}{2} $$</p>
 <li>La variation de vitesse $\Delta v$ nécessaire pour injecter la bille sur la bonne trajectoire est donc:
 $$ \Delta v = v_{0y} - v_y =  \frac{R\,w_c}{2} - w\,R $$</li>
 </ul>
+
 </div>
 </div>
 </div>
@@ -595,6 +660,7 @@ $$ \Delta v = v_{0y} - v_y =  \frac{R\,w_c}{2} - w\,R $$</li>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>qui se simplifie:
  $$  \Delta v = -\frac{6}{7}w\,R $$</p>
+
 </div>
 </div>
 </div>
@@ -605,6 +671,7 @@ $$ \Delta v = v_{0y} - v_y =  \frac{R\,w_c}{2} - w\,R $$</li>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Cela signifie que la bille doit perdre environ 85% de sa vitesse (tangentielle) dans ref. du labo.</p>
 <p>L'énergie pour effectuer ce changement de vitesse va être donnée par l'énergie potentielle obtenue lors de la montée: $E_p = m\,g\,h_{max}$. L'énergie cinétique est $m\,v^2/2$. Donc la variation de vitesse maximale est:</p>
+
 </div>
 </div>
 </div>
@@ -623,101 +690,128 @@ $$ \Delta v_{max} = \sqrt{ 2\,g\,h_{max} } $$
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>La condition pour que la bille puisse revenir au centre est : $\Delta v_{max} > \Delta v$</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [68]:</div>
+<div class="prompt input_prompt">In&nbsp;[68]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">R</span> <span class="o">=</span> <span class="mi">10</span><span class="n">e</span><span class="o">-</span><span class="mi">2</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="mf">10e-2</span>
 <span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">1</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [69]:</div>
+<div class="prompt input_prompt">In&nbsp;[69]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mi">2</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">h_max</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mi">2</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">h_max</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
 <span class="nb">print</span> <span class="mf">6.0</span><span class="o">/</span><span class="mf">7.0</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">R</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>0.620293575553
+<pre class="ipynb">0.620293575553
 0.538558740615
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [70]:</div>
+<div class="prompt input_prompt">In&nbsp;[70]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">dv_max</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mi">2</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">h_max</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">dv_max</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mi">2</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">h_max</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
 <span class="n">dv</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="mf">6.0</span><span class="o">/</span><span class="mf">7.0</span><span class="o">*</span><span class="n">w</span><span class="o">*</span><span class="n">R</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [77]:</div>
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">w_span</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
-<span class="n">h_max_w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span> <span class="n">h_max</span><span class="p">,</span> <span class="n">excluded</span><span class="o">=</span><span class="p">[</span><span class="s">'R'</span><span class="p">]</span> <span class="p">)</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">w_span</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
+<span class="n">h_max_w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span> <span class="n">h_max</span><span class="p">,</span> <span class="n">excluded</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">]</span> <span class="p">)</span>
 
-<span class="n">R</span> <span class="o">=</span> <span class="mi">5</span><span class="n">e</span><span class="o">-</span><span class="mi">2</span> <span class="c"># m</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">5e-2</span> <span class="c1"># m</span>
 
-<span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="k">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+<span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
 
-<span class="n">ax1</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span> <span class="n">w_span</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">dv_max</span><span class="p">(</span><span class="n">w_span</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">'\Delta v max'</span>  <span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span> <span class="n">w_span</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">dv</span><span class="p">(</span><span class="n">w_span</span><span class="p">)</span> <span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'\Delta v'</span>  <span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span> <span class="n">w_span</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">dv_max</span><span class="p">(</span><span class="n">w_span</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;\Delta v max&#39;</span>  <span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span> <span class="n">w_span</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">dv</span><span class="p">(</span><span class="n">w_span</span><span class="p">)</span> <span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;\Delta v&#39;</span>  <span class="p">)</span>
 
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">'(Delta v max - Delta v)'</span><span class="p">)</span>
-<span class="c">#ax.xlabel('w/2pi (Hz)'); ax.ylabel('dv (m/S)'); ax.title('R=%0.2f m' % R)</span>
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s">'upper left'</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;(Delta v max - Delta v)&#39;</span><span class="p">)</span>
+<span class="c1">#ax.xlabel(&#39;w/2pi (Hz)&#39;); ax.ylabel(&#39;dv (m/S)&#39;); ax.title(&#39;R=%0.2f m&#39; % R)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
 
-<span class="n">ax2</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span> <span class="n">w_span</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">dv_max</span><span class="p">(</span><span class="n">w_span</span><span class="p">)</span><span class="o">-</span><span class="n">dv</span><span class="p">(</span><span class="n">w_span</span><span class="p">)),</span> <span class="n">label</span><span class="o">=</span><span class="s">'Delta v max - Delta v '</span>  <span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span> <span class="n">w_span</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">dv_max</span><span class="p">(</span><span class="n">w_span</span><span class="p">)</span><span class="o">-</span><span class="n">dv</span><span class="p">(</span><span class="n">w_span</span><span class="p">)),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Delta v max - Delta v &#39;</span>  <span class="p">)</span>
 
-<span class="c">#ax.xlabel('w/2pi (Hz)'); ax.ylabel('dv (m/S)'); ax.title('R=%0.2f m' % R)</span>
-<span class="c">#ax = ax.legend(loc='upper center')</span>
+<span class="c1">#ax.xlabel(&#39;w/2pi (Hz)&#39;); ax.ylabel(&#39;dv (m/S)&#39;); ax.title(&#39;R=%0.2f m&#39; % R)</span>
+<span class="c1">#ax = ax.legend(loc=&#39;upper center&#39;)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="o">.</span><span class="mi">08</span><span class="p">])</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'delta delta (m/s)'</span><span class="p">);</span> 
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;delta delta (m/s)&#39;</span><span class="p">);</span> 
 
 <span class="n">taux</span> <span class="o">=</span> <span class="p">(</span><span class="n">dv_max</span><span class="p">(</span><span class="n">w_span</span><span class="p">)</span><span class="o">-</span><span class="n">dv</span><span class="p">(</span><span class="n">w_span</span><span class="p">))</span><span class="o">/</span><span class="n">dv</span><span class="p">(</span><span class="n">w_span</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span> <span class="n">w_span</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">taux</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Delta v max - Delta v '</span>  <span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span> <span class="n">w_span</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">taux</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Delta v max - Delta v &#39;</span>  <span class="p">)</span>
 
-<span class="c">#ax.xlabel('w/2pi (Hz)'); ax.ylabel('dv (m/S)'); ax.title('R=%0.2f m' % R)</span>
-<span class="c">#ax = ax.legend(loc='upper center')</span>
+<span class="c1">#ax.xlabel(&#39;w/2pi (Hz)&#39;); ax.ylabel(&#39;dv (m/S)&#39;); ax.title(&#39;R=%0.2f m&#39; % R)</span>
+<span class="c1">#ax = ax.legend(loc=&#39;upper center&#39;)</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'%'</span><span class="p">);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'w/2pi (Hz)'</span><span class="p">);</span> 
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;w/2pi (Hz)&#39;</span><span class="p">);</span> 
 
 <span class="n">f</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=.</span><span class="mi">03</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt"></div>
+
+
+
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjUAAAI2CAYAAACogXk2AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xd4FWXax/FveoGQQgklQJCONAERBSUiLB3WVVRAFFRW
@@ -1211,11 +1305,15 @@ JxKkhrxPFB9n4zbgL8C/6pzvCryb5T0kFSiTGkm5MgboQhTdzgeWpc8BDAf+kfHaK4m6mweIupeH
 Mp57GbgOmEx0af01fX5dLSkvEHU8rON11eltW+BY4NvU1tvskX7NQKIuSJIkqUFPsnYNy7pUAo80
 8t6VxCippmpJjIpqtQH3kFQAbKmR1BwOYe0alnWpaVVpjBRR/Nt+Pa9blyOJFqNVTbxekiRJkiRJ
 kiRJkiRJkiRJkiRJkiRJkiSp1P1/R+IMGRgNDL8AAAAASUVORK5CYII=
-">
-</img></div>
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
@@ -1223,28 +1321,34 @@ kiRJkiRJkiRJkiRJkiRJkiSp1P1/R+IMGRgNDL8AAAAASUVORK5CYII=
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Il y a donc une vitesse de rotation maximale au-dèla de laquelle il n'est plus possible pour la bille de revenir au centre (avec ce type de trajectoire)... l'énergie cinétique augmente indefiniment, alors que l'énergie potentielle sature quand $w$ augmente pour un rayon max. $R$ constant...</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [81]:</div>
+<div class="prompt input_prompt">In&nbsp;[81]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">dv_max</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mi">2</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">h_max</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">dv_max</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="mi">2</span><span class="o">*</span><span class="n">g</span><span class="o">*</span><span class="n">h_max</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
 
 <span class="n">dh</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">R</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="p">(</span><span class="mf">6.0</span><span class="o">/</span><span class="mf">7.0</span><span class="o">*</span><span class="n">R</span><span class="o">*</span><span class="n">w</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mf">2.0</span><span class="o">/</span><span class="n">g</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [143]:</div>
+<div class="prompt input_prompt">In&nbsp;[143]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">Rmax</span> <span class="o">=</span> <span class="mi">8</span><span class="n">e</span><span class="o">-</span><span class="mi">2</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Rmax</span> <span class="o">=</span> <span class="mf">8e-2</span>
 <span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">45.0</span><span class="o">/</span><span class="mf">60.0</span>
 
 <span class="n">hmax</span> <span class="o">=</span> <span class="n">h_max</span><span class="p">(</span> <span class="n">Rmax</span><span class="p">,</span> <span class="n">w</span> <span class="p">)</span>
@@ -1252,37 +1356,46 @@ kiRJkiRJkiRJkiRJkiRJkiSp1P1/R+IMGRgNDL8AAAAASUVORK5CYII=
 
 <span class="nb">print</span> <span class="n">dh</span><span class="p">(</span> <span class="n">Rmax</span><span class="p">,</span> <span class="n">w</span> <span class="p">)</span><span class="o">*</span><span class="mi">1000</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>7.2046637809
+<pre class="ipynb">7.2046637809
 5.32193609345
 </pre>
 </div>
 </div>
+
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id=" Quelle-est-la-trajectoire-de-la-bille-dans-le-ref.-tournant-?"> Quelle est la trajectoire de la bille dans le ref. tournant ?<a class="anchor-link" href="# Quelle-est-la-trajectoire-de-la-bille-dans-le-ref.-tournant-?">¶</a></h3>
+<h3 id="Quelle-est-la-trajectoire-de-la-bille-dans-le-ref.-tournant-?">Quelle est la trajectoire de la bille dans le ref. tournant ?<a class="anchor-link" href="#Quelle-est-la-trajectoire-de-la-bille-dans-le-ref.-tournant-?">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [116]:</div>
+<div class="prompt input_prompt">In&nbsp;[116]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="k">def</span> <span class="nf">Utournant</span><span class="p">(</span> <span class="n">t</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">w_c</span> <span class="p">):</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">Utournant</span><span class="p">(</span> <span class="n">t</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">w_c</span> <span class="p">):</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="n">w_c</span><span class="o">*</span><span class="n">t</span>
     <span class="n">ux</span> <span class="o">=</span> <span class="n">rho</span><span class="o">*</span><span class="p">(</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="p">)</span> 
     <span class="n">uy</span> <span class="o">=</span> <span class="n">rho</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span> <span class="n">theta</span> <span class="p">)</span>
@@ -1301,16 +1414,20 @@ kiRJkiRJkiRJkiRJkiRJkiSp1P1/R+IMGRgNDL8AAAAASUVORK5CYII=
     
     <span class="k">return</span> <span class="n">Ux</span><span class="p">,</span> <span class="n">Uy</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [137]:</div>
+<div class="prompt input_prompt">In&nbsp;[137]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">R</span> <span class="o">=</span> <span class="mi">8</span><span class="n">e</span><span class="o">-</span><span class="mi">2</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="mf">8e-2</span>
 <span class="n">w</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="mf">45.0</span><span class="o">/</span><span class="mf">60.0</span>
 
 <span class="n">rho</span> <span class="o">=</span> <span class="n">R</span><span class="o">/</span><span class="mf">2.0</span>
@@ -1320,33 +1437,50 @@ kiRJkiRJkiRJkiRJkiRJkiSp1P1/R+IMGRgNDL8AAAAASUVORK5CYII=
 
 <span class="n">Ux</span><span class="p">,</span> <span class="n">Uy</span> <span class="o">=</span> <span class="n">Utournant</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">w_c</span><span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [138]:</div>
+<div class="prompt input_prompt">In&nbsp;[138]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">aspect</span><span class="o">=</span><span class="s">'equal'</span><span class="p">)</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">100</span><span class="o">*</span><span class="n">R</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span> <span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">Ux</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">Uy</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s">'x-'</span> <span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">Ux</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="n">Uy</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;x-&#39;</span> <span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt output_prompt">Out[138]:</div>
+
+
+
 <div class="output_text output_subarea output_execute_result">
-<pre>[<matplotlib.lines.line2d at 0x7f3d7bd6f7d0>]</pre>
+<pre class="ipynb">[&lt;matplotlib.lines.Line2D at 0x7f3d7bd6f7d0&gt;]</pre>
 </div>
+
 </div>
+
 <div class="output_area">
 <div class="prompt"></div>
+
+
+
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASEAAAEACAYAAAD87cCIAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJztnXmYU+X5v++TbRYYJuACiii41a1ileIoUgdRQVHca2vd
@@ -1595,32 +1729,50 @@ bfd3R8zEQlAox/RoJFKxtUvrhZBs2YFABPcd0xrypb/bxTW74lAKEx17FfmsA9ThbkR4MBKVrEDe
 i4eBC11cv1MKndgYBh5FwoXvUhgTGSRiUAgRWgx8iWwP3gP+4MKaRyFRqc9x3wd4COKLeZ/237lQ
 3bEPpTDRscHIxd7NtIxUxtEeon+Y9si0QqFQKBQKhUKhUCgUCoVCoVAoFAqFQqFQKBQKhUKhUCgU
 CoW7/H8tnbZ6lhAUzwAAAABJRU5ErkJggg==
-">
-</img></div>
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [139]:</div>
+<div class="prompt input_prompt">In&nbsp;[139]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">time</span><span class="p">,</span> <span class="n">Uy</span> <span class="p">)</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="n">time</span><span class="p">,</span> <span class="n">Uy</span> <span class="p">)</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt output_prompt">Out[139]:</div>
+
+
+
 <div class="output_text output_subarea output_execute_result">
-<pre>[<matplotlib.lines.line2d at 0x7f3d7bca44d0>]</pre>
+<pre class="ipynb">[&lt;matplotlib.lines.Line2D at 0x7f3d7bca44d0&gt;]</pre>
 </div>
+
 </div>
+
 <div class="output_area">
 <div class="prompt"></div>
+
+
+
 <div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYUAAAEACAYAAABcXmojAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XecU2Xa//HPOBRXURGfFZQiSBPsrsKwtgCiiAoWRLGA
@@ -1795,39 +1947,56 @@ mHoEc72kRD6Ln7B/YIBJWO2hVupDyzhhOScSEbZzoiowCngL+5KLF6Zzo7zPwpfnRlmT3IoULxzl
 ENzCUSKfRW12/wpqhdUfgqohiRWag3xOFGlI6Z9FmM6JLOCfwNNlHBOWcyORz8K350ZJk9xuiF2K
 PB97fB5wQlqjS6/yPotbsOFnXwCfYid9EA0F1gHbsf7hawjvOVHeZxGWcwLgFKAQ+7sWDbM8m3Ce
 G4l8FmE6N0REREREREREREREREREREREREREREREREREJBP9f95x+O6k+DYGAAAAAElFTkSuQmCC
-">
-</img></div>
+"
+>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [140]:</div>
+<div class="prompt input_prompt">In&nbsp;[140]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="n">whereItIs</span><span class="p">(</span> <span class="mi">1</span> <span class="p">)</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">whereItIs</span><span class="p">(</span> <span class="mi">1</span> <span class="p">)</span> 
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt output_prompt">Out[140]:</div>
+
+
+
 <div class="output_text output_subarea output_execute_result">
-<pre>0.0023912918943382699</pre>
+<pre class="ipynb">0.0023912918943382699</pre>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
-</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [141]:</div>
+<div class="prompt input_prompt">In&nbsp;[141]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="k">import</span> <span class="n">minimize</span>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="k">import</span> <span class="n">minimize</span>
 
 <span class="n">whereItIs</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">:</span>  <span class="n">Utournant</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">w_c</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
 <span class="n">sol</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">whereItIs</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">)</span>
@@ -1839,79 +2008,71 @@ G4l8FmE6N0REREREREREREREREREREREREREREREREREJBP9f95x+O6k+DYGAAAAAElFTkSuQmCC
 <span class="n">rZero</span> <span class="o">=</span> <span class="n">Utournant</span><span class="p">(</span><span class="n">tZero</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">w_c</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">h_max</span><span class="p">(</span> <span class="n">rZero</span><span class="p">,</span> <span class="n">w</span>  <span class="p">)</span><span class="o">*</span><span class="mi">1000</span>
 </pre></div>
+
+    </div>
 </div>
+
 </div>
-</div>
+
 <div class="output_wrapper">
 <div class="output">
+
+
 <div class="output_area">
 <div class="prompt"></div>
+
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[  3.99949801e+00  -1.73738038e-03]
+<pre class="ipynb">[  3.99949801e+00  -1.73738038e-03]
 </pre>
 </div>
 </div>
+
 <div class="output_area">
 <div class="prompt output_prompt">Out[141]:</div>
+
+
+
 <div class="output_text output_subarea output_execute_result">
-<pre>1.8080168334031619</pre>
+<pre class="ipynb">1.8080168334031619</pre>
+</div>
+
+</div>
+
 </div>
 </div>
-</div>
-</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id=" Questions-bonus:"> Questions bonus:<a class="anchor-link" href="# Questions-bonus:">¶</a></h2><ul>
+<h2 id="Questions-bonus:">Questions bonus:<a class="anchor-link" href="#Questions-bonus:">&#182;</a></h2><ul>
 <li>Est-ce qu'il est possible de faire plusieurs rampe succesif our gagner en hauteur ? descendre de 1/2 $h_max$ et remonter plus haut ?  </li>
 <li>Version cylindre vertical avec la bille à l'intérieure ...</li>
 </ul>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [76]:</div>
+<div class="prompt input_prompt">In&nbsp;[76]:</div>
+
 <div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre>
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span> 
 </pre></div>
-</div>
-</div>
-</div>
+
+    </div>
 </div>
 
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script>
+</div>
 
+</div>
+ 
+
+</p>
   </div><!-- /.entry-content -->
 
 

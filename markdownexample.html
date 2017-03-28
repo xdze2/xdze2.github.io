@@ -4,10 +4,11 @@
           <title>xdze2</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="/theme/css/monokai.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
 
 
     <meta name="tags" content="dev" />
+
 
 </head>
 
@@ -20,7 +21,6 @@
             <nav id="menu"><ul>
                   <li class="active"><a href="/category/about.html">about</a></li>
                   <li><a href="/category/bookmark.html">bookmark</a></li>
-                  <li><a href="/category/code.html">code</a></li>
                   <li><a href="/category/optimization.html">optimization</a></li>
                   <li><a href="/category/physique.html">physique</a></li>
                   <li><a href="/category/statistiques.html">statistiques</a></li>
@@ -76,25 +76,25 @@ Unicode is supported. ☺</p>
 </ol>
 <p>Note again how the actual text starts at 4 columns in (4 characters
 from the left side). Here's a code sample:</p>
-<div class="highlight"><pre><span class="cp"># Let me re-iterate ...</span>
-<span class="k">for</span> <span class="n">i</span> <span class="n">in</span> <span class="mi">1</span> <span class="p">..</span> <span class="mi">10</span> <span class="p">{</span> <span class="k">do</span><span class="o">-</span><span class="n">something</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">}</span>
+<div class="highlight"><pre><span></span># Let me re-iterate ...
+for i in 1 .. 10 { do-something(i) }
 </pre></div>
 
 
 <p>As you probably guessed, indented 4 spaces. By the way, instead of
 indenting the block, you can use delimited blocks, if you like:</p>
-<div class="highlight"><pre><span class="n">define</span> <span class="nf">foobar</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">print</span> <span class="s">&quot;Welcome to flavor country!&quot;</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span></span>define foobar() {
+    print &quot;Welcome to flavor country!&quot;;
+}
 </pre></div>
 
 
 <p>(which makes copying &amp; pasting easier). You can optionally mark the
 delimited block for Pandoc to syntax highlight it:</p>
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">time</span>
-<span class="c"># Quick, count to ten!</span>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="c1"># Quick, count to ten!</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="c"># (but not *too* quick)</span>
+    <span class="c1"># (but not *too* quick)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">i</span>
 </pre></div>
@@ -117,13 +117,13 @@ delimited block for Pandoc to syntax highlight it:</p>
 <li>
 <p>Dump everything in the pot and follow
     this algorithm:</p>
-<div class="highlight"><pre><span class="n">find</span> <span class="n">wooden</span> <span class="n">spoon</span>
-<span class="n">uncover</span> <span class="n">pot</span>
-<span class="n">stir</span>
-<span class="n">cover</span> <span class="n">pot</span>
-<span class="n">balance</span> <span class="n">wooden</span> <span class="n">spoon</span> <span class="n">precariously</span> <span class="n">on</span> <span class="n">pot</span> <span class="n">handle</span>
-<span class="n">wait</span> <span class="mi">10</span> <span class="n">minutes</span>
-<span class="k">goto</span> <span class="n">first</span> <span class="n">step</span> <span class="p">(</span><span class="n">or</span> <span class="n">shut</span> <span class="n">off</span> <span class="n">burner</span> <span class="n">when</span> <span class="n">done</span><span class="p">)</span>
+<div class="highlight"><pre><span></span>find wooden spoon
+uncover pot
+stir
+cover pot
+balance wooden spoon precariously on pot handle
+wait 10 minutes
+goto first step (or shut off burner when done)
 </pre></div>
 
 
@@ -134,28 +134,28 @@ delimited block for Pandoc to syntax highlight it:</p>
 that last line which continues item 3 above).</p>
 <p>Here's a link to <a href="http://foo.bar">a website</a>, to a <a href="local-doc.html">local
 doc</a>, and to a <a href="#an-h2-header">section heading in the current
-doc</a>. Here's a footnote <sup id="fnref:1"><a class="footnote-ref" href="#fn:1" rel="footnote">1</a></sup>.</p>
+doc</a>. Here's a footnote <sup id="fnref-1"><a class="footnote-ref" href="#fn-1">1</a></sup>.</p>
 <p>Tables can look like this:</p>
 <p>size  material      color</p>
-<hr />
+<hr>
 <p>9     leather       brown
 10    hemp canvas   natural
 11    glass         transparent</p>
 <p>Table: Shoes, their sizes, and what they're made of</p>
 <p>(The above is the caption for the table.) Pandoc also supports
 multi-line tables:</p>
-<hr />
+<hr>
 <p>keyword   text</p>
-<hr />
+<hr>
 <p>red       Sunsets, apples, and
           other red or reddish
           things.</p>
 <p>green     Leaves, grass, frogs
           and other things it's
           not easy being.</p>
-<hr />
+<hr>
 <p>A horizontal rule follows.</p>
-<hr />
+<hr>
 <p>Here's a definition list:</p>
 <dl>
 <dt>apples</dt>
@@ -180,12 +180,12 @@ term/definition pair to spread things out more.)</p>
 |   Line too
 | Line tree</p>
 <p>and images can be specified like so:</p>
-<p><img alt="example image" src="example-image.jpg" title="An exemplary image" /></p>
+<p><img alt="example image" src="example-image.jpg" title="An exemplary image"></p>
 <div class="footnote">
-<hr />
+<hr>
 <ol>
-<li id="fn:1">
-<p>Footnote text goes here.&#160;<a class="footnote-backref" href="#fnref:1" rev="footnote" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li id="fn-1">
+<p>Footnote text goes here.&#160;<a class="footnote-backref" href="#fnref-1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
