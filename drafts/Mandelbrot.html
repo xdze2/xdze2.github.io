@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+          <title>xdze2</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
+
+
+    <meta name="tags" content="physique" />
+    <meta name="tags" content="code" />
+    <meta name="tags" content="fractal" />
+
+
+<!-- <script src="/theme/js/MathJax.js" type="text/javascript"></script> -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'center', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- <script src="/theme/js/jquery.min.js" type="text/javascript"></script> -->
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $("div.collapseheader").click(function () {
+    $header = $(this).children("span").first();
+    $codearea = $(this).children(".input_area");
+    console.log($(this).children());
+    $codearea.slideToggle(500, function () {
+        $header.text(function () {
+            return $codearea.is(":visible") ? "masquer le code" : "voir le code";
+        });
+    });
+});
+});
+</script>
+</head>
+
+<body>
+        <div id="side">
+            <header id="banner" >
+                    <img src="/theme/images/header.png" />
+                    <h1><a href="/">xdze2 <strong></strong></a></h1>
+            </header><!-- /#banner -->
+            <nav id="menu"><ul>
+                  <li class="active"><a href="/category/physique.html">physique</a></li>
+                  <li><a href="/category/statistiques.html">statistiques</a></li>
+            </ul></nav><!-- /#menu -->
+        </div>
+        <div id="content">
+<section id="article">
+
+  <header>
+      <img src="/theme/images/doc22.png"    />
+      <span>
+      <h1 class="entry-title">Deep Zoom Image et Mandelbrot</h2>
+      <span class='summary_date' title="2017-03-31T23:00:00+02:00">
+        mars 2017
+      </span>
+      <span class='summary_date' >
+        Physique
+      </span>
+      <a href='/home/etienne/xdze2_website/content/physique/Mandelbrot.md' class='summary_date'>src</a>
+  </span>
+  </header>
+
+
+
+  <div class="article-content">
+    <div id="openseadragon1" style="width: 100%; height: 500px; cursor:all-scroll; background-color:black;border:solid 1px black;"></div>
+
+<script src="static/openseadragon/openseadragon.min.js"></script>
+
+<script type="text/javascript">
+    var viewer = OpenSeadragon({
+        id: "openseadragon1",
+        prefixUrl: "static/openseadragon/images/",
+        tileSources: "physique/images/mandelbrot/0_Mandel.dzi"
+    });
+</script>
+
+<p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Ensemble-de-Mandelbrot-et-Deep-Zoom-image">Ensemble de Mandelbrot et Deep Zoom image<a class="anchor-link" href="#Ensemble-de-Mandelbrot-et-Deep-Zoom-image">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Calcul d'une pyramide d'images, pour créer une vue interactive zoomable de l'ensemble fractal de Mandelbrot.</p>
+<p><strong>L'ensemble de Mandelbrot</strong> est une des figures fractals la plus célèbre (<a href="https://en.wikipedia.org/wiki/Mandelbrot_set">wikipedia</a>). Il est fascinant de plonger à l'intérieure de l'image en continuant de zoomer et de découvrir les mêmes motifs apparaîtres, imbriqués à l'intérieure de structures complexes.</p>
+<p>La formulation mathématique de l'ensemble est, à l'inverse, étrangement simple. La couleur du pixel $(x, y)$ est déterminée suivant la convergence de la suite mathématique suivante:</p>
+$$
+z_{n+1} = z_n^2 + c  \\
+avec \;\; z_0 = 0 \;\; et \;\; c = x+iy
+$$<p><strong> Deep Zoom Image : </strong> Il est courant de voir des images interactives ayant des multiples niveaux de zoom. L'exemple bien sûr est <em>Google Earth</em>, ou par exemple ce <a href="http://www.in2white.com/">panorama du Mont Blanc</a>. Je voulais depuis longtemps essayer cela avec une image générée informatiquement. L'ensemble de Mandelbrot s'y prete très bien (<a href="http://tilde.club/~david/m/#zoom=5.87624466571835,3.4&amp;lookAt=-0.6,0&amp;iterations=85&amp;superSamples=1&amp;escapeRadius=10.0&amp;colorScheme=pickColorGrayscale">voir ici</a>).</p>
+<p>On trouve <a href="https://msdn.microsoft.com/fr-fr/library/cc645077">ici</a> la description du format d'image <em>Deep Zoom Image</em> (DZI). L'image est devellopée en niveau de zoom successifs, doublant à chaque fois la largeur de l'image.</p>
+<p>La taille en pixel de l'image au niveau numéro $i$ est $L = 2^i$. Le niveau zéro correspond donc à une image de 1x1 pixel, le niveau 2 à une image de 2x2 pixels... etc... Les premiers niveaux ne sont pas utiles. Il faut attendre le 7ième niveau pour avoir une image de 128x128 pixels, et cela va très vite ensuite.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span>  <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="p">[</span> <span class="s1">&#39;</span><span class="si">%i</span><span class="s1">:</span><span class="si">%i</span><span class="s1">px&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">14</span><span class="p">)])</span>  <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">0:1px, 1:2px, 2:4px, 3:8px, 4:16px, 5:32px, 6:64px, 7:128px, 8:256px, 9:512px, 10:1024px, 11:2048px, 12:4096px, 13:8192px
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>L'image de chaque niveau est decomposée en <strong>tuile</strong> de taille fixe. L'idée est de charger en mémoire seulement les tuiles en cours de visualisation, et non l'ensemble de l'image.</p>
+<p>Les images d'un même niveau sont enregistrées dans un dossier nommé suivant le numéro du niveau de zoom. Puis chaque image est nommée suivant le schéma <code>row_col.png</code> avec <code>row</code> et <code>col</code> le numéro de ligne et de colonne de l'image.</p>
+<p>Un fichier <code>xml</code> est ajouté pour decrire les propriétés de l'image: taille du dernier niveau de zoom et taille des tuiles.</p>
+<p>Le plugin javacsript <em>OpenSeaDragon</em> permet ensuite de visualiser ce type d'image (<a href="https://openseadragon.github.io/">https://openseadragon.github.io/</a>).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Calcul-num&#233;rique-de-l'ensemble-de-Mandelbrot">Calcul num&#233;rique de l'ensemble de Mandelbrot<a class="anchor-link" href="#Calcul-num&#233;rique-de-l'ensemble-de-Mandelbrot">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+
+<div class="collapseheader inner_cell"><span>voir le code</span>
+<div class="input_area" style="display:none">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+
+</div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Remarque: On evite l'utilisation de structure de donnée avancée (nombres complexes) pour reduire le temps de calcul</em></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">computeTile</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="p">):</span>
+    <span class="n">nMax_iter</span> <span class="o">=</span> <span class="mi">100</span>
+
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span> <span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span> <span class="n">X</span> <span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span> <span class="n">Y</span> <span class="p">):</span>
+
+            <span class="n">zx</span><span class="p">,</span> <span class="n">zy</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span> <span class="n">nMax_iter</span> <span class="p">):</span>
+                <span class="k">if</span> <span class="n">zx</span><span class="o">*</span><span class="n">zx</span> <span class="o">+</span> <span class="n">zy</span><span class="o">*</span><span class="n">zy</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+                    <span class="n">zx_temp</span> <span class="o">=</span> <span class="n">zx</span><span class="o">*</span><span class="n">zx</span> <span class="o">-</span> <span class="n">zy</span><span class="o">*</span><span class="n">zy</span> <span class="o">+</span> <span class="n">x</span>
+                    <span class="n">zy</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">zx</span><span class="o">*</span><span class="n">zy</span> <span class="o">+</span> <span class="n">y</span>
+                    <span class="n">zx</span> <span class="o">=</span> <span class="n">zx_temp</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">break</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">Z</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#np.abs( z )</span>
+    <span class="k">return</span> <span class="n">Z</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Test-du-calcul">Test du calcul<a class="anchor-link" href="#Test-du-calcul">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">nx</span> <span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span><span class="p">,</span> <span class="n">ny</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">computeTile</span><span class="p">(</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;</span><span class="si">%.3f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">t</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">));</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span> <span class="n">Z</span> <span class="p">);</span>            
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">0.189
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWsAAAFpCAYAAABajglzAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAALEgAACxIB0t1+/AAAEb9JREFUeJzt3V+MpXV9x/H3p+yyCIqwajdblhaMVOKFgNmARGMsFKXW
+CBfGaEyzbUj2xjaYtlFokyYmbYK9ULlobDai7oUVEG3ZECPSLaZp0qwuggqs/JFiWAqsigSr6Qr6
+7cV5lgzbGebMnj8z3533K5mc8zznOXO+v5nnfPa3v9/zO5OqQpK0tv3GahcgSVqeYS1JDRjWktSA
+YS1JDRjWktSAYS1JDRjWktSAYS1JDUwU1kkuT/JAkoeTXDOtoiRJL5ZjXcGY5ATgQeAy4CDwLeAD
+VXX/9MqTJAFsmOC5FwIPV9UjAEluBK4AlgzrE7OpTuKUCV5Sko4v/8vP+WUdznLHTRLWZwCPLdg+
+CFz0Uk84iVO4KJdO8JKSdHzZV3vHOm6SsB5Lkp3AToCTOHnWLydJx6VJJhgfB85csL1t2PciVbWr
+qrZX1faNbJrg5SRp/ZokrL8FnJPk7CQnAu8H9kynLEnSQsc8DFJVzyf5U+B24ATgs1V139QqkyS9
+YKIx66r6KvDVKdUiSVqCKxglqQHDWpIaMKwlqQHDWpIaMKwlqQHDWpIaMKwlqQHDWpIaMKwlqQHD
+WpIaMKwlqQHDWpIaMKwlqQHDWpIaMKwlqQHDWpIaMKwlqQHDWpIaMKwlqQHDWpIaMKwlqQHDWpIa
+MKwlqQHDWpIaMKwlqQHDWpIaMKwlqQHDWpIaMKwlqQHDWpIaMKwlqQHDWpIaMKwlqQHDWpIaMKwl
+qQHDWpIaMKwlqQHDWpIaMKwlqQHDWpIaMKwlqQHDWpIaWDask3w2yaEk9y7YtznJHUkeGm5Pn22Z
+krS+jdOz/jxw+VH7rgH2VtU5wN5hW5I0I8uGdVX9O/D0UbuvAHYP93cDV065LknSAsc6Zr2lqp4Y
+7j8JbJlSPZKkRUw8wVhVBdRSjyfZmWR/kv3PcXjSl5OkdelYw/qpJFsBhttDSx1YVbuqantVbd/I
+pmN8OUla3441rPcAO4b7O4Bbp1OOJGkx41y690XgP4HXJzmY5CrgOuCyJA8Bvz9sS5JmZMNyB1TV
+B5Z46NIp1yJJWoIrGCWpAcNakhowrCWpAcNakhowrCWpAcNakhowrCWpAcNakhowrCWpAcNakhow
+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
+bVCSg/vmnvAAAAAASUVORK5CYII=
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ensuite il faut définir les vecteurs $X$ et $Y$ en fonction de la tuile demandée.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">y_min</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">getXY</span><span class="p">(</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">nTiles</span><span class="p">,</span> <span class="n">tile_size</span>  <span class="p">):</span>
+    <span class="n">xStart</span> <span class="o">=</span> <span class="n">x_min</span> <span class="o">+</span> <span class="n">row</span><span class="o">*</span><span class="p">(</span><span class="n">x_max</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">)</span><span class="o">/</span><span class="n">nTiles</span>
+    <span class="n">xEnd</span>   <span class="o">=</span> <span class="n">x_min</span> <span class="o">+</span> <span class="p">(</span><span class="n">row</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x_max</span> <span class="o">-</span> <span class="n">x_min</span><span class="p">)</span><span class="o">/</span><span class="n">nTiles</span>
+
+    <span class="n">yStart</span> <span class="o">=</span> <span class="n">y_min</span> <span class="o">+</span> <span class="n">col</span><span class="o">*</span><span class="p">(</span><span class="n">y_max</span> <span class="o">-</span> <span class="n">y_min</span><span class="p">)</span><span class="o">/</span><span class="n">nTiles</span>
+    <span class="n">yEnd</span>   <span class="o">=</span> <span class="n">y_min</span> <span class="o">+</span> <span class="p">(</span><span class="n">col</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">y_max</span> <span class="o">-</span> <span class="n">y_min</span><span class="p">)</span><span class="o">/</span><span class="n">nTiles</span>
+
+    <span class="n">Xtile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="n">xStart</span><span class="p">,</span> <span class="n">xEnd</span><span class="p">,</span> <span class="n">tile_size</span> <span class="p">)</span>
+    <span class="n">Ytile</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span> <span class="n">yStart</span><span class="p">,</span> <span class="n">yEnd</span><span class="p">,</span> <span class="n">tile_size</span> <span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">Xtile</span><span class="p">,</span> <span class="n">Ytile</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Xtile</span><span class="p">,</span> <span class="n">Ytile</span> <span class="o">=</span> <span class="n">getXY</span><span class="p">(</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">64</span>  <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">));</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span> <span class="n">computeTile</span><span class="p">(</span> <span class="n">Xtile</span><span class="p">,</span> <span class="n">Ytile</span> <span class="p">)</span> <span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+GjCsJakBw1qSGjCsJakBw1qSGjCsJakBw1qSGjCsJakBw1qSGjCsJakBw1qSGjCsJakBw1qSGlg/
+zkFJHgF+DrwAPF9Vc0k2AjcAW4FHgCur6qfTKVOSZtuxzKzfXlXnV9XcsL0T2FtV5wB7h21J0hQs
+5zLI5cDu4f5u4IrllyNJWsi4YV3AN5LclWTHsG9TVT0+3H8C2DTx6iRJwJjXrIG3VtVjSX4X2JPk
+B/MfrKpKUgs9cQj3HQAn84plFStJs2qsmXVVPTbcHga+ClwIPJlkM8Bwe3iR5+6qqrmqmtvAyyZT
+tSTNmCXDOskpSV515D7wDuBe4BZg23DYNuDmaRUpSbNunMsgm4CvJjly/D9X1deT3AncmGQ78CPg
+yumVKUmzbcmwrqqHgfMW2P80cMk0ipIkvZQrGCWpAcNakhowrCWpAcNakhowrCWpAcNakhowrCWp
+AcNakhowrCWpAcNakhowrCWpAcNakhowrCWpAcNakhowrCWpAcNakhowrCWpAcNakhowrCWpAcNa
+khowrCWpAcNakhowrCWpAcNakhowrCWpAcNakhowrCWpAcNakhowrCWpAcNakhowrCWpAcNakhow
+rCWpAcNakhowrCWpAcNakhowrCWpAcNakhowrCWpAcNakhowrCWpAcNakhoYK6yTnJrkpiQ/SHIg
+yUVJNibZk+Sh4fa0aRcrSbNq3Jn1tcDXq+pc4DzgALAT2FtV5wB7h21J0hQsGdZJXgO8DbgOoKp+
+VVXPAJcDu4fDdgNXTKtISZp148yszwaeAj6f5O4kn01yCrCpqh4fjnkC2DStIiVp1o0T1uuBNwKf
+qaoLgF9y1CWPqiqgFnpykh1J9ifZ/xzPLrdeSZpJ44T1IeBQVe0btm9iFN5PJtkMMNweXujJVbWr
+quaqam4DL5tEzZI0c5YM66p6Ang0yeuHXZcA9wO3ANuGfduAm6dSoSSJ9WMe91fAF5OcBDwM/AWj
+oL8xyXbgR8CV0ylRkjRWWFfVPcDcAg9dMtlyJEkLcQWjJDVgWEtSA4a1JDVgWEtSA4a1JDVgWEtS
+A4a1JDVgWEtSA4a1JDVgWEtSA4a1JDVgWEtSA4a1JDWQ0Ze8rNDJkqcYfZzqa4H/XrETT5djWZsc
+y9rkWH7b71fVGUsdtKJh/eJJk/1VtdBHrrbjWNYmx7I2OZbj52UQSWrAsJakBlYrrHet0nmnwbGs
+TY5lbXIsx2lVrllLko6Nl0EkqYEVD+sklyV5IMnBJDtX+vzLkeRzSQ4nuXfevo1J9iR5aLg9bTVr
+HFeSs5LcnuT+JPcluWrY3248SU5OckeS7w5j+fiw/+wk+4bX2g1JTlrtWseRZF2Su5PcOmy3HAdA
+kkeSfD/JPUn2D/vavcYAkpya5KYkP0hyIMlFKzmWFQ3rJOuAfwD+BHgD8P4kb1jJGpbpC8BlR+3b
+CeytqnOAvcN2B88DH6mqNwBvBj44/Ft0HM+zwMVVdR5wPnBZkjcDnwA+VVWvA34KbF/FGo/FVcCB
+edtdx3HE26vq/Hlvc+v4GgO4Fvh6VZ0LnMfo32jlxlJVK/YDXATcNm/7auDqlaxhAmPYCtw7b/sB
+YPNwfzPwwGrXeJzjuhm4tPt4gFcA3wHexGjBwvph/0tee2v1B9gy/NJfDNwKpOM45o3nEeC1R+1r
+9xoDXgP8F0OfbzXGstKXQc4EHp23fWjY19mmqnp8uP8EsGk1izkeSbYCFwD7aDqe4dLBPcBhYA/w
+Q+CZqnp+OKTLa+3TwEeBXw/bp9NzHEcU8I0kdyXZMezr+Bo7G3gK+PxwieqzSU5hBcdig3GCavTn
+tdXba5K8Evgy8KGq+tn8xzqNp6peqKrzGc1MLwTOXeWSjlmSdwOHq+qu1a5lgt5aVW9kdOnzg0ne
+Nv/BRq+x9cAbgc9U1QXALznqkse0x7LSYf0YcNa87S3Dvs6eTLIZYLg9vMr1jC3JBkZB/cWq+sqw
+u+14AKrqGeB2RpcLTk2yfniow2vtLcB7kjwCXM/oUsi19BvHi6rqseH2MPBVRn9IO77GDgGHqmrf
+sH0To/BesbGsdFjfCZwzdLdPAt4H3LLCNUzaLcC24f42Rtd+17wkAa4DDlTVJ+c91G48Sc5Icupw
+/+WMrr0fYBTa7x0OW/Njqaqrq2pLVW1l9Lvxzar6AM3GcUSSU5K86sh94B3AvTR8jVXVE8CjSV4/
+7LoEuJ+VHMsqXKh/F/Ago2uKf7PajYNjrP1LwOPAc4z+0m5ndE1xL/AQ8O/AxtWuc8yxvJXR/7J9
+D7hn+HlXx/EAfwjcPYzlXuBvh/1/ANwBHAT+BXjZatd6DGP6I+DWzuMY6v7u8HPfkd/3jq+xoe7z
+gf3D6+xfgdNWciyuYJSkBmwwSlIDhrUkNWBYS1IDhrUkNWBYS1IDhrUkNWBYS1IDhrUkNfB/o7iD
+/UVKgogAAAAASUVORK5CYII=
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Calcul-de-la-pyramide">Calcul de la pyramide<a class="anchor-link" href="#Calcul-de-la-pyramide">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Le plus difficile est ensuite de parcourir la pyramide d'images et de lancer le calcul pour chaque image. Il est intéressant de faire un algorithme recursif, cohérent avec la description de l'image, et surtout permettant de detecter et de de ne pas calculer les images vides.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">Image</span>
+
+<span class="k">def</span> <span class="nf">saveImg</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
+    <span class="n">rescaled</span> <span class="o">=</span> <span class="p">(</span><span class="mf">255.0</span> <span class="o">/</span> <span class="n">Z</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="n">Z</span> <span class="o">-</span> <span class="n">Z</span><span class="o">.</span><span class="n">min</span><span class="p">()))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">rescaled</span><span class="p">)</span>
+    <span class="n">im</span><span class="o">.</span><span class="n">save</span><span class="p">(</span> <span class="n">loc</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Configuration de l&#39;image (Variables globales)</span>
+<span class="n">tile_size</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">nbr_zoom</span> <span class="o">=</span> <span class="mi">9</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;Mandelbrot</span><span class="si">%i</span><span class="s1">px</span><span class="si">%i</span><span class="s1">L_files&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tile_size</span><span class="p">,</span> <span class="n">nbr_zoom</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;  -taille de l&#39;image finale: </span><span class="si">%i</span><span class="s2"> px&quot;</span><span class="o">%</span><span class="k">2</span>**nbr_zoom )
+<span class="nb">print</span><span class="p">(</span> <span class="s2">&quot;  -nombre de tuiles dans l&#39;image finale: </span><span class="si">%i</span><span class="s2"> &quot;</span><span class="o">%</span> <span class="p">((</span><span class="mi">2</span><span class="o">**</span><span class="n">nbr_zoom</span><span class="p">)</span><span class="o">/</span><span class="n">tile_size</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">Mandelbrot64px9L_files
+  -taille de l&#39;image finale: 512 px
+  -nombre de tuiles dans l&#39;image finale: 64 
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="k">def</span> <span class="nf">computeSubTile</span><span class="p">(</span> <span class="n">level</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">0</span> <span class="p">):</span>
+    <span class="c1"># Calcul :</span>
+    <span class="n">image_size</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="n">level</span>
+    <span class="n">tile_size_loc</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span> <span class="n">tile_size</span><span class="p">,</span> <span class="n">image_size</span> <span class="p">)</span>
+    <span class="n">nTiles</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span> <span class="n">image_size</span><span class="o">/</span><span class="n">tile_size</span> <span class="p">))</span>
+    
+    <span class="n">Xtile</span><span class="p">,</span> <span class="n">Ytile</span> <span class="o">=</span> <span class="n">getXY</span><span class="p">(</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">nTiles</span><span class="p">,</span> <span class="n">tile_size_loc</span>  <span class="p">)</span>
+    <span class="n">Z</span> <span class="o">=</span> <span class="n">computeTile</span><span class="p">(</span> <span class="n">Xtile</span><span class="p">,</span> <span class="n">Ytile</span> <span class="p">)</span>
+    
+    <span class="c1"># Enregistre la tuile :</span>
+    <span class="n">dirname</span> <span class="o">=</span> <span class="s1">&#39;./</span><span class="si">%s</span><span class="s1">/</span><span class="si">%i</span><span class="s1">&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dirname</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;mkdir </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span><span class="k">dirname</span> )
+        <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span> <span class="n">dirname</span> <span class="p">)</span>
+        
+    <span class="n">imgname</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">/</span><span class="si">%i</span><span class="s1">_</span><span class="si">%i</span><span class="s1">.png&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">row</span> <span class="p">)</span>
+    <span class="n">saveImg</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span> <span class="n">imgname</span><span class="p">)</span>    
+    
+    <span class="c1"># Tuiles suivantes :</span>
+    <span class="k">if</span> <span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">tile_size</span><span class="p">:</span>
+         <span class="n">computeSubTile</span><span class="p">(</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">0</span> <span class="p">)</span>
+    <span class="k">elif</span> <span class="n">level</span><span class="o">&lt;</span><span class="n">nbr_zoom</span><span class="p">:</span>
+        <span class="c1"># test quartier par quartier si l&#39;image est non vide:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+                <span class="n">nDemi</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span> <span class="n">tile_size</span><span class="o">/</span><span class="mi">2</span> <span class="p">)</span>
+                <span class="n">Zcrop</span> <span class="o">=</span> <span class="n">Z</span><span class="p">[</span> <span class="n">i</span><span class="o">*</span><span class="n">nDemi</span><span class="p">:(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">nDemi</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="n">nDemi</span><span class="p">:(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">nDemi</span>  <span class="p">]</span>
+                
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Zcrop</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">Zcrop</span><span class="p">)</span><span class="o">&gt;.</span><span class="mi">9</span> <span class="p">:</span>
+                    <span class="n">computeSubTile</span><span class="p">(</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">row</span><span class="o">+</span><span class="n">i</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="mi">2</span><span class="o">*</span><span class="n">col</span><span class="o">+</span><span class="n">j</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[448]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">computeSubTile</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">mkdir ./Mandelbrot64px9L_files/3
+mkdir ./Mandelbrot64px9L_files/4
+mkdir ./Mandelbrot64px9L_files/5
+mkdir ./Mandelbrot64px9L_files/6
+mkdir ./Mandelbrot64px9L_files/7
+mkdir ./Mandelbrot64px9L_files/8
+mkdir ./Mandelbrot64px9L_files/9
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Remarque:</em> Le calcul avec des tuiles de 128px et 14 niveaux de zoom prends 2h15 sur mon ordi...</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Le fichier <em>.DZI</em>  (xml) doit être ajouter à coté du répertoire d'images. Les informations à completer sont la taille des tuiles, et la taille de l'image au dernier niveau de zoom:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;Image Format="png" Overlap="0" TileSize="128" xmlns="http://schemas.microsoft.com/deepzoom/2008"&gt;
+    &lt;Size Height="16384" Width="16384"/&gt;
+&lt;/Image&gt;</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+ 
+
+</p>
+  </div><!-- /.entry-content -->
+
+
+
+</section>
+        </div>
+        <footer id="sitefooter">
+                <address id="about">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>.
+                </address><!-- /#about -->
+        </footer><!-- /#contentinfo -->
+</body>
+</html>
