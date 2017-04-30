@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+          <title>xdze2</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
+
+
+    <meta name="tags" content="mots" />
+
+
+<!-- <script src="/theme/js/MathJax.js" type="text/javascript"></script> -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'center', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- <script src="/theme/js/jquery.min.js" type="text/javascript"></script> -->
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $("div.collapseheader").click(function () {
+    $header = $(this).children("span").first();
+    $codearea = $(this).children(".input_area");
+    console.log($(this).children());
+    $codearea.slideToggle(500, function () {
+        $header.text(function () {
+            return $codearea.is(":visible") ? "masquer le code" : "voir le code";
+        });
+    });
+});
+});
+</script>
+</head>
+
+<body>
+        <div id="side">
+            <header id="banner" >
+                    <img src="/theme/images/header.png" />
+                    <h1><a href="/">xdze2 <strong></strong></a></h1>
+            </header><!-- /#banner -->
+            <nav id="menu"><ul>
+
+            
+            <img src="/theme/images/tag_icon.png"   />
+                <li ><a href="/tag/physique.html">physique</a></li>
+                <li ><a href="/tag/statistiques.html">statistiques</a></li>
+                <li ><a href="/tag/visualisation.html">visualisation</a></li>
+                <li ><a href="/tag/algorithme.html">algorithme</a></li>
+
+                <li><a href="/tags.html">[plus]</a></li>
+            </ul>
+            <p>
+              <a href='#'><img src="/theme/images/mail.png"   /></a>
+            </p>
+          </nav><!-- /#menu -->
+        </div>
+        <div id="content">
+<section id="article">
+
+  <header>
+      <img src="/theme/images/doc22.png"    />
+      <span>
+      <h1 class="entry-title">Anagrammes</h1>
+      <span class='summary_date' title="2017-04-30T21:00:00+02:00">
+        avril 2017
+      </span>
+
+        <span class='summary_tag'><a href='tag/mots.html'>mots</a></span>
+
+  </span>
+  </header>
+
+
+
+  <div class="article-content">
+    <p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Anagrammes">Anagrammes<a class="anchor-link" href="#Anagrammes">&#182;</a></h1><p>Ceci est un programme permettant de trouver (tout) les anagrammes du Français...</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Chargement-et-d&#233;poussi&#233;rage-du-dictionnaire">Chargement et d&#233;poussi&#233;rage du dictionnaire<a class="anchor-link" href="#Chargement-et-d&#233;poussi&#233;rage-du-dictionnaire">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[79]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#fichier = &#39;liste_mots_mix.txt&#39; #295088 mots - http://www.lexique.org/listes/liste_mots.php</span>
+<span class="n">fichier</span> <span class="o">=</span> <span class="s1">&#39;liste_francais.txt&#39;</span> <span class="c1"># 22740 mots</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[80]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fichier</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;ISO-8859-1&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">dictionnaire</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    
+<span class="nb">len</span><span class="p">(</span><span class="n">dictionnaire</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[80]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">22740</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[81]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sont retirés, entre autre, les noms propres (majuscule), les mots avec une apostrophe ou un tiret...</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[105]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">sacamots</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">ligne</span> <span class="ow">in</span> <span class="n">dictionnaire</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span> <span class="sa">r</span><span class="s2">&quot;[#()&#39;0-9\.\-A-Z!]&quot;</span><span class="p">,</span> <span class="n">ligne</span><span class="p">)</span> <span class="p">:</span>
+        <span class="n">mot</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39; </span><span class="se">\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">mot</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">2</span> <span class="p">:</span>
+            <span class="n">sacamots</span><span class="o">.</span><span class="n">add</span><span class="p">(</span> <span class="n">mot</span> <span class="p">)</span>
+            
+<span class="n">liste_mots</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span> <span class="n">set_mots</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[106]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="nb">len</span><span class="p">(</span> <span class="n">liste_mots</span> <span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">liste_mots</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, ...etc&#39;</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">21039
+servie, monacal, fumeur, venaient, procuration, censurer, consécutives, tchécoslovaques, éthique, tunnels, ...etc
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>La liste des anagrammes est créée en triant, pour chaque mot, ses lettres par ordre alphabétique.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[109]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">liste_anagrammes</span> <span class="o">=</span> <span class="p">[</span>  <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="nb">sorted</span><span class="p">(</span> <span class="n">mot</span> <span class="p">)</span> <span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">mot</span> <span class="ow">in</span> <span class="n">liste_mots</span>  <span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">liste_anagrammes</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, ...etc&#39;</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">eeirsv, aaclmno, efmruu, aeeinntv, acinooprrtu, ceenrrsu, cceinosstuvé, accehlooqsstuvé, ehiqtué, elnnstu, ...etc
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Les anagrammes sont ensuite triés, en conservant le mot corresondant (zip).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[98]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span> <span class="nb">zip</span><span class="p">(</span><span class="n">liste_anagrammes</span><span class="p">,</span> <span class="n">liste_mots</span> <span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">Z</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">[(&#39;aaaaabbcdnrrt&#39;, &#39;abracadabrant&#39;), (&#39;aaaabcclrtué&#39;, &#39;baccalauréat&#39;), (&#39;aaaabdeeijnrszï&#39;, &#39;azerbaïdjanaise&#39;), (&#39;aaaabdeijnrszï&#39;, &#39;azerbaïdjanais&#39;), (&#39;aaaabkllï&#39;, &#39;balalaïka&#39;), (&#39;aaaacilnrrsvé&#39;, &#39;caravansérail&#39;), (&#39;aaaagilmmnot&#39;, &#39;amalgamation&#39;), (&#39;aaaaiipprsst&#39;, &#39;apparaissait&#39;), (&#39;aaaailmnrsst&#39;, &#39;marais salant&#39;), (&#39;aaaanprtuv&#39;, &#39;auparavant&#39;)]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>et les mots ayant le même anagramme sont cherchés de proche en proche:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[112]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">multi</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">Z</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">same</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="k">for</span> <span class="n">B</span> <span class="ow">in</span> <span class="n">Z</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">same</span><span class="o">==</span><span class="kc">False</span><span class="p">:</span>
+        <span class="n">same</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">famille</span> <span class="o">=</span> <span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> 
+    <span class="k">elif</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">==</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">same</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+        <span class="n">famille</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>        
+    <span class="k">elif</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">!=</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">same</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">multi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">famille</span><span class="p">)</span>
+        <span class="n">same</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="n">A</span> <span class="o">=</span> <span class="n">B</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[113]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span> <span class="n">multi</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[113]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">768</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[114]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="nb">sorted</span><span class="p">(</span> <span class="n">multi</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)[:</span><span class="mi">10</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">[[&#39;abc&#39;, &#39;bac&#39;], [&#39;lac&#39;, &#39;cal&#39;], [&#39;car&#39;, &#39;arc&#39;], [&#39;sac&#39;, &#39;cas&#39;], [&#39;gai&#39;, &#39;agi&#39;], [&#39;mai&#39;, &#39;ami&#39;], [&#39;rai&#39;, &#39;ira&#39;, &#39;air&#39;], [&#39;sec&#39;, &#39;ces&#39;], [&#39;roc&#39;, &#39;cor&#39;], [&#39;dur&#39;, &#39;dru&#39;]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Les mots ayant le plus d'anagrammes possible :</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[117]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="nb">sorted</span><span class="p">(</span> <span class="n">multi</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">20</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">[[&#39;mare&#39;, &#39;rame&#39;, &#39;arme&#39;, &#39;amer&#39;], [&#39;star&#39;, &#39;arts&#39;, &#39;rats&#39;, &#39;tsar&#39;], [&#39;retenu&#39;, &#39;eurent&#39;, &#39;neutre&#39;, &#39;teneur&#39;], [&#39;repos&#39;, &#39;poser&#39;, &#39;prose&#39;, &#39;spore&#39;], [&#39;puer&#39;, &#39;pure&#39;, &#39;peur&#39;, &#39;repu&#39;], [&#39;rues&#39;, &#39;user&#39;, &#39;suer&#39;, &#39;ruse&#39;], [&#39;partial&#39;, &#39;parlait&#39;, &#39;aplatir&#39;], [&#39;baltes&#39;, &#39;stable&#39;, &#39;tables&#39;], [&#39;chanter&#39;, &#39;chantre&#39;, &#39;tranche&#39;], [&#39;tacher&#39;, &#39;archet&#39;, &#39;charte&#39;], [&#39;calmer&#39;, &#39;clamer&#39;, &#39;carmel&#39;], [&#39;créature&#39;, &#39;créateur&#39;, &#39;réacteur&#39;], [&#39;sceau&#39;, &#39;cause&#39;, &#39;sauce&#39;], [&#39;raide&#39;, &#39;aider&#39;, &#39;aride&#39;], [&#39;égards&#39;, &#39;gradés&#39;, &#39;gardés&#39;], [&#39;ignare&#39;, &#39;regain&#39;, &#39;graine&#39;], [&#39;plaire&#39;, &#39;pareil&#39;, &#39;palier&#39;], [&#39;manier&#39;, &#39;marine&#39;, &#39;animer&#39;], [&#39;merrain&#39;, &#39;ranimer&#39;, &#39;mariner&#39;], [&#39;marie&#39;, &#39;maire&#39;, &#39;aimer&#39;]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Les anagrammes des mots les plus longs:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[119]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="nb">sorted</span><span class="p">(</span> <span class="n">multi</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span> <span class="p">)[:</span><span class="mi">20</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">[[&#39;certification&#39;, &#39;rectification&#39;], [&#39;ratification&#39;, &#39;tarification&#39;], [&#39;conservation&#39;, &#39;conversation&#39;], [&#39;présenterait&#39;, &#39;représentait&#39;], [&#39;agriculteur&#39;, &#39;agriculture&#39;], [&#39;législature&#39;, &#39;législateur&#39;], [&#39;tranquilles&#39;, &#39;resquillant&#39;], [&#39;transfusion&#39;, &#39;fournissant&#39;], [&#39;viticulteur&#39;, &#39;viticulture&#39;], [&#39;saturation&#39;, &#39;autorisant&#39;], [&#39;surchauffe&#39;, &#39;chauffeurs&#39;], [&#39;comprenait&#39;, &#39;importance&#39;], [&#39;nonciature&#39;, &#39;continuera&#39;], [&#39;scénariste&#39;, &#39;résistance&#39;], [&#39;légalement&#39;, &#39;allégement&#39;], [&#39;retrouvait&#39;, &#39;trouverait&#39;], [&#39;consterner&#39;, &#39;rencontres&#39;], [&#39;construite&#39;, &#39;constituer&#39;], [&#39;intervenus&#39;, &#39;inventeurs&#39;], [&#39;impression&#39;, &#39;permission&#39;]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Et tous les anagrammes:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[121]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">S</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span> <span class="n">multi</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
+<span class="n">Sa</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;/&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">S</span> <span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">Sa</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">abc/bac; lac/cal; car/arc; sac/cas; gai/agi; mai/ami; rai/ira/air; sec/ces; roc/cor; dur/dru; dus/sud; sel/les; nue/une; tes/est; eus/use; eut/tue; ouf/fou; ils/lis; tir/tri/rit; nom/mon; mot/tom; son/nos; ont/not/ton; top/pot; aube/beau; brai/abri; bras/bars; avec/cave; chas/cash; camé/acmé; dame/made; raid/dira; sida/dais; nage/ange; rage/gare; amie/aime; raie/aire; mare/rame/arme/amer; anse/nase; apte/tape; sera/rase; tare/rate; axes/saxe; veau/aveu; fait/fiat; gars/gras; mali/lima; amis/mais; sain/anis; ripa/pari/pair; rais/airs; vrai/ravi; visa/avis/vais; part/rapt; star/arts/rats/tsar; taré/raté; snob/bons; lice/ciel; cire/crie; noce/once; cols/clos; coté/écot; turc/truc; dire/ride; dent/tend; rude/dure; fiel/file/life; fers/serf; ogre/orge; miel/lime; line/lien; lier/lire; mine/mien; mise/semi; rein/nier/rien; sein/sien/sine; pire/prie; tire/rite; rive/ivre; vies/vise; tels/lest; zone/onze; sent/nets; unes/nues; oser/rose/ores; vote/veto; puer/pure/peur/repu; peut/pute; sert/rets; rues/user/suer/ruse; info/foin; fois/soif; loin/lion; poil/poli; slip/plis; mois/omis; unis/insu; unit/nuit; rois/soir; péri/prié; suis/issu; vélo/volé; sont/tons; trop/port; prou/pour; pots/spot/post; trou/tour; bacon/banco; balle/label; balte/table; arbre/barre; baser/sabre; brave/baver; basse/bases; baril/blair; about/tabou; acier/craie; clame/calme; carpe/parce; races/caser; trace/carte; cases/casse; sceau/cause/sauce; lacté/éclat; césar/sacré; tracé/écart; grade/garde; raide/aider/aride; dater/tarde; stade/dates; gardé/égard; délai/idéal; raids/radis; fange/fagne; agile/aigle; image/magie; lange/angle; nager/range; ganse/anges; gaver/grave; usage/sauge; harpe/phare; asile/ailes; manie/anime; marie/maire/aimer; serai/aires; tiare/taire; varie/vraie; palme/ample/lampe; saler/laser; sales/lasse; salue/saule; taule/autel; amené/émane; marre/armer; armes/rames; trame/mater; armée/marée; tenta/natte/tante; repas/saper; sapes/passe; serra/raser/rares; resta/astre; taxer/extra; sauve/suave; étang/géant; ragot/argot; niais/ainsi; malin/milan; alpin/lapin; liant/latin; rails/salir; rival/avril; niant/tanin; tarin/intra/train; saint/satin; pairs/paris; quasi/quais; vrais/ravis; talus/salut; savon/avons; santé/sénat; bâclé/câblé; berge/gerbe; libre/biler; bleus/blues; sobre/robes; buter/brute/rebut; bruit/tribu; béton/bonté; butor/turbo; obtus/bouts; corde/credo; douce/coude; celer/recel; encre/cerne; chine/chien; chier/riche; châle/lâche; chope/poche; crime/merci; scier/crise; cuire/curie; iceux/cieux; socle/close; recul/cruel; conne/nonce; coupe/pouce; score/corse; sucre/sucer; récit/écrit; guide/digue; vides/devis; idées/séide; diète/tiède; ondes/sonde; dorer/ordre; duper/perdu; dures/rudes; genre/green; envie/veine; enjeu/jeune; jeter/rejet; elles/selle; perle/peler; remet/terme; terne/entre/rente; nette/tente; neuve/venue/neveu; verse/serve; frime/firme; floue/foule; linge/ligne; signe/singe/seing; givre/grive; glose/loges; règne/nègre; orgue/rouge; humer/rhume; olive/voile; plier/repli; relié/élire; tuile/utile; mines/miens; imper/prime; miser/remis; semis/mises; peint/pinte; épine/peiné; inter/tenir; urine/nuire/ruine; venir/nervi/verni; seins/siens; tiens/senti; usine/unies; tient/teint; poire/proie; prier/riper; pires/prise; tirer/trier; rites/tiers; viser/rives/servi; série/risée; suite/situe; sujet/juste; louer/roule; léser/réels; morne/norme/renom; muret/meurt; notre/noter; notes/osent; urnes/nurse; nôtre/trône; repos/poser/prose/spore; porte/prote; potes/poste; essor/roses; sorte/torse; roues/ourse; touer/route/outre; votre/voter; vouer/ouvre; ouest/soute; super/pures; usure/sueur; revêt/trêve; gésir/régis; glosé/logés; horst/short; pilon/lopin; lions/nolis; point/potin; punir/rupin/purin; trois/sorti; priés/épris; pétri/répit; pouls/loups; promu/rompu; étron/ténor; ports/sport; tours/trous; cadeau/audace; canard/cadran; faible/fiable; braise/baiser; baltes/stable/tables; barres/arbres; établi/bétail; chaire/cahier; marche/charme; tacher/archet/charte; chaste/sachet; calmer/clamer/carmel; lancée/calé en; tancer/carnet; tracer/carter; carrée/acérer; crasse/casser; traces/cartes; lascif/fiscal; criant/craint; citant/intact; grande/danger; regard/garder; avides/devais; renard/rendra; datent/attend; retard/tarder; durera/ardeur; gradin/grandi; égards/gradés/gardés; dilaté/détail; danois/adonis; tandis/disant; truand/durant; refait/ferait; gagner/grange; engagé/gagnée; mirage/maigre; ignare/regain/graine; agiter/tirage; virage/rivage; gaieté/agitée; langes/sangle; langue/lagune; orange/organe; égarer/agréer; phrase/phares; plaire/pareil/palier; laisse/liasse; valise/salive; manier/marine/animer; aiment/menait; animée/anémie; rapine/panier; inapte/paient; navire/avenir; paires/aspire; partie/patrie; arrive/varier; satire/serait; aviser/vraies; traite/attire; assise/essais; levant/valent; palper/rappel; étaler/alerté; émaner/ramené; masque/squame; masure/amuser; armées/marées; naître/traîne; pauvre/vapeur; quatre/traque; sauter/autres; saveur/sauver; génial/inégal/aligné; gratin/granit/ingrat; latino/laiton; maints/matins; naquit/taquin; transi/instar/trains; posait/patois; traité/attiré; bribes/brebis; broder/rebord; bouder/bourde; berger/gerber; orbite/boiter; boules/blouse; ombres/sombre; trombe/tomber; snober/bornes; bosser/brosse; tribus/bruits; direct/dicter; décrit/crédit; secret/certes; coiffe/office; forcée/féroce; négoce/cognée; choper/proche; prêche/pêcher; prince/pincer; crient/cintre; crique/cirque; clouer/couler; créole/éclore; contre/conter; créent/récent; couper/croupe; scores/corses; course/source; coûter/croûte; couver/couvre; récuse/creusé; écrits/récits; dédier/dédire; vendue/devenu; fondre/fronde/fonder; dirige/rigide; dignes/design; délier/délire; destin/disent; réside/désire; dérive/dévier; rondes/sonder; détenu/étendu; ordure/dorure; souder/sourde/odeurs; désuet/études; désiré/sidéré; érudit/réduit; fiente/feinte; relier/relire; mienne/ennemi; entier/inerte; lequel/quelle; pleure/pelure; élever/relevé; trempe/permet; termes/mestre; entrer/rentre; envers/vernes; trente/tenter; retenu/eurent/neutre/teneur; venter/ventre; neuves/venues; pertes/pester; terres/rester; verser/revers; effort/offert; rigole/gloire; signes/singes; voirie/ivoire; emplir/rempli; violer/voiler; voiles/solive; livrée/réveil; permis/primes; métier/trémie/mérite; séisme/émises; requin/niquer; ruiner/uriner; usiner/ruines/sinuer; tirent/tinter; pisser/prises; tripes/esprit; requis/risque; étirer/retiré/étrier; visser/servis; titres/triste; suivre/survie; suisse/issues; sujets/justes; pleurs/pulser; sermon/normes; montre/monter; promet/trompe; résume/mesuré; report/porter; portes/poster; troupe/poutre; sortes/stores; ouvert/trouve; tueurs/suture; ignoré/région; voisin/vision; rompus/promus; bagarre/barrage; aimable/amiable; amateur/marteau; partial/parlait/aplatir; fiables/faibles; bulgare/blaguer; arbitre/abriter; rétabli/établir; accrues/accuser; acheter/hectare; enlacer/relance; fiscale/faciles; facteur/facture; chauler/chaleur; marcher/charmer; marches/charmes; chanter/chantre/tranche; racines/arsenic; crainte/certain; haricot/chariot; leaders/dealers; gardien/daigner; grandes/dangers; madrier/admirer; tiendra/rendait; veinard/viendra; devrait/tardive; grandir/ringard; dormant/mordant; alerter/relater; taverne/entrave; signale/leasing; engrais/saigner; aigreur/aguerri; étrange/renégat; amorphe/amphore; rallier/railler; plainte/patelin; ralenti/reliant; spirale/pareils; merrain/ranimer/mariner; animées/amnésie; prenait/patiner; atteint/tentait; parties/pirates; attirer/retrait/traiter; verrait/avertir; restait/artiste/attiser; servait/avertis; planter/parlent; masquer/marques; sentant/tenants; servant/versant; papoter/apporte; assurer/rassure; stature/statuer; forfait/offrait; offrant/affront; languir/galurin; alignés/signalé; traités/attirés; combine/incombe/combien; obscure/courbes; ignoble/gobelin; robinet/obtenir; bourses/brousse; concert/concret; décrire/décrier; discret/directs; lecture/lecteur; centrée/récente; spectre/respect; recrues/creuser; recteur/recrute; confier/foncier; cligner/cingler; tricher/richter; croiser/sorcier; renoncé/énoncer; sources/courses/secours; cousins/coussin; teindre/dentier; devenir/deviner; dessein/dessine; reprend/prendre; devenus/vendues; tenu de/tendue; étendue/détenue; moindre/dominer/endormi; densité/destiné; stupide/dispute; désirer/résider; étudier/éditeur/réduite; dénoter/détoner; sourdre/ordures; déroute/redouté; réduits/surdité; refluer/fleurer; remplie/empiler; reliure/reluire; miennes/ennemis; premier/empirer; empires/emprise; tiennes/intense; terrine/retenir/terrien; sentier/entiers; teinter/retient; respire/reprise/pierres; retirer/terrier; meurent/menteur; enterré/rentrée; retenus/senteur; serrure/erreurs; efforts/offerts; filtrer/flirter; fournie/enfouir/fouiner; forment/froment; réfuter/fréteur; génisse/signées; limiter/militer; voilier/olivier; inviter/vitrine; promise/imposer; métiers/mérites; potiner/pointer; intruse/suinter; soupire/roupies; velours/voleurs; monteur/monture; remonté/montrée; entouré/tournée; opposer/propose; troupes/posture; poussée/épouses; rousset/tousser; sportif/profits; visions/voisins; potiron/portion; bagarres/barrages; changera/archange; canaille/alliance; calvaire/cavalier; massacre/sarcasme; macaroni/marocain; tapageur/patauger; laissera/salaires; armateur/armature; matériau/amirauté; aspirant/partisan; attirant/traitant; baver de/adverbe; fracture/facturer; facteurs/factures; tranchée/étancher; approche/achopper; chasseur/chausser; certains/craintes; rapiécer/précaire; créature/créateur/réacteur; réaction/création; associés/écossais; devaient/devenait; mondiale/limonade; latitude/altitude; saoudien/soudaine; résidant/désirant; relevait/relative; servante/entraves; repasser/paresser; affermir/affirmer; signaler/sanglier; régalien/algérien; organise/agoniser; rallonge/allonger; animisme/mainmise; parisien/aspirine; oriental/relation; voltaire/traviole; traitent/attirent; passoire/paroisse; tsariste/artistes; rapporte/apporter; glasnost/sanglots; limitant/militant; assimilé/islamisé; laissons/salisson; instauré/insaturé; concerts/concrets; défoncer/féconder; déconner/dénoncer; cupidité/pudicité; crémerie/remercié; lecteurs/lectures; coiffure/coiffeur; foncière/conifère; conférer/renforcé; sections/consiste; courrier/recourir; coursier/secourir; jonction/conjoint; détenues/étendues; désirent/résident; réduites/éditeurs; démontre/démonter; pondérer/répondre; éditions/sédition; détritus/détruits; meetings/gisement; seigneur/seringue; réveille/éveiller; retirent/retentir; repriser/respirer; emprunte/purement; entourer/retourne; repousse/soupeser; religion/originel; sinistre/insister; investir/vitrines; impropre/opprimer; routiers/soutirer; voitures/virtuose; espérons/réponses; cassation/associant; faisaient/fantaisie; rassemble/assembler; dictateur/dictature; surcharge/chargeurs; chapitres/pasticher; approcher/rapproche; incessant/instances; reconnaît/connaître; contraste/constater; créateurs/réacteurs; facilités/fiscalité; callosité/localités; créations/réactions; présidait/disparité; rangement/garnement; alimenter/terminale; relatives/versatile; attentive/tentative; retraites/resterait; intégrale/églantier; angoisser/agression; attention/tentation; indiscret/indirects; rectifier/certifier; conserver/converser; foncières/conifères; sélection/élections; ceinturon/continuer; sculpteur/sculpture; desserrer/redresser; déliement/démentiel; inventeur/intervenu; intrigues/instiguer; péroniste/protéines; saturation/autorisant; surchauffe/chauffeurs; comprenait/importance; nonciature/continuera; scénariste/résistance; légalement/allégement; retrouvait/trouverait; consterner/rencontres; construite/constituer; intervenus/inventeurs; impression/permission; interrompu/importuner; prospérité/propriétés; agriculteur/agriculture; législature/législateur; tranquilles/resquillant; transfusion/fournissant; viticulteur/viticulture; ratification/tarification; conservation/conversation; présenterait/représentait; certification/rectification
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+ 
+
+</p>
+<p>abc/bac; lac/cal; car/arc; sac/cas; gai/agi; mai/ami; rai/ira/air; sec/ces; roc/cor; dur/dru; dus/sud; sel/les; nue/une; tes/est; eus/use; eut/tue; ouf/fou; ils/lis; tir/tri/rit; nom/mon; mot/tom; son/nos; ont/not/ton; top/pot; aube/beau; brai/abri; bras/bars; avec/cave; chas/cash; camé/acmé; dame/made; raid/dira; sida/dais; nage/ange; rage/gare; amie/aime; raie/aire; mare/rame/arme/amer; anse/nase; apte/tape; sera/rase; tare/rate; axes/saxe; veau/aveu; fait/fiat; gars/gras; mali/lima; amis/mais; sain/anis; ripa/pari/pair; rais/airs; vrai/ravi; visa/avis/vais; part/rapt; star/arts/rats/tsar; taré/raté; snob/bons; lice/ciel; cire/crie; noce/once; cols/clos; coté/écot; turc/truc; dire/ride; dent/tend; rude/dure; fiel/file/life; fers/serf; ogre/orge; miel/lime; line/lien; lier/lire; mine/mien; mise/semi; rein/nier/rien; sein/sien/sine; pire/prie; tire/rite; rive/ivre; vies/vise; tels/lest; zone/onze; sent/nets; unes/nues; oser/rose/ores; vote/veto; puer/pure/peur/repu; peut/pute; sert/rets; rues/user/suer/ruse; info/foin; fois/soif; loin/lion; poil/poli; slip/plis; mois/omis; unis/insu; unit/nuit; rois/soir; péri/prié; suis/issu; vélo/volé; sont/tons; trop/port; prou/pour; pots/spot/post; trou/tour; bacon/banco; balle/label; balte/table; arbre/barre; baser/sabre; brave/baver; basse/bases; baril/blair; about/tabou; acier/craie; clame/calme; carpe/parce; races/caser; trace/carte; cases/casse; sceau/cause/sauce; lacté/éclat; césar/sacré; tracé/écart; grade/garde; raide/aider/aride; dater/tarde; stade/dates; gardé/égard; délai/idéal; raids/radis; fange/fagne; agile/aigle; image/magie; lange/angle; nager/range; ganse/anges; gaver/grave; usage/sauge; harpe/phare; asile/ailes; manie/anime; marie/maire/aimer; serai/aires; tiare/taire; varie/vraie; palme/ample/lampe; saler/laser; sales/lasse; salue/saule; taule/autel; amené/émane; marre/armer; armes/rames; trame/mater; armée/marée; tenta/natte/tante; repas/saper; sapes/passe; serra/raser/rares; resta/astre; taxer/extra; sauve/suave; étang/géant; ragot/argot; niais/ainsi; malin/milan; alpin/lapin; liant/latin; rails/salir; rival/avril; niant/tanin; tarin/intra/train; saint/satin; pairs/paris; quasi/quais; vrais/ravis; talus/salut; savon/avons; santé/sénat; bâclé/câblé; berge/gerbe; libre/biler; bleus/blues; sobre/robes; buter/brute/rebut; bruit/tribu; béton/bonté; butor/turbo; obtus/bouts; corde/credo; douce/coude; celer/recel; encre/cerne; chine/chien; chier/riche; châle/lâche; chope/poche; crime/merci; scier/crise; cuire/curie; iceux/cieux; socle/close; recul/cruel; conne/nonce; coupe/pouce; score/corse; sucre/sucer; récit/écrit; guide/digue; vides/devis; idées/séide; diète/tiède; ondes/sonde; dorer/ordre; duper/perdu; dures/rudes; genre/green; envie/veine; enjeu/jeune; jeter/rejet; elles/selle; perle/peler; remet/terme; terne/entre/rente; nette/tente; neuve/venue/neveu; verse/serve; frime/firme; floue/foule; linge/ligne; signe/singe/seing; givre/grive; glose/loges; règne/nègre; orgue/rouge; humer/rhume; olive/voile; plier/repli; relié/élire; tuile/utile; mines/miens; imper/prime; miser/remis; semis/mises; peint/pinte; épine/peiné; inter/tenir; urine/nuire/ruine; venir/nervi/verni; seins/siens; tiens/senti; usine/unies; tient/teint; poire/proie; prier/riper; pires/prise; tirer/trier; rites/tiers; viser/rives/servi; série/risée; suite/situe; sujet/juste; louer/roule; léser/réels; morne/norme/renom; muret/meurt; notre/noter; notes/osent; urnes/nurse; nôtre/trône; repos/poser/prose/spore; porte/prote; potes/poste; essor/roses; sorte/torse; roues/ourse; touer/route/outre; votre/voter; vouer/ouvre; ouest/soute; super/pures; usure/sueur; revêt/trêve; gésir/régis; glosé/logés; horst/short; pilon/lopin; lions/nolis; point/potin; punir/rupin/purin; trois/sorti; priés/épris; pétri/répit; pouls/loups; promu/rompu; étron/ténor; ports/sport; tours/trous; cadeau/audace; canard/cadran; faible/fiable; braise/baiser; baltes/stable/tables; barres/arbres; établi/bétail; chaire/cahier; marche/charme; tacher/archet/charte; chaste/sachet; calmer/clamer/carmel; lancée/calé en; tancer/carnet; tracer/carter; carrée/acérer; crasse/casser; traces/cartes; lascif/fiscal; criant/craint; citant/intact; grande/danger; regard/garder; avides/devais; renard/rendra; datent/attend; retard/tarder; durera/ardeur; gradin/grandi; égards/gradés/gardés; dilaté/détail; danois/adonis; tandis/disant; truand/durant; refait/ferait; gagner/grange; engagé/gagnée; mirage/maigre; ignare/regain/graine; agiter/tirage; virage/rivage; gaieté/agitée; langes/sangle; langue/lagune; orange/organe; égarer/agréer; phrase/phares; plaire/pareil/palier; laisse/liasse; valise/salive; manier/marine/animer; aiment/menait; animée/anémie; rapine/panier; inapte/paient; navire/avenir; paires/aspire; partie/patrie; arrive/varier; satire/serait; aviser/vraies; traite/attire; assise/essais; levant/valent; palper/rappel; étaler/alerté; émaner/ramené; masque/squame; masure/amuser; armées/marées; naître/traîne; pauvre/vapeur; quatre/traque; sauter/autres; saveur/sauver; génial/inégal/aligné; gratin/granit/ingrat; latino/laiton; maints/matins; naquit/taquin; transi/instar/trains; posait/patois; traité/attiré; bribes/brebis; broder/rebord; bouder/bourde; berger/gerber; orbite/boiter; boules/blouse; ombres/sombre; trombe/tomber; snober/bornes; bosser/brosse; tribus/bruits; direct/dicter; décrit/crédit; secret/certes; coiffe/office; forcée/féroce; négoce/cognée; choper/proche; prêche/pêcher; prince/pincer; crient/cintre; crique/cirque; clouer/couler; créole/éclore; contre/conter; créent/récent; couper/croupe; scores/corses; course/source; coûter/croûte; couver/couvre; récuse/creusé; écrits/récits; dédier/dédire; vendue/devenu; fondre/fronde/fonder; dirige/rigide; dignes/design; délier/délire; destin/disent; réside/désire; dérive/dévier; rondes/sonder; détenu/étendu; ordure/dorure; souder/sourde/odeurs; désuet/études; désiré/sidéré; érudit/réduit; fiente/feinte; relier/relire; mienne/ennemi; entier/inerte; lequel/quelle; pleure/pelure; élever/relevé; trempe/permet; termes/mestre; entrer/rentre; envers/vernes; trente/tenter; retenu/eurent/neutre/teneur; venter/ventre; neuves/venues; pertes/pester; terres/rester; verser/revers; effort/offert; rigole/gloire; signes/singes; voirie/ivoire; emplir/rempli; violer/voiler; voiles/solive; livrée/réveil; permis/primes; métier/trémie/mérite; séisme/émises; requin/niquer; ruiner/uriner; usiner/ruines/sinuer; tirent/tinter; pisser/prises; tripes/esprit; requis/risque; étirer/retiré/étrier; visser/servis; titres/triste; suivre/survie; suisse/issues; sujets/justes; pleurs/pulser; sermon/normes; montre/monter; promet/trompe; résume/mesuré; report/porter; portes/poster; troupe/poutre; sortes/stores; ouvert/trouve; tueurs/suture; ignoré/région; voisin/vision; rompus/promus; bagarre/barrage; aimable/amiable; amateur/marteau; partial/parlait/aplatir; fiables/faibles; bulgare/blaguer; arbitre/abriter; rétabli/établir; accrues/accuser; acheter/hectare; enlacer/relance; fiscale/faciles; facteur/facture; chauler/chaleur; marcher/charmer; marches/charmes; chanter/chantre/tranche; racines/arsenic; crainte/certain; haricot/chariot; leaders/dealers; gardien/daigner; grandes/dangers; madrier/admirer; tiendra/rendait; veinard/viendra; devrait/tardive; grandir/ringard; dormant/mordant; alerter/relater; taverne/entrave; signale/leasing; engrais/saigner; aigreur/aguerri; étrange/renégat; amorphe/amphore; rallier/railler; plainte/patelin; ralenti/reliant; spirale/pareils; merrain/ranimer/mariner; animées/amnésie; prenait/patiner; atteint/tentait; parties/pirates; attirer/retrait/traiter; verrait/avertir; restait/artiste/attiser; servait/avertis; planter/parlent; masquer/marques; sentant/tenants; servant/versant; papoter/apporte; assurer/rassure; stature/statuer; forfait/offrait; offrant/affront; languir/galurin; alignés/signalé; traités/attirés; combine/incombe/combien; obscure/courbes; ignoble/gobelin; robinet/obtenir; bourses/brousse; concert/concret; décrire/décrier; discret/directs; lecture/lecteur; centrée/récente; spectre/respect; recrues/creuser; recteur/recrute; confier/foncier; cligner/cingler; tricher/richter; croiser/sorcier; renoncé/énoncer; sources/courses/secours; cousins/coussin; teindre/dentier; devenir/deviner; dessein/dessine; reprend/prendre; devenus/vendues; tenu de/tendue; étendue/détenue; moindre/dominer/endormi; densité/destiné; stupide/dispute; désirer/résider; étudier/éditeur/réduite; dénoter/détoner; sourdre/ordures; déroute/redouté; réduits/surdité; refluer/fleurer; remplie/empiler; reliure/reluire; miennes/ennemis; premier/empirer; empires/emprise; tiennes/intense; terrine/retenir/terrien; sentier/entiers; teinter/retient; respire/reprise/pierres; retirer/terrier; meurent/menteur; enterré/rentrée; retenus/senteur; serrure/erreurs; efforts/offerts; filtrer/flirter; fournie/enfouir/fouiner; forment/froment; réfuter/fréteur; génisse/signées; limiter/militer; voilier/olivier; inviter/vitrine; promise/imposer; métiers/mérites; potiner/pointer; intruse/suinter; soupire/roupies; velours/voleurs; monteur/monture; remonté/montrée; entouré/tournée; opposer/propose; troupes/posture; poussée/épouses; rousset/tousser; sportif/profits; visions/voisins; potiron/portion; bagarres/barrages; changera/archange; canaille/alliance; calvaire/cavalier; massacre/sarcasme; macaroni/marocain; tapageur/patauger; laissera/salaires; armateur/armature; matériau/amirauté; aspirant/partisan; attirant/traitant; baver de/adverbe; fracture/facturer; facteurs/factures; tranchée/étancher; approche/achopper; chasseur/chausser; certains/craintes; rapiécer/précaire; créature/créateur/réacteur; réaction/création; associés/écossais; devaient/devenait; mondiale/limonade; latitude/altitude; saoudien/soudaine; résidant/désirant; relevait/relative; servante/entraves; repasser/paresser; affermir/affirmer; signaler/sanglier; régalien/algérien; organise/agoniser; rallonge/allonger; animisme/mainmise; parisien/aspirine; oriental/relation; voltaire/traviole; traitent/attirent; passoire/paroisse; tsariste/artistes; rapporte/apporter; glasnost/sanglots; limitant/militant; assimilé/islamisé; laissons/salisson; instauré/insaturé; concerts/concrets; défoncer/féconder; déconner/dénoncer; cupidité/pudicité; crémerie/remercié; lecteurs/lectures; coiffure/coiffeur; foncière/conifère; conférer/renforcé; sections/consiste; courrier/recourir; coursier/secourir; jonction/conjoint; détenues/étendues; désirent/résident; réduites/éditeurs; démontre/démonter; pondérer/répondre; éditions/sédition; détritus/détruits; meetings/gisement; seigneur/seringue; réveille/éveiller; retirent/retentir; repriser/respirer; emprunte/purement; entourer/retourne; repousse/soupeser; religion/originel; sinistre/insister; investir/vitrines; impropre/opprimer; routiers/soutirer; voitures/virtuose; espérons/réponses; cassation/associant; faisaient/fantaisie; rassemble/assembler; dictateur/dictature; surcharge/chargeurs; chapitres/pasticher; approcher/rapproche; incessant/instances; reconnaît/connaître; contraste/constater; créateurs/réacteurs; facilités/fiscalité; callosité/localités; créations/réactions; présidait/disparité; rangement/garnement; alimenter/terminale; relatives/versatile; attentive/tentative; retraites/resterait; intégrale/églantier; angoisser/agression; attention/tentation; indiscret/indirects; rectifier/certifier; conserver/converser; foncières/conifères; sélection/élections; ceinturon/continuer; sculpteur/sculpture; desserrer/redresser; déliement/démentiel; inventeur/intervenu; intrigues/instiguer; péroniste/protéines; saturation/autorisant; surchauffe/chauffeurs; comprenait/importance; nonciature/continuera; scénariste/résistance; légalement/allégement; retrouvait/trouverait; consterner/rencontres; construite/constituer; intervenus/inventeurs; impression/permission; interrompu/importuner; prospérité/propriétés; agriculteur/agriculture; législature/législateur; tranquilles/resquillant; transfusion/fournissant; viticulteur/viticulture; ratification/tarification; conservation/conversation; présenterait/représentait; certification/rectification</p>
+  </div><!-- /.entry-content -->
+
+
+
+</section>
+        </div>
+
+</body>
+</html>
