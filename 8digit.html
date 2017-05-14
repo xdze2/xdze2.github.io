@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+          <title>xdze2</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
+
+
+    <meta name="tags" content="data" />
+    <meta name="tags" content="analyse" />
+
+
+<!-- <script src="/theme/js/MathJax.js" type="text/javascript"></script> -->
+<!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script> -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'center', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- <script src="/theme/js/jquery.min.js" type="text/javascript"></script> -->
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $("div.collapseheader").click(function () {
+    $header = $(this).children("span").first();
+    $codearea = $(this).children(".input_area");
+    console.log($(this).children());
+    $codearea.slideToggle(500, function () {
+        $header.text(function () {
+            return $codearea.is(":visible") ? "masquer le code" : "voir le code";
+        });
+    });
+});
+});
+</script>
+</head>
+
+<body>
+        <div id="side">
+            <header id="banner" >
+                    <img src="/theme/images/header.png" />
+                    <h1><a href="/">xdze2 <strong></strong></a></h1>
+            </header><!-- /#banner -->
+            <nav id="menu"><ul>
+
+
+            <img src="/theme/images/tag_icon.png"   />
+                <li ><a href="/tag/physique.html">physique</a></li>
+                <li ><a href="/tag/statistiques.html">statistiques</a></li>
+                <li ><a href="/tag/visualisation.html">visualisation</a></li>
+                <li ><a href="/tag/algorithme.html">algorithme</a></li>
+
+                <li><a href="/tags.html">[plus]</a></li>
+            </ul>
+            <p>
+              <a href='/hello.html'><img src="/theme/images/mail.png"   /></a>
+            </p>
+          </nav><!-- /#menu -->
+        </div>
+        <div id="content">
+<section id="article">
+
+  <header>
+      <img src="/theme/images/doc22.png"    />
+      <span>
+      <h1 class="entry-title">Arbre de décision (1)</h1>
+      <span class='summary_date' title="2017-05-12T12:00:00+02:00">
+        mai 2017
+      </span>
+
+        <span class='summary_tag'><a href='tag/data.html'>data, </a></span>
+        <span class='summary_tag'><a href='tag/analyse.html'>analyse</a></span>
+
+  </span>
+  </header>
+
+
+
+  <div class="article-content">
+    <p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Arbre-de-d&#233;cision">Arbre de d&#233;cision<a class="anchor-link" href="#Arbre-de-d&#233;cision">&#182;</a></h1><h2 id="8-digit">8-digit<a class="anchor-link" href="#8-digit">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Vecteur -&gt; Arbre -&gt; Reponse (classe)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/data/images/8digit.png" alt="schema 1"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="8-digit">8-digit<a class="anchor-link" href="#8-digit">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>remarque:</em> il existe deux écritures pour le 7</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[484]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">digits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;abcefg&#39;</span><span class="p">,</span> <span class="s1">&#39;cf&#39;</span><span class="p">,</span> <span class="s1">&#39;acdeg&#39;</span><span class="p">,</span> <span class="s1">&#39;acdfg&#39;</span><span class="p">,</span> <span class="s1">&#39;bdcf&#39;</span><span class="p">,</span> <span class="s1">&#39;abdfg&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;abdefg&#39;</span><span class="p">,</span> <span class="s1">&#39;acf&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdefg&#39;</span><span class="p">,</span> <span class="s1">&#39;abcdf&#39;</span> <span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[485]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">abc2vector</span><span class="p">(</span> <span class="n">s</span> <span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="s1">&#39;abcdefg&#39;</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">s</span><span class="p">:</span>
+        <span class="n">v</span><span class="p">[</span> <span class="n">m</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">v</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[486]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">abc2vector</span><span class="p">(</span> <span class="n">digits</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[486]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">[0, 0, 1, 0, 0, 1, 0]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[487]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[488]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">digits</span><span class="p">),</span> <span class="mi">7</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">digit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span> <span class="n">digits</span> <span class="p">):</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">abc2vector</span><span class="p">(</span> <span class="n">digit</span> <span class="p">)</span>
+    <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">v</span> <span class="p">)</span>
+    
+<span class="n">M</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[488]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">array([[ 1.,  1.,  1.,  0.,  1.,  1.,  1.],
+       [ 0.,  0.,  1.,  0.,  0.,  1.,  0.],
+       [ 1.,  0.,  1.,  1.,  1.,  0.,  1.],
+       [ 1.,  0.,  1.,  1.,  0.,  1.,  1.],
+       [ 0.,  1.,  1.,  1.,  0.,  1.,  0.],
+       [ 1.,  1.,  0.,  1.,  0.,  1.,  1.],
+       [ 1.,  1.,  0.,  1.,  1.,  1.,  1.],
+       [ 1.,  0.,  1.,  0.,  0.,  1.,  0.],
+       [ 1.,  1.,  1.,  1.,  1.,  1.,  1.],
+       [ 1.,  1.,  1.,  1.,  0.,  1.,  0.]])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[489]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Nombre de barres par chiffre:</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Chiffre:</span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">*</span><span class="mf">1.</span><span class="p">)</span>  <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Nombre: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">Chiffre:[ 0.  1.  2.  3.  4.  5.  6.  7.  8.  9.]
+Nombre: [ 6.  2.  5.  5.  4.  5.  6.  3.  7.  5.]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Cela semble correspondre...</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[490]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Nombre de fois qu&#39;une barre est utilisée:</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Barre: [ </span><span class="si">%s</span><span class="s1"> ]&#39;</span> <span class="o">%</span>  <span class="s1">&#39;   &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcdefg&#39;</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Freq.: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">M</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span> <span class="p">)</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">Barre: [ a   b   c   d   e   f   g ]
+Freq.: [ 8.  6.  8.  7.  4.  9.  6.]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>on remarque que les barre <strong>e</strong>, <strong>g</strong> et <strong>b</strong> séparent le mieux les chiffres en deux ensembles de même taille...</p>
+<p>et aussi que la barre <strong>f</strong> n'est pas utilisée que pour un seul chiffre (le 2)</p>
+<ul>
+<li>si on sort un seul à chaque test, il faut <strong>n</strong> tests</li>
+<li>si on sépare la moitié il faut seulement k, n=2^k tests</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[491]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">digit2code</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">digits</span> <span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">crible</span><span class="p">(</span> <span class="n">digits</span><span class="p">,</span> <span class="n">segment</span> <span class="p">):</span>
+    <span class="n">oui</span><span class="p">,</span> <span class="n">non</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">digits</span><span class="p">:</span>
+        <span class="n">code</span> <span class="o">=</span> <span class="n">digit2code</span><span class="p">[</span><span class="n">d</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">segment</span> <span class="ow">in</span> <span class="n">code</span><span class="p">:</span>
+            <span class="n">oui</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">non</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">oui</span><span class="p">,</span> <span class="n">non</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[492]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">D</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[493]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">crible</span><span class="p">(</span> <span class="n">D</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[493]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">([0, 1, 3, 4, 5, 6, 7, 8, 9], [2])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[494]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">D_e</span> <span class="o">=</span> <span class="n">crible</span><span class="p">(</span> <span class="n">D</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">D_e</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">([0, 2, 6, 8], [1, 3, 4, 5, 7, 9])
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[495]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">D_g</span> <span class="o">=</span> <span class="n">crible</span><span class="p">(</span> <span class="n">D</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">D_g</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">([0, 2, 3, 5, 6, 8], [1, 4, 7, 9])
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[496]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">D_e0b</span> <span class="o">=</span> <span class="n">crible</span><span class="p">(</span> <span class="n">crible</span><span class="p">(</span> <span class="n">D</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span> <span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">D_e0b</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">([0, 6, 8], [2])
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[497]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_proba</span><span class="p">(</span><span class="n">D</span><span class="p">):</span>
+    <span class="n">segments</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="p">[</span> <span class="n">digit2code</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">D</span> <span class="p">]</span> <span class="p">)</span>
+    <span class="n">segment_unique</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span> <span class="nb">list</span><span class="p">(</span><span class="n">segments</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">proba</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">segment_unique</span><span class="p">):</span>
+        <span class="n">proba</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">segments</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">proba</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[498]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_proba</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[498]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">{&#39;a&#39;: 0.8, &#39;b&#39;: 0.6, &#39;c&#39;: 0.8, &#39;d&#39;: 0.7, &#39;e&#39;: 0.4, &#39;f&#39;: 0.9, &#39;g&#39;: 0.6}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[499]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">Gini</span><span class="p">(</span> <span class="n">proba</span> <span class="p">):</span>
+    <span class="n">gini</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">proba</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">gini</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">v</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">gini</span>
+
+<span class="k">def</span> <span class="nf">get_Gini</span><span class="p">(</span> <span class="n">D</span> <span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span> <span class="p">[</span><span class="n">u</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">Gini</span><span class="p">(</span><span class="n">get_proba</span><span class="p">(</span><span class="n">D</span><span class="p">))</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">,</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[500]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_Gini</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[500]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">[(&#39;b&#39;, 0.48),
+ (&#39;g&#39;, 0.48),
+ (&#39;e&#39;, 0.48),
+ (&#39;d&#39;, 0.42000000000000004),
+ (&#39;a&#39;, 0.31999999999999995),
+ (&#39;c&#39;, 0.31999999999999995),
+ (&#39;f&#39;, 0.17999999999999997)]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[501]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_proba</span><span class="p">(</span><span class="n">D_e</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[501]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">{&#39;a&#39;: 0.6666666666666666,
+ &#39;b&#39;: 0.5,
+ &#39;c&#39;: 0.8333333333333334,
+ &#39;d&#39;: 0.6666666666666666,
+ &#39;f&#39;: 1.0,
+ &#39;g&#39;: 0.3333333333333333}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Nous pouvons maintenant contruire un arbre de décision, en choisisant à chaque itération le segment maximisant la séparation, c.a.d. le coéfficient de Gini</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[502]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">racine</span> <span class="o">=</span> <span class="n">get_Gini</span><span class="p">(</span><span class="n">D</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">racine</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">b
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[503]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">grow_edge</span><span class="p">(</span> <span class="n">D</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="n">critere</span> <span class="o">=</span> <span class="n">get_Gini</span><span class="p">(</span><span class="n">D</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="n">get_Gini</span><span class="p">(</span><span class="n">D</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+    
+    <span class="n">edges</span> <span class="o">=</span> <span class="p">[[</span><span class="n">parent</span><span class="p">,</span> <span class="n">parent</span><span class="o">+</span><span class="n">critere</span><span class="p">]]</span>
+ 
+    <span class="n">branches12</span> <span class="o">=</span> <span class="n">crible</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">critere</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">branche</span> <span class="ow">in</span> <span class="n">branches12</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">branche</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">sous_arbre</span> <span class="o">=</span> <span class="n">grow_edge</span><span class="p">(</span> <span class="n">branche</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="o">+</span><span class="n">critere</span> <span class="p">)</span>
+            <span class="n">edges</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span> <span class="n">sous_arbre</span> <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># feuille</span>
+            <span class="n">edges</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span> <span class="p">[[</span><span class="n">parent</span><span class="o">+</span><span class="n">critere</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">)]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">branche</span><span class="p">]</span> <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">edges</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[479]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">grow_edge</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">(&#39;b&#39;, 0.48)
+(&#39;e&#39;, 0.5)
+(&#39;d&#39;, 0.4444444444444445)
+(&#39;c&#39;, 0.5)
+(&#39;a&#39;, 0.4444444444444445)
+(&#39;c&#39;, 0.5)
+(&#39;d&#39;, 0.5)
+(&#39;e&#39;, 0.5)
+(&#39;a&#39;, 0.5)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[479]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">[[&#39;&#39;, &#39;b&#39;],
+ [&#39;b&#39;, &#39;be&#39;],
+ [&#39;be&#39;, &#39;bed&#39;],
+ [&#39;bed&#39;, &#39;bedc&#39;],
+ [&#39;bedc&#39;, &#39;8&#39;],
+ [&#39;bedc&#39;, &#39;6&#39;],
+ [&#39;bed&#39;, &#39;0&#39;],
+ [&#39;be&#39;, &#39;bea&#39;],
+ [&#39;bea&#39;, &#39;beac&#39;],
+ [&#39;beac&#39;, &#39;9&#39;],
+ [&#39;beac&#39;, &#39;5&#39;],
+ [&#39;bea&#39;, &#39;4&#39;],
+ [&#39;b&#39;, &#39;bd&#39;],
+ [&#39;bd&#39;, &#39;bde&#39;],
+ [&#39;bde&#39;, &#39;2&#39;],
+ [&#39;bde&#39;, &#39;3&#39;],
+ [&#39;bd&#39;, &#39;bda&#39;],
+ [&#39;bda&#39;, &#39;7&#39;],
+ [&#39;bda&#39;, &#39;1&#39;]]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[480]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">edges2nodes</span><span class="p">(</span> <span class="n">E</span> <span class="p">):</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">E</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="ow">and</span> <span class="n">b</span><span class="p">:</span>
+            <span class="n">nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+            <span class="n">nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">nodes</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[481]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">edges</span> <span class="o">=</span> <span class="n">grow_edge</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">(&#39;b&#39;, 0.48)
+(&#39;e&#39;, 0.5)
+(&#39;d&#39;, 0.4444444444444445)
+(&#39;c&#39;, 0.5)
+(&#39;a&#39;, 0.4444444444444445)
+(&#39;c&#39;, 0.5)
+(&#39;d&#39;, 0.5)
+(&#39;e&#39;, 0.5)
+(&#39;a&#39;, 0.5)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[482]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">graph</span> <span class="o">=</span> <span class="n">gv</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span>
+
+<span class="n">nodes</span> <span class="o">=</span> <span class="n">edges2nodes</span><span class="p">(</span> <span class="n">edges</span> <span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="ow">and</span> <span class="n">b</span><span class="p">:</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[483]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">graph</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[483]:</div>
+
+
+<div class="output_svg output_subarea output_execute_result">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.36.0 (20140111.2315)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg width="602pt" height="332pt"
+ viewBox="0.00 0.00 602.00 332.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 328)">
+<title>%3</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-328 598,-328 598,4 -4,4"/>
+<!-- bed -->
+<g id="node1" class="node"><title>bed</title>
+<ellipse fill="none" stroke="black" cx="135" cy="-162" rx="27" ry="18"/>
+<text text-anchor="middle" x="135" y="-158.3" font-family="Times,serif" font-size="14.00">bed</text>
+</g>
+<!-- bedc -->
+<g id="node12" class="node"><title>bedc</title>
+<ellipse fill="none" stroke="black" cx="63" cy="-90" rx="26.949" ry="18"/>
+<text text-anchor="middle" x="63" y="-86.3" font-family="Times,serif" font-size="14.00">bedc</text>
+</g>
+<!-- bed&#45;&gt;bedc -->
+<g id="edge3" class="edge"><title>bed&#45;&gt;bedc</title>
+<path fill="none" stroke="black" d="M120.43,-146.834C110.25,-136.938 96.4761,-123.546 84.9694,-112.359"/>
+<polygon fill="black" stroke="black" points="87.4055,-109.846 77.7957,-105.385 82.5259,-114.865 87.4055,-109.846"/>
+</g>
+<!-- 0 -->
+<g id="node13" class="node"><title>0</title>
+<ellipse fill="none" stroke="black" cx="135" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="135" y="-86.3" font-family="Times,serif" font-size="14.00">0</text>
+</g>
+<!-- bed&#45;&gt;0 -->
+<g id="edge6" class="edge"><title>bed&#45;&gt;0</title>
+<path fill="none" stroke="black" d="M135,-143.697C135,-135.983 135,-126.712 135,-118.112"/>
+<polygon fill="black" stroke="black" points="138.5,-118.104 135,-108.104 131.5,-118.104 138.5,-118.104"/>
+</g>
+<!-- 6 -->
+<g id="node2" class="node"><title>6</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">6</text>
+</g>
+<!-- b -->
+<g id="node3" class="node"><title>b</title>
+<ellipse fill="none" stroke="black" cx="315" cy="-306" rx="27" ry="18"/>
+<text text-anchor="middle" x="315" y="-302.3" font-family="Times,serif" font-size="14.00">b</text>
+</g>
+<!-- be -->
+<g id="node11" class="node"><title>be</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-234" rx="27" ry="18"/>
+<text text-anchor="middle" x="243" y="-230.3" font-family="Times,serif" font-size="14.00">be</text>
+</g>
+<!-- b&#45;&gt;be -->
+<g id="edge1" class="edge"><title>b&#45;&gt;be</title>
+<path fill="none" stroke="black" d="M300.43,-290.834C290.25,-280.938 276.476,-267.546 264.969,-256.359"/>
+<polygon fill="black" stroke="black" points="267.405,-253.846 257.796,-249.385 262.526,-258.865 267.405,-253.846"/>
+</g>
+<!-- bd -->
+<g id="node15" class="node"><title>bd</title>
+<ellipse fill="none" stroke="black" cx="387" cy="-234" rx="27" ry="18"/>
+<text text-anchor="middle" x="387" y="-230.3" font-family="Times,serif" font-size="14.00">bd</text>
+</g>
+<!-- b&#45;&gt;bd -->
+<g id="edge12" class="edge"><title>b&#45;&gt;bd</title>
+<path fill="none" stroke="black" d="M329.57,-290.834C339.75,-280.938 353.524,-267.546 365.031,-256.359"/>
+<polygon fill="black" stroke="black" points="367.474,-258.865 372.204,-249.385 362.595,-253.846 367.474,-258.865"/>
+</g>
+<!-- 4 -->
+<g id="node4" class="node"><title>4</title>
+<ellipse fill="none" stroke="black" cx="207" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="207" y="-86.3" font-family="Times,serif" font-size="14.00">4</text>
+</g>
+<!-- 1 -->
+<g id="node5" class="node"><title>1</title>
+<ellipse fill="none" stroke="black" cx="495" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="495" y="-86.3" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- beac -->
+<g id="node6" class="node"><title>beac</title>
+<ellipse fill="none" stroke="black" cx="279" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="279" y="-86.3" font-family="Times,serif" font-size="14.00">beac</text>
+</g>
+<!-- 9 -->
+<g id="node8" class="node"><title>9</title>
+<ellipse fill="none" stroke="black" cx="207" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="207" y="-14.3" font-family="Times,serif" font-size="14.00">9</text>
+</g>
+<!-- beac&#45;&gt;9 -->
+<g id="edge9" class="edge"><title>beac&#45;&gt;9</title>
+<path fill="none" stroke="black" d="M264.43,-74.8345C254.25,-64.9376 240.476,-51.5462 228.969,-40.3591"/>
+<polygon fill="black" stroke="black" points="231.405,-37.8461 221.796,-33.3847 226.526,-42.865 231.405,-37.8461"/>
+</g>
+<!-- 5 -->
+<g id="node14" class="node"><title>5</title>
+<ellipse fill="none" stroke="black" cx="279" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="279" y="-14.3" font-family="Times,serif" font-size="14.00">5</text>
+</g>
+<!-- beac&#45;&gt;5 -->
+<g id="edge10" class="edge"><title>beac&#45;&gt;5</title>
+<path fill="none" stroke="black" d="M279,-71.6966C279,-63.9827 279,-54.7125 279,-46.1124"/>
+<polygon fill="black" stroke="black" points="282.5,-46.1043 279,-36.1043 275.5,-46.1044 282.5,-46.1043"/>
+</g>
+<!-- bde -->
+<g id="node7" class="node"><title>bde</title>
+<ellipse fill="none" stroke="black" cx="387" cy="-162" rx="27" ry="18"/>
+<text text-anchor="middle" x="387" y="-158.3" font-family="Times,serif" font-size="14.00">bde</text>
+</g>
+<!-- 2 -->
+<g id="node17" class="node"><title>2</title>
+<ellipse fill="none" stroke="black" cx="351" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="351" y="-86.3" font-family="Times,serif" font-size="14.00">2</text>
+</g>
+<!-- bde&#45;&gt;2 -->
+<g id="edge14" class="edge"><title>bde&#45;&gt;2</title>
+<path fill="none" stroke="black" d="M378.65,-144.765C374.288,-136.283 368.853,-125.714 363.959,-116.197"/>
+<polygon fill="black" stroke="black" points="366.99,-114.439 359.304,-107.147 360.765,-117.641 366.99,-114.439"/>
+</g>
+<!-- 3 -->
+<g id="node18" class="node"><title>3</title>
+<ellipse fill="none" stroke="black" cx="423" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="423" y="-86.3" font-family="Times,serif" font-size="14.00">3</text>
+</g>
+<!-- bde&#45;&gt;3 -->
+<g id="edge15" class="edge"><title>bde&#45;&gt;3</title>
+<path fill="none" stroke="black" d="M395.35,-144.765C399.712,-136.283 405.147,-125.714 410.041,-116.197"/>
+<polygon fill="black" stroke="black" points="413.235,-117.641 414.696,-107.147 407.01,-114.439 413.235,-117.641"/>
+</g>
+<!-- bea -->
+<g id="node9" class="node"><title>bea</title>
+<ellipse fill="none" stroke="black" cx="243" cy="-162" rx="27" ry="18"/>
+<text text-anchor="middle" x="243" y="-158.3" font-family="Times,serif" font-size="14.00">bea</text>
+</g>
+<!-- bea&#45;&gt;4 -->
+<g id="edge11" class="edge"><title>bea&#45;&gt;4</title>
+<path fill="none" stroke="black" d="M234.65,-144.765C230.288,-136.283 224.853,-125.714 219.959,-116.197"/>
+<polygon fill="black" stroke="black" points="222.99,-114.439 215.304,-107.147 216.765,-117.641 222.99,-114.439"/>
+</g>
+<!-- bea&#45;&gt;beac -->
+<g id="edge8" class="edge"><title>bea&#45;&gt;beac</title>
+<path fill="none" stroke="black" d="M251.35,-144.765C255.712,-136.283 261.147,-125.714 266.041,-116.197"/>
+<polygon fill="black" stroke="black" points="269.235,-117.641 270.696,-107.147 263.01,-114.439 269.235,-117.641"/>
+</g>
+<!-- bda -->
+<g id="node10" class="node"><title>bda</title>
+<ellipse fill="none" stroke="black" cx="495" cy="-162" rx="27" ry="18"/>
+<text text-anchor="middle" x="495" y="-158.3" font-family="Times,serif" font-size="14.00">bda</text>
+</g>
+<!-- bda&#45;&gt;1 -->
+<g id="edge18" class="edge"><title>bda&#45;&gt;1</title>
+<path fill="none" stroke="black" d="M495,-143.697C495,-135.983 495,-126.712 495,-118.112"/>
+<polygon fill="black" stroke="black" points="498.5,-118.104 495,-108.104 491.5,-118.104 498.5,-118.104"/>
+</g>
+<!-- 7 -->
+<g id="node16" class="node"><title>7</title>
+<ellipse fill="none" stroke="black" cx="567" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="567" y="-86.3" font-family="Times,serif" font-size="14.00">7</text>
+</g>
+<!-- bda&#45;&gt;7 -->
+<g id="edge17" class="edge"><title>bda&#45;&gt;7</title>
+<path fill="none" stroke="black" d="M509.57,-146.834C519.75,-136.938 533.524,-123.546 545.031,-112.359"/>
+<polygon fill="black" stroke="black" points="547.474,-114.865 552.204,-105.385 542.595,-109.846 547.474,-114.865"/>
+</g>
+<!-- be&#45;&gt;bed -->
+<g id="edge2" class="edge"><title>be&#45;&gt;bed</title>
+<path fill="none" stroke="black" d="M224.188,-220.807C206.998,-209.665 181.382,-193.062 162.007,-180.504"/>
+<polygon fill="black" stroke="black" points="163.892,-177.555 153.597,-175.053 160.084,-183.429 163.892,-177.555"/>
+</g>
+<!-- be&#45;&gt;bea -->
+<g id="edge7" class="edge"><title>be&#45;&gt;bea</title>
+<path fill="none" stroke="black" d="M243,-215.697C243,-207.983 243,-198.712 243,-190.112"/>
+<polygon fill="black" stroke="black" points="246.5,-190.104 243,-180.104 239.5,-190.104 246.5,-190.104"/>
+</g>
+<!-- bedc&#45;&gt;6 -->
+<g id="edge5" class="edge"><title>bedc&#45;&gt;6</title>
+<path fill="none" stroke="black" d="M54.6504,-72.7646C50.2885,-64.2831 44.8531,-53.7144 39.9587,-44.1974"/>
+<polygon fill="black" stroke="black" points="42.9904,-42.4395 35.3043,-35.1473 36.7654,-45.6409 42.9904,-42.4395"/>
+</g>
+<!-- 8 -->
+<g id="node19" class="node"><title>8</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="99" y="-14.3" font-family="Times,serif" font-size="14.00">8</text>
+</g>
+<!-- bedc&#45;&gt;8 -->
+<g id="edge4" class="edge"><title>bedc&#45;&gt;8</title>
+<path fill="none" stroke="black" d="M71.3496,-72.7646C75.7115,-64.2831 81.1469,-53.7144 86.0413,-44.1974"/>
+<polygon fill="black" stroke="black" points="89.2346,-45.6409 90.6957,-35.1473 83.0096,-42.4395 89.2346,-45.6409"/>
+</g>
+<!-- bd&#45;&gt;bde -->
+<g id="edge13" class="edge"><title>bd&#45;&gt;bde</title>
+<path fill="none" stroke="black" d="M387,-215.697C387,-207.983 387,-198.712 387,-190.112"/>
+<polygon fill="black" stroke="black" points="390.5,-190.104 387,-180.104 383.5,-190.104 390.5,-190.104"/>
+</g>
+<!-- bd&#45;&gt;bda -->
+<g id="edge16" class="edge"><title>bd&#45;&gt;bda</title>
+<path fill="none" stroke="black" d="M405.812,-220.807C423.002,-209.665 448.618,-193.062 467.993,-180.504"/>
+<polygon fill="black" stroke="black" points="469.916,-183.429 476.403,-175.053 466.108,-177.555 469.916,-183.429"/>
+</g>
+</g>
+</svg>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>f</strong> et <strong>g</strong> ne sont pas dans l'arbre</li>
+<li>Est-ce que c'est l'arbre le plus petit possible ? oui  (10 feuilles) mais il n'est pas unique (score Gini ex-aequo)</li>
+<li>et avec du bruit ? un segment défaillant...</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[515]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">graph</span> <span class="o">=</span> <span class="n">gv</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">grow_graph</span><span class="p">(</span> <span class="n">D</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    
+    <span class="n">critere</span> <span class="o">=</span> <span class="n">get_Gini</span><span class="p">(</span><span class="n">D</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span> <span class="n">get_Gini</span><span class="p">(</span><span class="n">D</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+    
+    <span class="c1">#edges = [[parent, parent+critere]]</span>
+    <span class="c1">#graph.node( parent )</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">node</span><span class="p">(</span>  <span class="n">parent</span><span class="o">+</span><span class="n">critere</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">critere</span><span class="o">+</span><span class="s1">&#39;?&#39;</span> <span class="p">)</span>
+    <span class="n">graph</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">parent</span><span class="o">+</span><span class="n">critere</span><span class="p">)</span>
+    
+    <span class="n">branches12</span> <span class="o">=</span> <span class="n">crible</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="n">critere</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">branche</span> <span class="ow">in</span> <span class="n">branches12</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">branche</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">sous_arbre</span> <span class="o">=</span> <span class="n">grow_graph</span><span class="p">(</span> <span class="n">branche</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="o">+</span><span class="n">critere</span> <span class="p">)</span>
+            <span class="c1">#edges.extend( sous_arbre )</span>
+
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># feuille</span>
+            <span class="c1">#edges.extend( [[parent+critere, str(f)] for f in branche] )</span>
+            <span class="n">graph</span><span class="o">.</span><span class="n">node</span><span class="p">(</span> <span class="nb">str</span><span class="p">(</span><span class="n">branche</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
+            <span class="n">graph</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="n">parent</span><span class="o">+</span><span class="n">critere</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">branche</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">edges</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[516]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">grow_graph</span><span class="p">(</span> <span class="n">D</span> <span class="p">)</span>
+<span class="n">graph</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">(&#39;b&#39;, 0.48)
+(&#39;e&#39;, 0.5)
+(&#39;d&#39;, 0.4444444444444445)
+(&#39;c&#39;, 0.5)
+(&#39;a&#39;, 0.4444444444444445)
+(&#39;c&#39;, 0.5)
+(&#39;d&#39;, 0.5)
+(&#39;e&#39;, 0.5)
+(&#39;a&#39;, 0.5)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[516]:</div>
+
+
+<div class="output_svg output_subarea output_execute_result">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.36.0 (20140111.2315)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg width="620pt" height="404pt"
+ viewBox="0.00 0.00 620.00 404.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 400)">
+<title>%3</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-400 616,-400 616,4 -4,4"/>
+<!-- b -->
+<g id="node1" class="node"><title>b</title>
+<ellipse fill="none" stroke="black" cx="333" cy="-306" rx="27" ry="18"/>
+<text text-anchor="middle" x="333" y="-302.3" font-family="Times,serif" font-size="14.00">b?</text>
+</g>
+<!-- be -->
+<g id="node3" class="node"><title>be</title>
+<ellipse fill="none" stroke="black" cx="261" cy="-234" rx="27" ry="18"/>
+<text text-anchor="middle" x="261" y="-230.3" font-family="Times,serif" font-size="14.00">e?</text>
+</g>
+<!-- b&#45;&gt;be -->
+<g id="edge2" class="edge"><title>b&#45;&gt;be</title>
+<path fill="none" stroke="black" d="M318.43,-290.834C308.25,-280.938 294.476,-267.546 282.969,-256.359"/>
+<polygon fill="black" stroke="black" points="285.405,-253.846 275.796,-249.385 280.526,-258.865 285.405,-253.846"/>
+</g>
+<!-- bd -->
+<g id="node14" class="node"><title>bd</title>
+<ellipse fill="none" stroke="black" cx="405" cy="-234" rx="27" ry="18"/>
+<text text-anchor="middle" x="405" y="-230.3" font-family="Times,serif" font-size="14.00">d?</text>
+</g>
+<!-- b&#45;&gt;bd -->
+<g id="edge13" class="edge"><title>b&#45;&gt;bd</title>
+<path fill="none" stroke="black" d="M347.57,-290.834C357.75,-280.938 371.524,-267.546 383.031,-256.359"/>
+<polygon fill="black" stroke="black" points="385.474,-258.865 390.204,-249.385 380.595,-253.846 385.474,-258.865"/>
+</g>
+<g id="node2" class="node"><title></title>
+<ellipse fill="none" stroke="black" cx="333" cy="-378" rx="27" ry="18"/>
+</g>
+<!-- &#45;&gt;b -->
+<g id="edge1" class="edge"><title>&#45;&gt;b</title>
+<path fill="none" stroke="black" d="M333,-359.697C333,-351.983 333,-342.712 333,-334.112"/>
+<polygon fill="black" stroke="black" points="336.5,-334.104 333,-324.104 329.5,-334.104 336.5,-334.104"/>
+</g>
+<!-- bed -->
+<g id="node4" class="node"><title>bed</title>
+<ellipse fill="none" stroke="black" cx="153" cy="-162" rx="27" ry="18"/>
+<text text-anchor="middle" x="153" y="-158.3" font-family="Times,serif" font-size="14.00">d?</text>
+</g>
+<!-- be&#45;&gt;bed -->
+<g id="edge3" class="edge"><title>be&#45;&gt;bed</title>
+<path fill="none" stroke="black" d="M242.188,-220.807C224.998,-209.665 199.382,-193.062 180.007,-180.504"/>
+<polygon fill="black" stroke="black" points="181.892,-177.555 171.597,-175.053 178.084,-183.429 181.892,-177.555"/>
+</g>
+<!-- bea -->
+<g id="node9" class="node"><title>bea</title>
+<ellipse fill="none" stroke="black" cx="261" cy="-162" rx="27" ry="18"/>
+<text text-anchor="middle" x="261" y="-158.3" font-family="Times,serif" font-size="14.00">a?</text>
+</g>
+<!-- be&#45;&gt;bea -->
+<g id="edge8" class="edge"><title>be&#45;&gt;bea</title>
+<path fill="none" stroke="black" d="M261,-215.697C261,-207.983 261,-198.712 261,-190.112"/>
+<polygon fill="black" stroke="black" points="264.5,-190.104 261,-180.104 257.5,-190.104 264.5,-190.104"/>
+</g>
+<!-- bedc -->
+<g id="node5" class="node"><title>bedc</title>
+<ellipse fill="none" stroke="black" cx="81" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="81" y="-86.3" font-family="Times,serif" font-size="14.00">c?</text>
+</g>
+<!-- bed&#45;&gt;bedc -->
+<g id="edge4" class="edge"><title>bed&#45;&gt;bedc</title>
+<path fill="none" stroke="black" d="M138.43,-146.834C128.25,-136.938 114.476,-123.546 102.969,-112.359"/>
+<polygon fill="black" stroke="black" points="105.405,-109.846 95.7957,-105.385 100.526,-114.865 105.405,-109.846"/>
+</g>
+<!-- 0 -->
+<g id="node8" class="node"><title>0</title>
+<ellipse fill="none" stroke="black" cx="153" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="153" y="-86.3" font-family="Times,serif" font-size="14.00">0</text>
+</g>
+<!-- bed&#45;&gt;0 -->
+<g id="edge7" class="edge"><title>bed&#45;&gt;0</title>
+<path fill="none" stroke="black" d="M153,-143.697C153,-135.983 153,-126.712 153,-118.112"/>
+<polygon fill="black" stroke="black" points="156.5,-118.104 153,-108.104 149.5,-118.104 156.5,-118.104"/>
+</g>
+<!-- 8 -->
+<g id="node6" class="node"><title>8</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">8</text>
+</g>
+<!-- bedc&#45;&gt;8 -->
+<g id="edge5" class="edge"><title>bedc&#45;&gt;8</title>
+<path fill="none" stroke="black" d="M69.0156,-73.4647C62.0245,-64.4021 53.0638,-52.7865 45.2149,-42.6119"/>
+<polygon fill="black" stroke="black" points="47.8302,-40.2719 38.9508,-34.4918 42.2877,-44.5475 47.8302,-40.2719"/>
+</g>
+<!-- 6 -->
+<g id="node7" class="node"><title>6</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="99" y="-14.3" font-family="Times,serif" font-size="14.00">6</text>
+</g>
+<!-- bedc&#45;&gt;6 -->
+<g id="edge6" class="edge"><title>bedc&#45;&gt;6</title>
+<path fill="none" stroke="black" d="M85.3573,-72.055C87.3914,-64.1446 89.8612,-54.5398 92.1374,-45.6879"/>
+<polygon fill="black" stroke="black" points="95.5821,-46.3456 94.6828,-35.789 88.8026,-44.6023 95.5821,-46.3456"/>
+</g>
+<!-- beac -->
+<g id="node10" class="node"><title>beac</title>
+<ellipse fill="none" stroke="black" cx="225" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="225" y="-86.3" font-family="Times,serif" font-size="14.00">c?</text>
+</g>
+<!-- bea&#45;&gt;beac -->
+<g id="edge9" class="edge"><title>bea&#45;&gt;beac</title>
+<path fill="none" stroke="black" d="M252.65,-144.765C248.288,-136.283 242.853,-125.714 237.959,-116.197"/>
+<polygon fill="black" stroke="black" points="240.99,-114.439 233.304,-107.147 234.765,-117.641 240.99,-114.439"/>
+</g>
+<!-- 4 -->
+<g id="node13" class="node"><title>4</title>
+<ellipse fill="none" stroke="black" cx="297" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="297" y="-86.3" font-family="Times,serif" font-size="14.00">4</text>
+</g>
+<!-- bea&#45;&gt;4 -->
+<g id="edge12" class="edge"><title>bea&#45;&gt;4</title>
+<path fill="none" stroke="black" d="M269.35,-144.765C273.712,-136.283 279.147,-125.714 284.041,-116.197"/>
+<polygon fill="black" stroke="black" points="287.235,-117.641 288.696,-107.147 281.01,-114.439 287.235,-117.641"/>
+</g>
+<!-- 9 -->
+<g id="node11" class="node"><title>9</title>
+<ellipse fill="none" stroke="black" cx="189" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="189" y="-14.3" font-family="Times,serif" font-size="14.00">9</text>
+</g>
+<!-- beac&#45;&gt;9 -->
+<g id="edge10" class="edge"><title>beac&#45;&gt;9</title>
+<path fill="none" stroke="black" d="M216.65,-72.7646C212.288,-64.2831 206.853,-53.7144 201.959,-44.1974"/>
+<polygon fill="black" stroke="black" points="204.99,-42.4395 197.304,-35.1473 198.765,-45.6409 204.99,-42.4395"/>
+</g>
+<!-- 5 -->
+<g id="node12" class="node"><title>5</title>
+<ellipse fill="none" stroke="black" cx="261" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="261" y="-14.3" font-family="Times,serif" font-size="14.00">5</text>
+</g>
+<!-- beac&#45;&gt;5 -->
+<g id="edge11" class="edge"><title>beac&#45;&gt;5</title>
+<path fill="none" stroke="black" d="M233.35,-72.7646C237.712,-64.2831 243.147,-53.7144 248.041,-44.1974"/>
+<polygon fill="black" stroke="black" points="251.235,-45.6409 252.696,-35.1473 245.01,-42.4395 251.235,-45.6409"/>
+</g>
+<!-- bde -->
+<g id="node15" class="node"><title>bde</title>
+<ellipse fill="none" stroke="black" cx="405" cy="-162" rx="27" ry="18"/>
+<text text-anchor="middle" x="405" y="-158.3" font-family="Times,serif" font-size="14.00">e?</text>
+</g>
+<!-- bd&#45;&gt;bde -->
+<g id="edge14" class="edge"><title>bd&#45;&gt;bde</title>
+<path fill="none" stroke="black" d="M405,-215.697C405,-207.983 405,-198.712 405,-190.112"/>
+<polygon fill="black" stroke="black" points="408.5,-190.104 405,-180.104 401.5,-190.104 408.5,-190.104"/>
+</g>
+<!-- bda -->
+<g id="node18" class="node"><title>bda</title>
+<ellipse fill="none" stroke="black" cx="513" cy="-162" rx="27" ry="18"/>
+<text text-anchor="middle" x="513" y="-158.3" font-family="Times,serif" font-size="14.00">a?</text>
+</g>
+<!-- bd&#45;&gt;bda -->
+<g id="edge17" class="edge"><title>bd&#45;&gt;bda</title>
+<path fill="none" stroke="black" d="M423.812,-220.807C441.002,-209.665 466.618,-193.062 485.993,-180.504"/>
+<polygon fill="black" stroke="black" points="487.916,-183.429 494.403,-175.053 484.108,-177.555 487.916,-183.429"/>
+</g>
+<!-- 2 -->
+<g id="node16" class="node"><title>2</title>
+<ellipse fill="none" stroke="black" cx="369" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="369" y="-86.3" font-family="Times,serif" font-size="14.00">2</text>
+</g>
+<!-- bde&#45;&gt;2 -->
+<g id="edge15" class="edge"><title>bde&#45;&gt;2</title>
+<path fill="none" stroke="black" d="M396.65,-144.765C392.288,-136.283 386.853,-125.714 381.959,-116.197"/>
+<polygon fill="black" stroke="black" points="384.99,-114.439 377.304,-107.147 378.765,-117.641 384.99,-114.439"/>
+</g>
+<!-- 3 -->
+<g id="node17" class="node"><title>3</title>
+<ellipse fill="none" stroke="black" cx="441" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="441" y="-86.3" font-family="Times,serif" font-size="14.00">3</text>
+</g>
+<!-- bde&#45;&gt;3 -->
+<g id="edge16" class="edge"><title>bde&#45;&gt;3</title>
+<path fill="none" stroke="black" d="M413.35,-144.765C417.712,-136.283 423.147,-125.714 428.041,-116.197"/>
+<polygon fill="black" stroke="black" points="431.235,-117.641 432.696,-107.147 425.01,-114.439 431.235,-117.641"/>
+</g>
+<!-- 7 -->
+<g id="node19" class="node"><title>7</title>
+<ellipse fill="none" stroke="black" cx="513" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="513" y="-86.3" font-family="Times,serif" font-size="14.00">7</text>
+</g>
+<!-- bda&#45;&gt;7 -->
+<g id="edge18" class="edge"><title>bda&#45;&gt;7</title>
+<path fill="none" stroke="black" d="M513,-143.697C513,-135.983 513,-126.712 513,-118.112"/>
+<polygon fill="black" stroke="black" points="516.5,-118.104 513,-108.104 509.5,-118.104 516.5,-118.104"/>
+</g>
+<!-- 1 -->
+<g id="node20" class="node"><title>1</title>
+<ellipse fill="none" stroke="black" cx="585" cy="-90" rx="27" ry="18"/>
+<text text-anchor="middle" x="585" y="-86.3" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- bda&#45;&gt;1 -->
+<g id="edge19" class="edge"><title>bda&#45;&gt;1</title>
+<path fill="none" stroke="black" d="M527.57,-146.834C537.75,-136.938 551.524,-123.546 563.031,-112.359"/>
+<polygon fill="black" stroke="black" points="565.474,-114.865 570.204,-105.385 560.595,-109.846 565.474,-114.865"/>
+</g>
+</g>
+</svg>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Arbres-en-python">Arbres en python<a class="anchor-link" href="#Arbres-en-python">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[87]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">graphviz</span> <span class="k">as</span> <span class="nn">gv</span>
+<span class="c1"># see blog:  http://matthiaseisen.com/articles/graphviz/</span>
+<span class="c1"># doc: https://graphviz.readthedocs.io/en/stable/</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[88]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Construit l&#39;arbre dans Graphviz</span>
+<span class="c1"># et l&#39;affiche</span>
+
+<span class="k">def</span> <span class="nf">construct</span><span class="p">(</span> <span class="n">T</span><span class="p">,</span> <span class="n">root</span> <span class="p">):</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">gv</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span>
+    <span class="n">visited</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">def</span> <span class="nf">visit</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NameError</span><span class="p">(</span><span class="s1">&#39;boucle&#39;</span><span class="p">)</span>
+        <span class="n">visited</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">T</span><span class="p">:</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="s1">&#39;?&#39;</span><span class="p">)</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">)</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;R&#39;</span><span class="p">)</span>
+            <span class="n">visit</span><span class="p">(</span> <span class="n">T</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+            <span class="n">visit</span><span class="p">(</span> <span class="n">T</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            
+    <span class="n">visit</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">G</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Notation">Notation<a class="anchor-link" href="#Notation">&#182;</a></h3><p>parent: (enfant1, enfant2)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[94]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">),</span> <span class="s1">&#39;b&#39;</span><span class="p">:(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">)}</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[95]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">construct</span><span class="p">(</span> <span class="n">T</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[95]:</div>
+
+
+<div class="output_svg output_subarea output_execute_result">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.36.0 (20140111.2315)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg width="170pt" height="220pt"
+ viewBox="0.00 0.00 170.00 220.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 216)">
+<title>%3</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-216 166,-216 166,4 -4,4"/>
+<!-- a -->
+<g id="node1" class="node"><title>a</title>
+<ellipse fill="none" stroke="black" cx="53" cy="-194" rx="27" ry="18"/>
+<text text-anchor="middle" x="53" y="-190.3" font-family="Times,serif" font-size="14.00">a?</text>
+</g>
+<!-- 1 -->
+<g id="node2" class="node"><title>1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-106" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-102.3" font-family="Times,serif" font-size="14.00">1.</text>
+</g>
+<!-- a&#45;&gt;1 -->
+<g id="edge1" class="edge"><title>a&#45;&gt;1</title>
+<path fill="none" stroke="black" d="M47.8632,-176.009C44.231,-163.995 39.2868,-147.641 35.1232,-133.869"/>
+<polygon fill="black" stroke="black" points="38.3703,-132.515 32.1261,-123.956 31.6698,-134.541 38.3703,-132.515"/>
+<text text-anchor="middle" x="47.5" y="-146.3" font-family="Times,serif" font-size="14.00">L</text>
+</g>
+<!-- b -->
+<g id="node3" class="node"><title>b</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-106" rx="27" ry="18"/>
+<text text-anchor="middle" x="99" y="-102.3" font-family="Times,serif" font-size="14.00">b?</text>
+</g>
+<!-- a&#45;&gt;b -->
+<g id="edge2" class="edge"><title>a&#45;&gt;b</title>
+<path fill="none" stroke="black" d="M61.6522,-176.824C68.3986,-164.211 77.8869,-146.472 85.6116,-132.031"/>
+<polygon fill="black" stroke="black" points="88.7562,-133.572 90.3865,-123.103 82.5837,-130.27 88.7562,-133.572"/>
+<text text-anchor="middle" x="85" y="-146.3" font-family="Times,serif" font-size="14.00">R</text>
+</g>
+<!-- 2 -->
+<g id="node4" class="node"><title>2</title>
+<ellipse fill="none" stroke="black" cx="63" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="63" y="-14.3" font-family="Times,serif" font-size="14.00">2.</text>
+</g>
+<!-- b&#45;&gt;2 -->
+<g id="edge3" class="edge"><title>b&#45;&gt;2</title>
+<path fill="none" stroke="black" d="M92.0588,-88.4183C86.8793,-76.0451 79.7052,-58.9069 73.7814,-44.7555"/>
+<polygon fill="black" stroke="black" points="77.0098,-43.4037 69.9199,-35.5308 70.5527,-46.1067 77.0098,-43.4037"/>
+<text text-anchor="middle" x="88.5" y="-58.3" font-family="Times,serif" font-size="14.00">L</text>
+</g>
+<!-- 3 -->
+<g id="node5" class="node"><title>3</title>
+<ellipse fill="none" stroke="black" cx="135" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="135" y="-14.3" font-family="Times,serif" font-size="14.00">3.</text>
+</g>
+<!-- b&#45;&gt;3 -->
+<g id="edge4" class="edge"><title>b&#45;&gt;3</title>
+<path fill="none" stroke="black" d="M105.941,-88.4183C111.121,-76.0451 118.295,-58.9069 124.219,-44.7555"/>
+<polygon fill="black" stroke="black" points="127.447,-46.1067 128.08,-35.5308 120.99,-43.4037 127.447,-46.1067"/>
+<text text-anchor="middle" x="125" y="-58.3" font-family="Times,serif" font-size="14.00">R</text>
+</g>
+</g>
+</svg>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[77]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="s1">&#39;e&#39;</span> <span class="ow">in</span> <span class="n">T</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[77]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">False</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">g1</span> <span class="o">=</span> <span class="n">gv</span><span class="o">.</span><span class="n">Digraph</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;svg&#39;</span><span class="p">)</span>
+<span class="n">g1</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;a?&#39;</span><span class="p">)</span>
+<span class="n">g1</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<span class="n">g1</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">)</span>
+<span class="n">g1</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;a?&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;oui&#39;</span><span class="p">)</span>
+<span class="n">g1</span><span class="o">.</span><span class="n">edge</span><span class="p">(</span><span class="s1">&#39;a?&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;non&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">g1</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[29]:</div>
+
+
+<div class="output_svg output_subarea output_execute_result">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.36.0 (20140111.2315)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg width="134pt" height="132pt"
+ viewBox="0.00 0.00 134.00 132.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 128)">
+<title>%3</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-128 130,-128 130,4 -4,4"/>
+<!-- a? -->
+<g id="node1" class="node"><title>a?</title>
+<ellipse fill="none" stroke="black" cx="63" cy="-106" rx="27" ry="18"/>
+<text text-anchor="middle" x="63" y="-102.3" font-family="Times,serif" font-size="14.00">a?</text>
+</g>
+<!-- 1 -->
+<g id="node2" class="node"><title>1</title>
+<ellipse fill="none" stroke="black" cx="27" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="27" y="-14.3" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- a?&#45;&gt;1 -->
+<g id="edge1" class="edge"><title>a?&#45;&gt;1</title>
+<path fill="none" stroke="black" d="M56.0588,-88.4183C50.8793,-76.0451 43.7052,-58.9069 37.7814,-44.7555"/>
+<polygon fill="black" stroke="black" points="41.0098,-43.4037 33.9199,-35.5308 34.5527,-46.1067 41.0098,-43.4037"/>
+<text text-anchor="middle" x="58" y="-58.3" font-family="Times,serif" font-size="14.00">oui</text>
+</g>
+<!-- 3 -->
+<g id="node3" class="node"><title>3</title>
+<ellipse fill="none" stroke="black" cx="99" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="99" y="-14.3" font-family="Times,serif" font-size="14.00">3</text>
+</g>
+<!-- a?&#45;&gt;3 -->
+<g id="edge2" class="edge"><title>a?&#45;&gt;3</title>
+<path fill="none" stroke="black" d="M69.9412,-88.4183C75.1207,-76.0451 82.2948,-58.9069 88.2186,-44.7555"/>
+<polygon fill="black" stroke="black" points="91.4473,-46.1067 92.0801,-35.5308 84.9902,-43.4037 91.4473,-46.1067"/>
+<text text-anchor="middle" x="94.5" y="-58.3" font-family="Times,serif" font-size="14.00">non</text>
+</g>
+</g>
+</svg>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Brouillon">Brouillon<a class="anchor-link" href="#Brouillon">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[84]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_nodes</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">childrens</span> <span class="ow">in</span> <span class="n">T</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">childrens</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">nodes</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">childrens</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">nodes</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+ 
+
+</p>
+  </div><!-- /.entry-content -->
+
+
+
+</section>
+        </div>
+
+</body>
+</html>
