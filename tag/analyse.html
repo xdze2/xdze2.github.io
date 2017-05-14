@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-          <title>xdze2</title>
+        <title>xdze2</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
         <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
 
-
-    <meta name="tags" content="dev" />
-
-
 <!-- <script src="/theme/js/MathJax.js" type="text/javascript"></script> -->
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+<!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script> -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 <script type="text/javascript">
 init_mathjax = function() {
     if (window.MathJax) {
@@ -58,61 +58,54 @@ jQuery(document).ready(function($) {
                     <h1><a href="/">xdze2 <strong></strong></a></h1>
             </header><!-- /#banner -->
             <nav id="menu"><ul>
-                  <li><a href="/category/physique.html">physique</a></li>
-                  <li><a href="/category/statistiques.html">statistiques</a></li>
-            </ul></nav><!-- /#menu -->
+
+
+            <img src="/theme/images/tag_icon.png"   />
+                <li ><a href="/tag/physique.html">physique</a></li>
+                <li ><a href="/tag/statistiques.html">statistiques</a></li>
+                <li ><a href="/tag/visualisation.html">visualisation</a></li>
+                <li ><a href="/tag/algorithme.html">algorithme</a></li>
+
+                <li><a href="/tags.html">[plus]</a></li>
+            </ul>
+            <p>
+              <a href='/hello.html'><img src="/theme/images/mail.png"   /></a>
+            </p>
+          </nav><!-- /#menu -->
         </div>
         <div id="content">
-<section id="article">
+<section id="postlist">
 
-  <header>
-      <img src="/theme/images/doc22.png"    />
-      <span>
-      <h1 class="entry-title">La machinerie</h2>
-      <span class='summary_date' title="2017-03-20T00:00:00+01:00">
-        mars 2017
-      </span>
-      <span class='summary_date' >
-        About
-      </span>
-      <a href='/home/etienne/xdze2_website/content/about/machinerie.md' class='summary_date'>src</a>
-  </span>
-  </header>
+<h1>
+  <img src="/theme/images/tag_icon.png"   />
+  Analyse
+</h1>
 
+<div class='articles-list'> 
+<article>
+<a href="/titanic.html" rel="bookmark" title="Permalink to Titanic">
 
+          <img src="/data/images/titanic_kaggle.png" class="thumbnail">
 
-  <div class="article-content">
-    <ul>
-<li>Python 3</li>
-<li>
-<p>Jupyter Notebook</p>
-</li>
-<li>
-<p><a href="http://docs.getpelican.com/en/stable/">Pelican</a></p>
-</li>
-<li>
-<p>plugin <a href="https://github.com/getpelican/pelican-plugins/tree/master/liquid_tags">Liquid Tags</a></p>
-</li>
-<li>
-<p><a href="https://daringfireball.net/projects/markdown/syntax">Markdown</a></p>
-</li>
-<li>
-<p>Git &amp; Github</p>
-</li>
-<li>
-<p>Latex (<a href="http://web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html">symbols</a>)</p>
-</li>
-</ul>
-  </div><!-- /.entry-content -->
+      <h2 class="entry-title">Titanic</h2>
+      <p class='tag'>
+        <!-- <span class='summary_date'>mai 2017</span> -->
+        <!-- <span class='summary_date'>misc</span> -->
+           <span>analyse</span>
+       <p>
+       <p class='summary'>
+         Kaggle
+       </p>
+
+</a>
+</article>
+
+</div>
 
 
 
-</section>
+</section><!-- /#content -->
         </div>
-        <footer id="sitefooter">
-                <address id="about">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>.
-                </address><!-- /#about -->
-        </footer><!-- /#contentinfo -->
+
 </body>
 </html>

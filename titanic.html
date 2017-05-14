@@ -1,0 +1,4916 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+          <title>xdze2</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
+
+
+    <meta name="tags" content="analyse" />
+
+
+<!-- <script src="/theme/js/MathJax.js" type="text/javascript"></script> -->
+<!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script> -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'center', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- <script src="/theme/js/jquery.min.js" type="text/javascript"></script> -->
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $("div.collapseheader").click(function () {
+    $header = $(this).children("span").first();
+    $codearea = $(this).children(".input_area");
+    console.log($(this).children());
+    $codearea.slideToggle(500, function () {
+        $header.text(function () {
+            return $codearea.is(":visible") ? "masquer le code" : "voir le code";
+        });
+    });
+});
+});
+</script>
+</head>
+
+<body>
+        <div id="side">
+            <header id="banner" >
+                    <img src="/theme/images/header.png" />
+                    <h1><a href="/">xdze2 <strong></strong></a></h1>
+            </header><!-- /#banner -->
+            <nav id="menu"><ul>
+
+
+            <img src="/theme/images/tag_icon.png"   />
+                <li ><a href="/tag/physique.html">physique</a></li>
+                <li ><a href="/tag/statistiques.html">statistiques</a></li>
+                <li ><a href="/tag/visualisation.html">visualisation</a></li>
+                <li ><a href="/tag/algorithme.html">algorithme</a></li>
+
+                <li><a href="/tags.html">[plus]</a></li>
+            </ul>
+            <p>
+              <a href='/hello.html'><img src="/theme/images/mail.png"   /></a>
+            </p>
+          </nav><!-- /#menu -->
+        </div>
+        <div id="content">
+<section id="article">
+
+  <header>
+      <img src="/theme/images/doc22.png"    />
+      <span>
+      <h1 class="entry-title">Titanic</h1>
+      <span class='summary_date' title="2017-05-01T11:00:00+02:00">
+        mai 2017
+      </span>
+
+        <span class='summary_tag'><a href='tag/analyse.html'>analyse</a></span>
+
+  </span>
+  </header>
+
+
+
+  <div class="article-content">
+    <p>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Arbre-de-classification">Arbre de classification<a class="anchor-link" href="#Arbre-de-classification">&#182;</a></h1><p>On utilise les données 
+Titanic kaggle
+<a href="https://www.kaggle.com/akshaysehgal/d/prkukunoor/TitanicDataset/how-to-group-by-aggregate-using-py">https://www.kaggle.com/akshaysehgal/d/prkukunoor/TitanicDataset/how-to-group-by-aggregate-using-py</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Chargement-et-clarification-des-donn&#233;es">Chargement et clarification des donn&#233;es<a class="anchor-link" href="#Chargement-et-clarification-des-donn&#233;es">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[65]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./titanic_train.csv&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[66]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Crée une variable catégorique (Oui/Non) plutôt que continue (Age)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Child&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">&lt;</span><span class="mi">14</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[67]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Supprime les données, pour le moment, non nécessaire</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;PassengerId&#39;</span><span class="p">,</span> <span class="s1">&#39;Ticket&#39;</span><span class="p">,</span> <span class="s1">&#39;Embarked&#39;</span><span class="p">,</span> <span class="s1">&#39;Fare&#39;</span><span class="p">,</span> <span class="s1">&#39;SibSp&#39;</span><span class="p">,</span>  <span class="s1">&#39;Parch&#39;</span><span class="p">,</span> <span class="s1">&#39;Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[83]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Cabin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">==</span><span class="kc">False</span> <span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[83]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Sex</th>
+      <th>Cabin</th>
+      <th>Child</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C85</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C123</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>E46</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1</td>
+      <td>3</td>
+      <td>female</td>
+      <td>G6</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C103</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1</td>
+      <td>2</td>
+      <td>male</td>
+      <td>D56</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>A6</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>C23 C25 C27</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B78</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D33</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>B30</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>C52</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B28</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>C83</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>1</td>
+      <td>2</td>
+      <td>female</td>
+      <td>F33</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>F G73</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C23 C25 C27</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>E31</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>A5</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>D10 D12</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>D26</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>110</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>C110</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>B58 B60</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>123</th>
+      <td>1</td>
+      <td>2</td>
+      <td>female</td>
+      <td>E101</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>124</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>D26</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>1</td>
+      <td>3</td>
+      <td>female</td>
+      <td>F E69</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D47</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>C123</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>B86</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>0</td>
+      <td>2</td>
+      <td>male</td>
+      <td>F2</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>751</th>
+      <td>1</td>
+      <td>3</td>
+      <td>male</td>
+      <td>E121</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>759</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B77</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>763</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B96 B98</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>765</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D11</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>772</th>
+      <td>0</td>
+      <td>2</td>
+      <td>female</td>
+      <td>E77</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>776</th>
+      <td>0</td>
+      <td>3</td>
+      <td>male</td>
+      <td>F38</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>779</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B3</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>781</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B20</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>782</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>D6</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>789</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>B82 B84</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>796</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D17</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>802</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>B96 B98</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>806</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>A36</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>809</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>E8</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>815</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>B102</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>820</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B69</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>823</th>
+      <td>1</td>
+      <td>3</td>
+      <td>female</td>
+      <td>E121</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>829</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B28</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>835</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>E49</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>839</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>C47</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>849</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C92</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>853</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D28</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>857</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>E17</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>862</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D17</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>867</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>A24</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>871</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D35</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>872</th>
+      <td>0</td>
+      <td>1</td>
+      <td>male</td>
+      <td>B51 B53 B55</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>879</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C50</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>887</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B42</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>889</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>C148</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>204 rows × 5 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[92]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span> <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span> <span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[92]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Sex</th>
+      <th>Cabin</th>
+      <th>Child</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C85</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C123</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C103</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>A6</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B78</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D33</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>C52</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B28</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C23 C25 C27</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>D10 D12</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D47</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>151</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C2</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>E33</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B4</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B80</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>A31</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>215</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D36</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>218</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D15</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>224</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>C93</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>230</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C83</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>D35</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>256</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>257</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B77</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>258</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>268</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C125</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>269</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C99</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>275</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D7</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>290</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>291</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B49</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>710</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C90</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>712</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>C126</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>716</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C45</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>724</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>E8</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>730</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B5</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>737</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>B101</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>740</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>D45</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>742</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B57 B59 B63 B66</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>759</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B77</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>763</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B96 B98</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>765</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D11</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>779</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B3</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>781</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B20</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>796</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D17</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>802</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>B96 B98</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>809</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>E8</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>820</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B69</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>829</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B28</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>835</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>E49</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>839</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>C47</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>842</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>849</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C92</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>853</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D28</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>856</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>857</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>E17</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>862</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D17</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>871</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>D35</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>879</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>C50</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>887</th>
+      <td>1</td>
+      <td>1</td>
+      <td>female</td>
+      <td>B42</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>889</th>
+      <td>1</td>
+      <td>1</td>
+      <td>male</td>
+      <td>C148</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>136 rows × 5 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Combien de données valides par variables:</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">df</span><span class="o">.</span><span class="n">count</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">Survived    891
+Pclass      891
+Sex         891
+Child       714
+dtype: int64
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Laquels-des-3-variables-(Class,-Child,-Sex)-est-la-plus-d&#233;terminantes-pour-estimer-la-Survie-?">Laquels des 3 variables (Class, Child, Sex) est la plus d&#233;terminantes pour estimer la Survie ?<a class="anchor-link" href="#Laquels-des-3-variables-(Class,-Child,-Sex)-est-la-plus-d&#233;terminantes-pour-estimer-la-Survie-?">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[51]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Survived&#39;</span><span class="p">:{</span><span class="s1">&#39;#survive&#39;</span><span class="p">:</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span><span class="s1">&#39;total&#39;</span><span class="p">:</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;pourcentage&#39;</span><span class="p">:</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">()}}</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Pclass&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[51]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Survived</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>pourcentage</th>
+      <th>total</th>
+      <th>#survive</th>
+    </tr>
+    <tr>
+      <th>Pclass</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.629630</td>
+      <td>216</td>
+      <td>136</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.472826</td>
+      <td>184</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.242363</td>
+      <td>491</td>
+      <td>119</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[52]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Modele simplisime :</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span>
+
+<span class="c1"># Score</span>
+<span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[52]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">0.67901234567901236</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Sex">Sex<a class="anchor-link" href="#Sex">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[53]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Survived&#39;</span><span class="p">:{</span><span class="s1">&#39;#survive&#39;</span><span class="p">:</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span><span class="s1">&#39;total&#39;</span><span class="p">:</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;pourcentage&#39;</span><span class="p">:</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">()}}</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Sex&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[53]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Survived</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>pourcentage</th>
+      <th>total</th>
+      <th>#survive</th>
+    </tr>
+    <tr>
+      <th>Sex</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>female</th>
+      <td>0.742038</td>
+      <td>314</td>
+      <td>233</td>
+    </tr>
+    <tr>
+      <th>male</th>
+      <td>0.188908</td>
+      <td>577</td>
+      <td>109</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Modele simplisime :</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;female&#39;</span>
+
+<span class="c1"># Score</span>
+<span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[62]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">0.78675645342312006</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[57]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Survived&#39;</span><span class="p">:{</span><span class="s1">&#39;#survive&#39;</span><span class="p">:</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span><span class="s1">&#39;total&#39;</span><span class="p">:</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;pourcentage&#39;</span><span class="p">:</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">()}}</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Child&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[57]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Survived</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>pourcentage</th>
+      <th>total</th>
+      <th>#survive</th>
+    </tr>
+    <tr>
+      <th>Child</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>False</th>
+      <td>0.385692</td>
+      <td>643</td>
+      <td>248</td>
+    </tr>
+    <tr>
+      <th>True</th>
+      <td>0.591549</td>
+      <td>71</td>
+      <td>42</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="'Pclass'-et-'Sex'">'Pclass' et 'Sex'<a class="anchor-link" href="#'Pclass'-et-'Sex'">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[63]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Survived&#39;</span><span class="p">:{</span><span class="s1">&#39;#survive&#39;</span><span class="p">:</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span><span class="s1">&#39;total&#39;</span><span class="p">:</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;pourcentage&#39;</span><span class="p">:</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">()}}</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Pclass&#39;</span><span class="p">,</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="s1">&#39;Child&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[63]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th colspan="3" halign="left">Survived</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>pourcentage</th>
+      <th>total</th>
+      <th>#survive</th>
+    </tr>
+    <tr>
+      <th>Pclass</th>
+      <th>Sex</th>
+      <th>Child</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">1</th>
+      <th rowspan="2" valign="top">female</th>
+      <th>False</th>
+      <td>0.976190</td>
+      <td>84</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>True</th>
+      <td>0.000000</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">male</th>
+      <th>False</th>
+      <td>0.377551</td>
+      <td>98</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>True</th>
+      <td>1.000000</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">2</th>
+      <th rowspan="2" valign="top">female</th>
+      <th>False</th>
+      <td>0.907692</td>
+      <td>65</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>True</th>
+      <td>1.000000</td>
+      <td>9</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">male</th>
+      <th>False</th>
+      <td>0.066667</td>
+      <td>90</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>True</th>
+      <td>1.000000</td>
+      <td>9</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">3</th>
+      <th rowspan="2" valign="top">female</th>
+      <th>False</th>
+      <td>0.448718</td>
+      <td>78</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <th>True</th>
+      <td>0.500000</td>
+      <td>24</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">male</th>
+      <th>False</th>
+      <td>0.127193</td>
+      <td>228</td>
+      <td>29</td>
+    </tr>
+    <tr>
+      <th>True</th>
+      <td>0.360000</td>
+      <td>25</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[62]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Survived&#39;</span><span class="p">:{</span><span class="s1">&#39;#survive&#39;</span><span class="p">:</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span><span class="s1">&#39;total&#39;</span><span class="p">:</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;pourcentage&#39;</span><span class="p">:</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">()}}</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;female&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Pclass&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[62]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Survived</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>pourcentage</th>
+      <th>total</th>
+      <th>#survive</th>
+    </tr>
+    <tr>
+      <th>Pclass</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.968085</td>
+      <td>94</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.921053</td>
+      <td>76</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.500000</td>
+      <td>144</td>
+      <td>72</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[113]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Modele double :</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;female&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">3</span><span class="p">)</span> 
+ 
+<span class="c1"># Score</span>
+<span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;output&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[113]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">0.78675645342312006</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Pas mieux que 'Sex' seul ...</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Age-?">Age ?<a class="anchor-link" href="#Age-?">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[78]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span>.hist<span class="o">?</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[95]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;female&#39;</span><span class="p">][</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;female&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;male&#39;</span><span class="p">][</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[95]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">&lt;matplotlib.legend.Legend at 0x7fcef2c24da0&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[100]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;survived&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[100]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">&lt;matplotlib.legend.Legend at 0x7fcef2328160&gt;</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+Vc72lvsAAAAASUVORK5CYII=
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[105]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Survived&#39;</span><span class="p">:{</span><span class="s1">&#39;#survive&#39;</span><span class="p">:</span><span class="s1">&#39;sum&#39;</span><span class="p">,</span><span class="s1">&#39;total&#39;</span><span class="p">:</span><span class="s1">&#39;count&#39;</span><span class="p">,</span><span class="s1">&#39;pourcentage&#39;</span><span class="p">:</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">()}}</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Ticket&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[105]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="3" halign="left">Survived</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>#survive</th>
+      <th>pourcentage</th>
+      <th>total</th>
+    </tr>
+    <tr>
+      <th>Ticket</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>110152</th>
+      <td>3</td>
+      <td>1.000000</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>110413</th>
+      <td>2</td>
+      <td>0.666667</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>110465</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>110564</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>110813</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>111240</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>111320</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>111361</th>
+      <td>2</td>
+      <td>1.000000</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>111369</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>111426</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>111427</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>111428</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>112050</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>112052</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>112053</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>112058</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>112059</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>112277</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>112379</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>113028</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>113043</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>113050</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>113051</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>113055</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>113056</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>113059</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>113501</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>113503</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>113505</th>
+      <td>2</td>
+      <td>1.000000</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>113509</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>SOTON/OQ 392082</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>SOTON/OQ 392086</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>SOTON/OQ 392089</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>SOTON/OQ 392090</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O 2. 3101269</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O 2. 3101273</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O 2. 3101274</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O 2. 3101275</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O 2. 3101280</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O 2. 3101285</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O 2. 3101286</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O 2. 3101288</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O 2. 3101289</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O 2. 3101292</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O 2. 3101293</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O 2. 3101294</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O2. 3101271</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O2. 3101279</th>
+      <td>1</td>
+      <td>0.500000</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>STON/O2. 3101282</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O2. 3101283</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>STON/O2. 3101290</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>SW/PP 751</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>W./C. 14258</th>
+      <td>1</td>
+      <td>1.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>W./C. 14263</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>W./C. 6607</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>W./C. 6608</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>W./C. 6609</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>W.E.P. 5734</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>W/C 14208</th>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>WE/P 5735</th>
+      <td>1</td>
+      <td>0.500000</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>681 rows × 3 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[99]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Age&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[99]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+      <th>output</th>
+    </tr>
+    <tr>
+      <th>Age</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0.42</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>0.67</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>0.75</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>0.83</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>0.92</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1.00</th>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>1</td>
+      <td>7</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2.00</th>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>3</td>
+      <td>10</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>3.00</th>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>1</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>4.00</th>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>3</td>
+      <td>10</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>5.00</th>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>0</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>6.00</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>7.00</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>8.00</th>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>0</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>9.00</th>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>0</td>
+      <td>8</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>10.00</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>11.00</th>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>12.00</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>13.00</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>14.00</th>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>1</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>14.50</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>15.00</th>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>1</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>16.00</th>
+      <td>17</td>
+      <td>17</td>
+      <td>17</td>
+      <td>17</td>
+      <td>17</td>
+      <td>17</td>
+      <td>17</td>
+      <td>17</td>
+      <td>17</td>
+      <td>3</td>
+      <td>17</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>17.00</th>
+      <td>13</td>
+      <td>13</td>
+      <td>13</td>
+      <td>13</td>
+      <td>13</td>
+      <td>13</td>
+      <td>13</td>
+      <td>13</td>
+      <td>13</td>
+      <td>3</td>
+      <td>13</td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <th>18.00</th>
+      <td>26</td>
+      <td>26</td>
+      <td>26</td>
+      <td>26</td>
+      <td>26</td>
+      <td>26</td>
+      <td>26</td>
+      <td>26</td>
+      <td>26</td>
+      <td>4</td>
+      <td>26</td>
+      <td>26</td>
+    </tr>
+    <tr>
+      <th>19.00</th>
+      <td>25</td>
+      <td>25</td>
+      <td>25</td>
+      <td>25</td>
+      <td>25</td>
+      <td>25</td>
+      <td>25</td>
+      <td>25</td>
+      <td>25</td>
+      <td>6</td>
+      <td>25</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>20.00</th>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>0</td>
+      <td>15</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>20.50</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>21.00</th>
+      <td>24</td>
+      <td>24</td>
+      <td>24</td>
+      <td>24</td>
+      <td>24</td>
+      <td>24</td>
+      <td>24</td>
+      <td>24</td>
+      <td>24</td>
+      <td>3</td>
+      <td>24</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>22.00</th>
+      <td>27</td>
+      <td>27</td>
+      <td>27</td>
+      <td>27</td>
+      <td>27</td>
+      <td>27</td>
+      <td>27</td>
+      <td>27</td>
+      <td>27</td>
+      <td>3</td>
+      <td>27</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>23.00</th>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>15</td>
+      <td>4</td>
+      <td>15</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>44.00</th>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>3</td>
+      <td>9</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>45.00</th>
+      <td>12</td>
+      <td>12</td>
+      <td>12</td>
+      <td>12</td>
+      <td>12</td>
+      <td>12</td>
+      <td>12</td>
+      <td>12</td>
+      <td>12</td>
+      <td>3</td>
+      <td>12</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>45.50</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>46.00</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>47.00</th>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>5</td>
+      <td>9</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>48.00</th>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>9</td>
+      <td>5</td>
+      <td>9</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>49.00</th>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>5</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>50.00</th>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>10</td>
+      <td>4</td>
+      <td>10</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>51.00</th>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>7</td>
+      <td>2</td>
+      <td>7</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>52.00</th>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>4</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>53.00</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>54.00</th>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>55.00</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>55.50</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>56.00</th>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>3</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>57.00</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>58.00</th>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>59.00</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>60.00</th>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>61.00</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>62.00</th>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>4</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>63.00</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>64.00</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>65.00</th>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>66.00</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>70.00</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>70.50</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>71.00</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>74.00</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>80.00</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>88 rows × 12 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Two step query to find sum of survived people, grouped by their passenger class (1 &gt; 2 &gt; 3)</span>
+<span class="n">group_survived</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Pclass&#39;</span><span class="p">])</span>
+<span class="n">out_survived</span> <span class="o">=</span> <span class="n">group_survived</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out_survived</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">group_survived</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">group_survived</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">group_survived</span><span class="p">[</span><span class="s1">&#39;Survived&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">Pclass
+1    136
+2     87
+3    119
+Name: Survived, dtype: int64
+Pclass
+1    216
+2    184
+3    491
+Name: Survived, dtype: int64
+Pclass
+1    0.629630
+2    0.472826
+3    0.242363
+Name: Survived, dtype: float64
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">group_survived</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+    </tr>
+    <tr>
+      <th>Pclass</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>216</td>
+      <td>216</td>
+      <td>216</td>
+      <td>216</td>
+      <td>186</td>
+      <td>216</td>
+      <td>216</td>
+      <td>216</td>
+      <td>216</td>
+      <td>176</td>
+      <td>214</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>184</td>
+      <td>184</td>
+      <td>184</td>
+      <td>184</td>
+      <td>173</td>
+      <td>184</td>
+      <td>184</td>
+      <td>184</td>
+      <td>184</td>
+      <td>16</td>
+      <td>184</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>491</td>
+      <td>491</td>
+      <td>491</td>
+      <td>491</td>
+      <td>355</td>
+      <td>491</td>
+      <td>491</td>
+      <td>491</td>
+      <td>491</td>
+      <td>12</td>
+      <td>491</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Pclass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[15]:</div>
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre class="ipynb">0</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[116]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Sex&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;female&#39;</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt output_prompt">Out[116]:</div>
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PassengerId</th>
+      <th>Survived</th>
+      <th>Pclass</th>
+      <th>Name</th>
+      <th>Sex</th>
+      <th>Age</th>
+      <th>SibSp</th>
+      <th>Parch</th>
+      <th>Ticket</th>
+      <th>Fare</th>
+      <th>Cabin</th>
+      <th>Embarked</th>
+      <th>output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>female</td>
+      <td>35.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg)</td>
+      <td>female</td>
+      <td>27.0</td>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>347742</td>
+      <td>11.1333</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>Nasser, Mrs. Nicholas (Adele Achem)</td>
+      <td>female</td>
+      <td>14.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>237736</td>
+      <td>30.0708</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>Sandstrom, Miss. Marguerite Rut</td>
+      <td>female</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>PP 9549</td>
+      <td>16.7000</td>
+      <td>G6</td>
+      <td>S</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>Bonnell, Miss. Elizabeth</td>
+      <td>female</td>
+      <td>58.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>113783</td>
+      <td>26.5500</td>
+      <td>C103</td>
+      <td>S</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>Vestrom, Miss. Hulda Amanda Adolfina</td>
+      <td>female</td>
+      <td>14.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>350406</td>
+      <td>7.8542</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>Hewlett, Mrs. (Mary D Kingcome)</td>
+      <td>female</td>
+      <td>55.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>248706</td>
+      <td>16.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>19.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>Vander Planke, Mrs. Julius (Emelia Maria Vande...</td>
+      <td>female</td>
+      <td>31.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>345763</td>
+      <td>18.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>Masselmani, Mrs. Fatima</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2649</td>
+      <td>7.2250</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>23.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>McGowan, Miss. Anna "Annie"</td>
+      <td>female</td>
+      <td>15.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>330923</td>
+      <td>8.0292</td>
+      <td>NaN</td>
+      <td>Q</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>25.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>Palsson, Miss. Torborg Danira</td>
+      <td>female</td>
+      <td>8.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>349909</td>
+      <td>21.0750</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>26.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>Asplund, Mrs. Carl Oscar (Selma Augusta Emilia...</td>
+      <td>female</td>
+      <td>38.0</td>
+      <td>1.0</td>
+      <td>5.0</td>
+      <td>347077</td>
+      <td>31.3875</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>29.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>O'Dwyer, Miss. Ellen "Nellie"</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>330959</td>
+      <td>7.8792</td>
+      <td>NaN</td>
+      <td>Q</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>861</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>862</th>
+      <td>863.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>Swift, Mrs. Frederick Joel (Margaret Welles Ba...</td>
+      <td>female</td>
+      <td>48.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>17466</td>
+      <td>25.9292</td>
+      <td>D17</td>
+      <td>S</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>863</th>
+      <td>864.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>Sage, Miss. Dorothy Edith "Dolly"</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>8.0</td>
+      <td>2.0</td>
+      <td>CA. 2343</td>
+      <td>69.5500</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>864</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>865</th>
+      <td>866.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>Bystrom, Mrs. (Karolina)</td>
+      <td>female</td>
+      <td>42.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>236852</td>
+      <td>13.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>866</th>
+      <td>867.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>Duran y More, Miss. Asuncion</td>
+      <td>female</td>
+      <td>27.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>SC/PARIS 2149</td>
+      <td>13.8583</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>867</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>868</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>869</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>870</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>871</th>
+      <td>872.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>Beckwith, Mrs. Richard Leonard (Sallie Monypeny)</td>
+      <td>female</td>
+      <td>47.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>11751</td>
+      <td>52.5542</td>
+      <td>D35</td>
+      <td>S</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>872</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>873</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>874</th>
+      <td>875.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>Abelson, Mrs. Samuel (Hannah Wizosky)</td>
+      <td>female</td>
+      <td>28.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>P/PP 3381</td>
+      <td>24.0000</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>875</th>
+      <td>876.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>Najib, Miss. Adele Kiamie "Jane"</td>
+      <td>female</td>
+      <td>15.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>2667</td>
+      <td>7.2250</td>
+      <td>NaN</td>
+      <td>C</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>876</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>877</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>878</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>879</th>
+      <td>880.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>Potter, Mrs. Thomas Jr (Lily Alexenia Wilson)</td>
+      <td>female</td>
+      <td>56.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>11767</td>
+      <td>83.1583</td>
+      <td>C50</td>
+      <td>C</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>880</th>
+      <td>881.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>Shelley, Mrs. William (Imanita Parrish Hall)</td>
+      <td>female</td>
+      <td>25.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>230433</td>
+      <td>26.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>881</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>882</th>
+      <td>883.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>Dahlberg, Miss. Gerda Ulrika</td>
+      <td>female</td>
+      <td>22.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>7552</td>
+      <td>10.5167</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>883</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>884</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>885</th>
+      <td>886.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>Rice, Mrs. William (Margaret Norton)</td>
+      <td>female</td>
+      <td>39.0</td>
+      <td>0.0</td>
+      <td>5.0</td>
+      <td>382652</td>
+      <td>29.1250</td>
+      <td>NaN</td>
+      <td>Q</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>886</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>887</th>
+      <td>888.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>Graham, Miss. Margaret Edith</td>
+      <td>female</td>
+      <td>19.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>112053</td>
+      <td>30.0000</td>
+      <td>B42</td>
+      <td>S</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>888</th>
+      <td>889.0</td>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>Johnston, Miss. Catherine Helen "Carrie"</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>W./C. 6607</td>
+      <td>23.4500</td>
+      <td>NaN</td>
+      <td>S</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>889</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>890</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>891 rows × 13 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+ 
+
+</p>
+  </div><!-- /.entry-content -->
+
+
+
+</section>
+        </div>
+
+</body>
+</html>
