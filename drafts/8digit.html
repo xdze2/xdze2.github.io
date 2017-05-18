@@ -106,52 +106,17 @@ jQuery(document).ready(function($) {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Arbre-de-d&#233;cision">Arbre de d&#233;cision<a class="anchor-link" href="#Arbre-de-d&#233;cision">&#182;</a></h1><h2 id="8-digit">8-digit<a class="anchor-link" href="#8-digit">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Vecteur -&gt; Arbre -&gt; Reponse (classe)</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="/data/images/8digit.png" alt="schema 1"></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="8-digit">8-digit<a class="anchor-link" href="#8-digit">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><em>remarque:</em> il existe deux écritures pour le 7</p>
+<h1 id="Arbre-de-d&#233;cision">Arbre de d&#233;cision<a class="anchor-link" href="#Arbre-de-d&#233;cision">&#182;</a></h1><p>Algorithme de reconnaissance de caractère absolument simple. Ce sont les chiffres de 0 à 9, codés en segments, comme sur les vielles calculettes:</p>
+<p><img src="images/8digit-all.png" alt="images 10 8-digit"></p>
+<p>Comment construire la règle de décision pour trouver quel chiffre est affiché en sachant les segments allumés et ceux éteints ?</p>
+<p>Les segments sont notés de 'a' à 'f':</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[484]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 
 <div class="inner_cell">
     <div class="input_area">
@@ -165,9 +130,126 @@ jQuery(document).ready(function($) {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>On peut se demander quel segment est le plus significatif ?</p>
+<p>Ou si on obtient les informations en posant la question, pour chaque segment, 'est-ce que le segment n°A est allumé ?' ... dans quelle ordre demander les segments, afin de poser le moins de question possible ?</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Statistiques">Statistiques<a class="anchor-link" href="#Statistiques">&#182;</a></h2>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[485]:</div>
+<div class="prompt input_prompt">In&nbsp;[40]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tous</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span>
+<span class="n">segments</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span> <span class="nb">set</span><span class="p">(</span><span class="n">tous</span><span class="p">)</span> <span class="p">))</span>
+
+<span class="n">freqs</span> <span class="o">=</span> <span class="p">[</span> <span class="n">tous</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">segments</span> <span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Segment:  </span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span>  <span class="s1">&#39;  &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">segments</span> <span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Freqs.:  </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">freqs</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">Segment:  a  b  c  d  e  f  g 
+Freqs.:  [8, 6, 8, 7, 4, 9, 6]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>On remarque que les segments <strong>e</strong>, <strong>g</strong> et <strong>b</strong> séparent le mieux les chiffres en deux ensembles de même taille...</p>
+<p>et aussi que le segment <strong>f</strong> n'est pas utilisé que pour un seul chiffre, le 2.</p>
+<p>Combien faut-il de questions ?</p>
+<ul>
+<li>Si on identifie un seul chiffre pour chaque test, il faut <strong>n=10</strong> tests.</li>
+<li>Si on sépare la moitié des chiffres pour chaque test, il faut seulement k tests, avec $n=2^k$.  ??? </li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[41]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">digits</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span> <span class="n">digits</span> <span class="p">))</span>
+
+<span class="n">tous</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span>
+<span class="n">segments</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span> <span class="nb">set</span><span class="p">(</span><span class="n">tous</span><span class="p">)</span> <span class="p">))</span>
+
+<span class="n">freqs</span> <span class="o">=</span> <span class="p">[</span> <span class="n">tous</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">segments</span> <span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Segment:  </span><span class="si">%s</span><span class="s1"> &#39;</span> <span class="o">%</span>  <span class="s1">&#39;  &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="n">segments</span> <span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;Freqs.:  </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">freqs</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">9
+Segment:  a  b  c  d  e  f  g 
+Freqs.:  [7, 6, 7, 6, 3, 9, 5]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 
 <div class="inner_cell">
     <div class="input_area">
