@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+          <title>xdze2</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+
+
+    <meta name="tags" content="physique" />
+    <meta name="tags" content="thermique" />
+    <meta name="tags" content="modélisation" />
+
+
+<!-- <script src="/theme/js/MathJax.js" type="text/javascript"></script> -->
+<!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script> -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'center', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- <script src="/theme/js/jquery.min.js" type="text/javascript"></script> -->
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $("div.collapseheader").click(function () {
+    $header = $(this).children("span").first();
+    $codearea = $(this).children(".input_area");
+    console.log($(this).children());
+    $codearea.slideToggle(500, function () {
+        $header.text(function () {
+            return $codearea.is(":visible") ? "masquer le code" : "voir le code";
+        });
+    });
+});
+});
+</script>
+</head>
+
+<body>
+        <div id="side">
+            <header id="banner" >
+                    <img src="/theme/images/header.png" />
+                    <h1><a href="/">xdze2 <strong></strong></a></h1>
+            </header><!-- /#banner -->
+            <nav id="menu"><ul>
+
+
+            <img src="/theme/images/tag_icon.png"   />
+                <li ><a href="/tag/physique.html">physique</a></li>
+                <li ><a href="/tag/statistiques.html">statistiques</a></li>
+                <li ><a href="/tag/visualisation.html">visualisation</a></li>
+                <li ><a href="/tag/algorithme.html">algorithme</a></li>
+
+                <li><a href="/tags.html">[plus]</a></li>
+            </ul>
+            <p>
+              <a href='/hello.html'><img src="/theme/images/mail.png"   /></a>
+            </p>
+          </nav><!-- /#menu -->
+        </div>
+        <div id="content">
+<section id="article">
+
+  <header>
+      <img src="/theme/images/doc22.png"    />
+      <span>
+      <h1 class="entry-title">Modèle thermique des tuiles de mon toit</h1>
+      <span class='summary_date' title="2017-07-11T11:00:00+02:00">
+        juillet 2017
+      </span>
+
+        <span class='summary_tag'><a href='tag/physique.html'>physique, </a></span>
+        <span class='summary_tag'><a href='tag/thermique.html'>thermique, </a></span>
+        <span class='summary_tag'><a href='tag/modelisation.html'>modélisation</a></span>
+
+  </span>
+  </header>
+
+
+
+  <div class="article-content">
+    <h1>Modèlisation de la température des tuiles d'un toit</h1>
+<p><a href="https://github.com/xdze2/thermique_appart/blob/master/Model02_tuile.ipynb"> [voir le notebook complet sur github] </a></p>
+<p>Mon appartement est sous les toits. Je ressens donc l'effet direct du soleil sur la température chez moi. Je peux aussi facilement mesurer la température des tuiles avec un <a href="https://www.google.fr/search?&amp;q=IR+260-8S+thermometer+voltcraft">thermomètre IR</a>, en passant le bras à travers le velux. J'ai donc voulu savoir s'il est possible de prédire correctement la température des tuiles à partir des données météo et de l'irradiation solaire.  C'est aussi une partie d'un projet de modéliser la température intérieure de mon appartement. </p>
+<p>Le premier problème est d'obtenir les <strong>données météo</strong> heure par heure, ainsi que la valeur de <strong>l'irradiation solaire</strong>.  </p>
+<p>Ensuite, la question est de correctement décrire <strong>les échanges thermiques</strong> entre les tuiles et le reste de l'univers ... les tuiles sont chauffées par le soleil, et refroidit par l'air ambiant (vitesse du vent) et par rayonement avec le ciel (corps gris/noir) :</p>
+<p><img src="./physique/images/sch_model_tuile.jpg" width="380px" alt="schema mod02" /></p>
+<p>En revanche, sont considérés comme négligeable :</p>
+<ul>
+<li>Le flux de chaleur à travers l'isolation du toit (~ 0.17 W/m2/K ).</li>
+<li>L'inertie thermique des tuiles. </li>
+<li>La pluie, et l'humidité de l'air. </li>
+</ul>
+<p>Les explications, détails du programme et calculs sont dans le notebook <a href="https://github.com/xdze2/thermique_appart/blob/master/Model02_tuile.ipynb">ici</a>. Tout cela en utilisant les librairies pandas, numpy et scipy. </p>
+<p>J'obtiens les courbes suivantes, pour les deux pans de toit (orienté sud-est, et nord-ouest):</p>
+<p><img src="./physique/images/results_tuile.png" alt="courbe résultat" /></p>
+<p>Les points sont les mesures. Les courbes verte et rouge sont les prédictions pour les deux orientations du toit, et la courbe fine violette est la température de l'air extérieure donnée par la météo.  </p>
+<p>On peut voir aussi la contribution de chaque source de chaleur ou dissipation :</p>
+<p><img src="./physique/images/results_tuile_detail.png" alt="courbe résultat détail" /></p>
+<p>Le ciel le 12/07 était plutôt clair, et le modèle semble bien prédire la température mesurée. En revanche, lorsque que le temps est plus incertain, il y a plus de différence avec la mesure et le modèle. Le 10 et 11 étaient orageux.</p>
+<p>Aussi, la température prédite la nuit est inférieure d'environ 5°C par rapport à la température mesurée... je n'ai pas encore fait de mesure à 3h du matin pour voir si elle descends ou reste au niveau de température ambiante. </p>
+<p><strong> la suite : </strong> prendre en compte l'inertie thermique, et vérifier dans différentes conditions météo...</p>
+  </div><!-- /.entry-content -->
+
+
+
+</section>
+        </div>
+
+</body>
+</html>
