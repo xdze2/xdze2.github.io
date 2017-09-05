@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+          <title>xdze2</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+
+
+    <meta name="tags" content="modélisation" />
+    <meta name="tags" content="physique" />
+    <meta name="tags" content="openFoam" />
+
+
+<!-- <script src="/theme/js/MathJax.js" type="text/javascript"></script> -->
+<!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script> -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'center', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- <script src="/theme/js/jquery.min.js" type="text/javascript"></script> -->
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $("div.collapseheader").click(function () {
+    $header = $(this).children("span").first();
+    $codearea = $(this).children(".input_area");
+    console.log($(this).children());
+    $codearea.slideToggle(500, function () {
+        $header.text(function () {
+            return $codearea.is(":visible") ? "masquer le code" : "voir le code";
+        });
+    });
+});
+});
+</script>
+</head>
+
+<body>
+        <div id="side">
+            <header id="banner" >
+                    <img src="/theme/images/header.png" />
+                    <h1><a href="/">xdze2 <strong></strong></a></h1>
+            </header><!-- /#banner -->
+            <nav id="menu"><ul>
+
+
+            <img src="/theme/images/tag_icon.png"   />
+                <li ><a href="/tag/physique.html">physique</a></li>
+                <li ><a href="/tag/statistiques.html">statistiques</a></li>
+                <li ><a href="/tag/visualisation.html">visualisation</a></li>
+                <li ><a href="/tag/algorithme.html">algorithme</a></li>
+
+                <li><a href="/tags.html">[plus]</a></li>
+            </ul>
+            <p>
+              <a href='/hello.html'><img src="/theme/images/mail.png"   /></a>
+            </p>
+          </nav><!-- /#menu -->
+        </div>
+        <div id="content">
+<section id="article">
+
+  <header>
+      <img src="/theme/images/doc22.png"    />
+      <span>
+      <h1 class="entry-title">De FreeCad à OpenFoam</h1>
+      <span class='summary_date' title="2017-09-05T20:00:00+02:00">
+        septembre 2017
+      </span>
+
+        <span class='summary_tag'><a href='tag/modelisation.html'>modélisation, </a></span>
+        <span class='summary_tag'><a href='tag/physique.html'>physique, </a></span>
+        <span class='summary_tag'><a href='tag/openfoam.html'>openFoam</a></span>
+
+  </span>
+  </header>
+
+
+
+  <div class="article-content">
+    <h1>De FreeCad à OpenFoam</h1>
+<p>Ceci est le début d'un projet pour utiliser l'environement de calcul CFD libre: <a href="http://www.openfoam.com/">OpenFoam</a> (<a href="https://cfd.direct/">doc</a>).</p>
+<p>Dans cette première partie, nous allons voir comment créer une géométrie -modèle 3D- avec <a href="https://www.freecadweb.org/">FreeCad</a>, puis créer un maillage sur cette géométrie avec <a href="http://gmsh.info/">Gmesh</a>. Et enfin comment importer le maillage dans OpenFoam. </p>
+<p>Les opérations sont: </p>
+<ol>
+<li>Création de la géométrie avec FreeCad</li>
+<li>Transfert dans Gmsh</li>
+<li>Définition des groupes de surfaces (physical elements), pour les futurs conditions aux limites.</li>
+<li>Génération du maillage</li>
+<li>Transfert dans OpenFoam, en récupérant les labels des surfaces</li>
+</ol>
+<p>La principale inspiration est la vidéo <a href="https://www.youtube.com/watch?v=KeEp6EJuIxU">FreeCAD, Gmsh, OpenFoam - an opensource CFD case</a>.</p>
+<h1>FreeCad</h1>
+<p>On commence par créer une géométrie simple, un tuyau coudé, avec la fonction de balayage (<a href="https://www.freecadweb.org/wiki/Part_Sweep">part sweep</a>).</p>
+<p>Il y a deux esquisses. L'une est le chemin de balayage :</p>
+<p><img src="./calculs_num/images/freecad_esquisse_balayage.png" alt="esquise 1" width='50%' /></p>
+<p>et l'autre, dans un plan perpendiculaire, est la section du tube que l'on souhaite créer. </p>
+<p>Vue 3d des esquisses :
+<img src="./calculs_num/images/freecad_esquisse3D.png" alt="esquisse 3d" width='70%' /></p>
+<p>Ce qui donne au final ce volume: 
+<img src="./calculs_num/images/freecad_tube.png" alt="esquisse 3d"  width='70%' /></p>
+<p>Le modèle est ensuite exporté (<code>Pièce/Exportation CAO...</code>) au format STEP (Standard for the Exchange of Product model data, <a href="https://en.wikipedia.org/wiki/ISO_10303">format ISO-10303</a>). C'est un fichier texte lissible.</p>
+<p><em>Rq:</em> On peut, à priori, définir l'unité des dimensions pour l'export au format STEP dans les paramètres de FreeCad (Edition/Préférences/Import-Export/STEP). Ici en millimètre. </p>
+<p>La suite se passe avec Gmsh. C'est un logiciel libre de maillage. </p>
+<h1>Gmsh</h1>
+<p>L'interface se présente comme ceci avec un menu hierachique des actions possible à gauche:</p>
+<p><img src="./calculs_num/images/gmsh_vide.png" alt="esquisse 3d"  width='70%' /></p>
+<p><code>File/Open...</code> permet d'ouvrir le fichier STEP.</p>
+<p>La première chose à faire est de définir les 'Physical groups'. Ceci correspond à assigner un label pour chaque surfaces et volumes permettant ensuite de les retrouver dans OpenFoam. </p>
+<p>Dans l'arborescence du menu à gauche, on trouve l'action <code>ADD - Surface</code>. Il est aussi important de créer un volume. </p>
+<p><img src="./calculs_num/images/gmesh_addphysicalgroups.png" alt="esquisse 3d"  width='70%' /></p>
+<p>Pour la création du maillage, le paramètre le plus important est la taille des élements crées. 
+C'est le paramètre <code>Element size factor</code> dans l'onglet <code>Mesh-General</code> de la boite <code>Tool/Options</code> :</p>
+<p><img src="./calculs_num/images/gmsh_eltsizefactor.png" alt="esquisse 3d"  width='70%' /></p>
+<p>Il faut ensuite cliquer succesivement sur <code>1D</code>, <code>2D</code> et <code>3D</code>, dans le menu <code>Mesh</code>-<code>Define</code>, pour créer le maillage.</p>
+<p>En jouant sur les paramètres de visibilité et de couleur, on obtient la vue suivante (<a href="http://onelab.info/pipermail/gmsh/2012/007649.html">voir</a>):
+<img src="./calculs_num/images/gmesh_finalmesh.png" alt="esquisse 3d"  width='70%' /></p>
+<p>Il reste à enregistrer le maillage: <code>File/Save Mesh</code>. Un fichier <code>.msh</code> est créé. Lui aussi est lissible avec un editeur de texte. C'est la liste de tout les points du maillage et des élements. L'information des 'Physical groups' est indiquée dans la définition des éléments (<a href="http://gmsh.info/doc/texinfo/gmsh.html#MSH-ASCII-file-format">spec.</a>, <a href="http://www.manpagez.com/info/gmsh/gmsh-2.2.6/gmsh_63.php">man page</a>), dans la 4ième colonne :</p>
+<div class="highlight"><pre><span></span>    $Elements
+    4682
+    1 2 2 9 1 271 10 11
+    2 2 2 9 1 196 11 10
+    3 2 2 9 1 214 10 271
+    4 2 2 9 1 10 9 179
+    5 2 2 9 1 9 10 214
+    6 2 2 9 1 245 10 179
+    7 2 2 9 1 196 10 245
+    ...etc
+</pre></div>
+
+
+<p>Un fichier <code>.geo</code> est aussi créé, correspondant simplement aux commandes effectuées, sans le maillage: </p>
+<div class="highlight"><pre><span></span>    Merge &quot;coude.step&quot;;
+    Physical Surface(8) = {4};
+    Physical Surface(9) = {1, 2, 3};
+    Physical Surface(10) = {5};
+    Physical Volume(11) = {1};
+</pre></div>
+
+
+<p><em>Rq:</em> il doit être possible de créer un maillage bien plus joli, avec une extrusion par exemple... (<a href="http://www.micronanoflows.ac.uk/news/creating-openfoam-meshes-with-gmsh">bifurcation mesh</a>)</p>
+<h1>OpenFoam</h1>
+<p>La doc du programme <a href="https://openfoamwiki.net/index.php/GmshToFoam">gmshToFoam</a> est plutôt succincte.</p>
+<p>Il faut travailler dans le repertoire d'un projet existant. La façon la plus simple est de copier un cas d'exemple. </p>
+<div class="highlight"><pre><span></span>    ls $FOAM_TUTORIALS/incompressible/
+</pre></div>
+
+
+<p>En partant de l'exemple <code>cavity</code> (<a href="https://cfd.direct/openfoam/user-guide/cavity/#x5-40002.1">tuto</a>):</p>
+<div class="highlight"><pre><span></span>    cp -r $FOAM_TUTORIALS/incompressible/icoFoam/cavity/cavity .
+</pre></div>
+
+
+<p>Le fichier de maillage est ensuite copier à la racine du répertoire du projet. Puis le programme de conversion est exécuté, avec en paramètre le fichier du maillage :      </p>
+<div class="highlight"><pre><span></span>    gmshToFoam coude.msh
+</pre></div>
+
+
+<p>La correspondance entre les 'physical groups' et les patchs de OpenFoam est rendue par <code>gmshToFoam</code>:</p>
+<div class="highlight"><pre><span></span>    [...]
+    Mapping region 9 to Foam patch 0
+    Mapping region 8 to Foam patch 1
+    Mapping region 10 to Foam patch 2
+    Mapping region 11 to Foam cellZone 0
+    [...]
+</pre></div>
+
+
+<p>Le maillage est créé dans le repertoire <code>constant/polyMesh</code>.</p>
+<p>Dans notre cas: region 8 -&gt; inlet, region 9 -&gt; tube, region 10 -&gt; outlet. On peut donc renomer les patchs dans le fichier <code>constant/polyMesh/boundary</code>.</p>
+<p>Les valeurs physiques correspondantes aux conditions aux limites sont spécifiées dans les fichiers <code>0/U</code> et <code>0/P</code>.</p>
+<p>Le logiciel paraview permet d'afficher le maillage:</p>
+<div class="highlight"><pre><span></span>    paraFoam
+</pre></div>
+
+
+<p><img src="./calculs_num/images/paraFoam_mesh.png" alt="paraFoam"  width='70%' /></p>
+<h1>la suite</h1>
+<p>La suite est de paramétrer le solveur et d'effectuer le calcul. </p>
+  </div><!-- /.entry-content -->
+
+
+
+</section>
+        </div>
+
+</body>
+</html>
