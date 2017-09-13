@@ -165,17 +165,17 @@ C'est le paramètre <code>Element size factor</code> dans l'onglet <code>Mesh-Ge
 <h1>OpenFoam</h1>
 <p>La doc du programme <a href="https://openfoamwiki.net/index.php/GmshToFoam">gmshToFoam</a> est plutôt succincte.</p>
 <p>Il faut travailler dans le repertoire d'un projet existant. La façon la plus simple est de copier un cas d'exemple. </p>
-<div class="highlight"><pre><span></span>    ls $FOAM_TUTORIALS/incompressible/
+<div class="highlight"><pre><span></span>    $ ls $FOAM_TUTORIALS/incompressible/
 </pre></div>
 
 
 <p>En partant de l'exemple <code>cavity</code> (<a href="https://cfd.direct/openfoam/user-guide/cavity/#x5-40002.1">tuto</a>):</p>
-<div class="highlight"><pre><span></span>    cp -r $FOAM_TUTORIALS/incompressible/icoFoam/cavity/cavity .
+<div class="highlight"><pre><span></span>    $ cp -r $FOAM_TUTORIALS/incompressible/icoFoam/cavity/cavity .
 </pre></div>
 
 
 <p>Le fichier de maillage est ensuite copier à la racine du répertoire du projet. Puis le programme de conversion est exécuté, avec en paramètre le fichier du maillage :      </p>
-<div class="highlight"><pre><span></span>    gmshToFoam coude.msh
+<div class="highlight"><pre><span></span>    $ gmshToFoam coude.msh
 </pre></div>
 
 
@@ -193,11 +193,21 @@ C'est le paramètre <code>Element size factor</code> dans l'onglet <code>Mesh-Ge
 <p>Dans notre cas: region 8 -&gt; inlet, region 9 -&gt; tube, region 10 -&gt; outlet. On peut donc renomer les patchs dans le fichier <code>constant/polyMesh/boundary</code>.</p>
 <p>Les valeurs physiques correspondantes aux conditions aux limites sont spécifiées dans les fichiers <code>0/U</code> et <code>0/P</code>.</p>
 <p>Le logiciel paraview permet d'afficher le maillage:</p>
-<div class="highlight"><pre><span></span>    paraFoam
+<div class="highlight"><pre><span></span>    $ paraFoam
 </pre></div>
 
 
 <p><img src="./calculs_num/images/paraFoam_mesh.png" alt="paraFoam"  width='70%' /></p>
+<p>On peut vérifier le maillage:</p>
+<div class="highlight"><pre><span></span>    $ checkMesh
+</pre></div>
+
+
+<p>Et aussi changer son échelle (par exemple de millimètre à mètre) (<a href="https://openfoamwiki.net/index.php/TransformPoints">doc.</a>):</p>
+<div class="highlight"><pre><span></span>    $ transformPoints -scale &#39;(1e-3 1e-3 1e-3)&#39;
+</pre></div>
+
+
 <h1>la suite</h1>
 <p>La suite est de paramétrer le solveur et d'effectuer le calcul. </p>
   </div><!-- /.entry-content -->

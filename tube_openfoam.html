@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-        <title>xdze2 - Authors</title>
+          <title>xdze2</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="/theme/css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
         <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+
+
+    <meta name="tags" content="modélisation" />
+    <meta name="tags" content="physique" />
+    <meta name="tags" content="openFoam" />
+
 
 <!-- <script src="/theme/js/MathJax.js" type="text/javascript"></script> -->
 <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script> -->
@@ -75,11 +81,61 @@ jQuery(document).ready(function($) {
           </nav><!-- /#menu -->
         </div>
         <div id="content">
-    <h1>Authors on xdze2</h1>
+<section id="article">
 
-    <ul>        <li><a href="/author/xdze.html">xdze</a> (8)</li>
-        <li><a href="/author/xdze2.html">xdze2</a> (24)</li>
-    </ul>
+  <header>
+      <img src="/theme/images/doc22.png"    />
+      <span>
+      <h1 class="entry-title">Tube & OpenFoam</h1>
+      <span class='summary_date' title="2017-09-06T20:00:00+02:00">
+        septembre 2017
+      </span>
+
+        <span class='summary_tag'><a href='tag/modelisation.html'>modélisation, </a></span>
+        <span class='summary_tag'><a href='tag/physique.html'>physique, </a></span>
+        <span class='summary_tag'><a href='tag/openfoam.html'>openFoam</a></span>
+
+  </span>
+  </header>
+
+
+
+  <div class="article-content">
+    <h1>Physique - écoulement dans un tuyau</h1>
+<p><a href="https://en.wikipedia.org/wiki/Hagen%E2%80%93Poiseuille_equation">Écoulement de Poiseuille</a></p>
+<p>$$
+\Delta = 8 \mu \, \frac{U}{R^2}
+$$</p>
+<p>$$
+Re = 2 R \, U \, \frac{\rho}{\mu}
+$$</p>
+<ul>
+<li>R: rayon (m)</li>
+<li>U: vitesse à l'entrée (m/s)</li>
+<li>$\rho$: densité (kg/m3)</li>
+<li>$\mu$: viscosité dynamique (Pa.s)</li>
+</ul>
+<p>La viscosité dynamique de l'eau est $ \mu_{eau} \approx 1e^{-3} Pa.s$ à une température de 20°C. </p>
+<p>Géométrie :
+<em> R = 3 mm
+</em> L = 51 mm</p>
+<p>...
+* U = 0.1 m/s ... Re = 600</p>
+<h1>Choix du solver</h1>
+<ul>
+<li><code>Simple</code> :  steady-state</li>
+<li><code>Piso</code>   : transient  - explicit</li>
+<li><code>Pimple</code> : transient - implicit</li>
+</ul>
+<h1>Paramètres physiques</h1>
+<h3>transportProperties</h3>
+<div class="highlight"><pre><span></span>    nu              [0 2 -1 0 0 0 0] 1e-6;
+</pre></div>
+  </div><!-- /.entry-content -->
+
+
+
+</section>
         </div>
 
 </body>
