@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-        <title>xdze2</title>
+          <title>xdze2</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="/theme/css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
         <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+
+
+    <meta name="tags" content="modélisation" />
+    <meta name="tags" content="physique" />
+    <meta name="tags" content="openFoam" />
+
 
 <!-- <script src="/theme/js/MathJax.js" type="text/javascript"></script> -->
 <!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script> -->
@@ -75,39 +81,71 @@ jQuery(document).ready(function($) {
           </nav><!-- /#menu -->
         </div>
         <div id="content">
-<section id="postlist">
+<section id="article">
 
-<h1>
-  <img src="/theme/images/tag_icon.png"   />
-  Openfoam
-</h1>
+  <header>
+      <img src="/theme/images/doc22.png"    />
+      <span>
+      <h1 class="entry-title">Tube & OpenFoam</h1>
+      <span class='summary_date' title="2017-09-06T20:00:00+02:00">
+        septembre 2017
+      </span>
 
-<div class='articles-list'> 
-<article>
-<a href="/geom_mesh.html" rel="bookmark" title="Permalink to De FreeCad à OpenFoam">
+        <span class='summary_tag'><a href='tag/modelisation.html'>modélisation, </a></span>
+        <span class='summary_tag'><a href='tag/physique.html'>physique, </a></span>
+        <span class='summary_tag'><a href='tag/openfoam.html'>openFoam</a></span>
 
-          <img src="/images/paraFoam_mesh_s.png" class="thumbnail">
-
-      <h2 class="entry-title">De FreeCad à OpenFoam</h2>
-      <p class='tag'>
-        <!-- <span class='summary_date'>septembre 2017</span> -->
-        <!-- <span class='summary_date'>misc</span> -->
-           <span>modélisation, </span>
-           <span>physique, </span>
-           <span>openFoam</span>
-       <p>
-       <p class='summary'>
-         tutorial pour importer une géométrie FreeCad dans OpenFoam, en passant par Gmsh
-       </p>
-
-</a>
-</article>
-
-</div>
+  </span>
+  </header>
 
 
 
-</section><!-- /#content -->
+  <div class="article-content">
+    <h1>Physique - écoulement dans un tuyau</h1>
+<p><a href="https://en.wikipedia.org/wiki/Hagen%E2%80%93Poiseuille_equation">Écoulement de Poiseuille</a></p>
+<p>$$
+\Delta = 8 \mu \, \frac{U}{R^2}
+$$</p>
+<p>$$
+Re = 2 R \, U \, \frac{\rho}{\mu}
+$$</p>
+<ul>
+<li>R: rayon (m)</li>
+<li>U: vitesse à l'entrée (m/s)</li>
+<li>$\rho$: densité (kg/m3)</li>
+<li>$\mu$: viscosité dynamique (Pa.s)</li>
+</ul>
+<p>La viscosité dynamique de l'eau est $ \mu_{eau} \approx 1e^{-3} Pa.s$ à une température de 20°C. </p>
+<p>Géométrie :
+<em> R = 3 mm
+</em> L = 51 mm</p>
+<p>...
+* U = 0.1 m/s ... Re = 600</p>
+<h1>Choix du solver</h1>
+<ul>
+<li><code>Simple</code> :  steady-state</li>
+<li><code>Piso</code>   : transient  - explicit</li>
+<li>
+<p><code>Pimple</code> : transient - implicit</p>
+</li>
+<li>
+<p><code>simpleFoam</code> : Steady, turbulent</p>
+</li>
+<li><code>icoFoam</code> : Transient, laminar, Newtonian</li>
+<li><code>pimpleFoam</code> : Transient, turbulent, large time step (implicit)</li>
+<li><code>pisoFoam</code> : transient, turbulent</li>
+</ul>
+<p>https://www.cfd-online.com/Forums/openfoam-solving/68072-pimplefoam-vs-simplefoam-vs-pisofoam-vs-icofoam.html</p>
+<p>http://www.openfoam.com/documentation/user-guide/standard-solvers.php</p>
+<h1>Paramètres physiques</h1>
+<h3>transportProperties</h3>
+<div class="highlight"><pre><span></span>    nu              [0 2 -1 0 0 0 0] 1e-6;
+</pre></div>
+  </div><!-- /.entry-content -->
+
+
+
+</section>
         </div>
 
 </body>
