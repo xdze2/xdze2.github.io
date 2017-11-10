@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+          <title>xdze2</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+
+
+    <meta name="tags" content="physique" />
+    <meta name="tags" content="trigonométrie" />
+
+
+<!-- <script src="/theme/js/MathJax.js" type="text/javascript"></script> -->
+<!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script> -->
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'center', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- <script src="/theme/js/jquery.min.js" type="text/javascript"></script> -->
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $("div.collapseheader").click(function () {
+    $header = $(this).children("span").first();
+    $codearea = $(this).children(".input_area");
+    console.log($(this).children());
+    $codearea.slideToggle(500, function () {
+        $header.text(function () {
+            return $codearea.is(":visible") ? "masquer le code" : "voir le code";
+        });
+    });
+});
+});
+</script>
+</head>
+
+<body>
+        <div id="side">
+            <header id="banner" >
+                    <img src="/theme/images/header.png" />
+                    <h1><a href="/">xdze2 <strong></strong></a></h1>
+            </header><!-- /#banner -->
+            <nav id="menu"><ul>
+
+
+            <img src="/theme/images/tag_icon.png"   />
+                <li ><a href="/tag/physique.html">physique</a></li>
+                <li ><a href="/tag/statistiques.html">statistiques</a></li>
+                <li ><a href="/tag/visualisation.html">visualisation</a></li>
+                <li ><a href="/tag/algorithme.html">algorithme</a></li>
+
+                <li><a href="/tags.html">[plus]</a></li>
+            </ul>
+            <p>
+              <a href='/hello.html'><img src="/theme/images/mail.png"   /></a>
+            </p>
+          </nav><!-- /#menu -->
+        </div>
+        <div id="content">
+<section id="article">
+
+  <header>
+      <img src="/theme/images/doc22.png"    />
+      <span>
+      <h1 class="entry-title">Mesure angle</h1>
+      <span class='summary_date' title="2017-10-11T00:00:00+02:00">
+        octobre 2017
+      </span>
+
+        <span class='summary_tag'><a href='tag/physique.html'>physique, </a></span>
+        <span class='summary_tag'><a href='tag/trigonometrie.html'>trigonométrie</a></span>
+
+  </span>
+  </header>
+
+
+
+  <div class="article-content">
+    <p>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Mesure-d'un-angle-depuis-la-mesure-des-cot&#233;s-du-triangle">Mesure d'un angle depuis la mesure des cot&#233;s du triangle<a class="anchor-link" href="#Mesure-d'un-angle-depuis-la-mesure-des-cot&#233;s-du-triangle">&#182;</a></h1><p><img src="physique/images/schema_trigo_mesureAngle.png" alt="schéma"></img></p>
+<p>On cherche l'angle $\alpha = \alpha_1 + \alpha_2$ à partir de $a$, $b$ et la diagonale $h$. Voir le calcul <a href="physique/images/calcul_trigo_mesureAngle.png">ici</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">b</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">getAngle</span><span class="p">(</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">h</span> <span class="p">):</span>
+    <span class="n">h1</span> <span class="o">=</span> <span class="n">h</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span>  <span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">h</span>
+    <span class="n">h2</span> <span class="o">=</span> <span class="n">h</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span>  <span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">h</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">h1</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">h2</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="p">)</span>
+
+    <span class="n">alpha1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span> <span class="n">h1</span><span class="o">/</span><span class="n">d</span> <span class="p">)</span>
+    <span class="n">alpha2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span> <span class="n">h2</span><span class="o">/</span><span class="n">d</span> <span class="p">)</span>
+
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span> <span class="n">alpha1</span> <span class="o">+</span> <span class="n">alpha2</span> <span class="p">)</span> <span class="c1"># en deg.</span>
+    
+    <span class="k">return</span> <span class="n">alpha</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="n">getAngle</span><span class="p">(</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">h</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">alpha</span> <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre class="ipynb">45.0
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+
+<div class="inner_cell">
+    <div class="input_area">
+        <div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+ 
+
+</p>
+  </div><!-- /.entry-content -->
+
+
+
+</section>
+        </div>
+
+</body>
+</html>
