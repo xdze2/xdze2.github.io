@@ -102,7 +102,7 @@ jQuery(document).ready(function($) {
     <p>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 
 <div class="inner_cell">
     <div class="input_area">
@@ -122,15 +122,15 @@ jQuery(document).ready(function($) {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Mesure-d'un-angle-depuis-la-mesure-des-cot&#233;s-du-triangle">Mesure d'un angle depuis la mesure des cot&#233;s du triangle<a class="anchor-link" href="#Mesure-d'un-angle-depuis-la-mesure-des-cot&#233;s-du-triangle">&#182;</a></h1><p><img src="physique/images/schema_trigo_mesureAngle.png" alt="schéma"></img></p>
-<p>On cherche l'angle $\alpha = \alpha_1 + \alpha_2$ à partir de $a$, $b$ et la diagonale $h$. Voir le calcul <a href="physique/images/calcul_trigo_mesureAngle.png">ici</a>.</p>
+<h2 id="Mesure-d'un-angle-depuis-la-mesure-des-cot&#233;s-du-triangle">Mesure d'un angle depuis la mesure des cot&#233;s du triangle<a class="anchor-link" href="#Mesure-d'un-angle-depuis-la-mesure-des-cot&#233;s-du-triangle">&#182;</a></h2><p>On cherche l'angle $\alpha = \alpha_1 + \alpha_2$ à partir de $a$, $b$ et de la diagonale $h$.</p>
+<p><img src="physique/images/schema_trigo_mesureAngle.png" alt="schéma"></img></p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 
 <div class="inner_cell">
     <div class="input_area">
@@ -147,7 +147,7 @@ jQuery(document).ready(function($) {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 
 <div class="inner_cell">
     <div class="input_area">
@@ -155,10 +155,8 @@ jQuery(document).ready(function($) {
     <span class="n">h1</span> <span class="o">=</span> <span class="n">h</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span>  <span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">h</span>
     <span class="n">h2</span> <span class="o">=</span> <span class="n">h</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="p">(</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span>  <span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="o">/</span><span class="n">h</span>
 
-    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="p">(</span> <span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">h1</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">h2</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="p">)</span>
-
-    <span class="n">alpha1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span> <span class="n">h1</span><span class="o">/</span><span class="n">d</span> <span class="p">)</span>
-    <span class="n">alpha2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span> <span class="n">h2</span><span class="o">/</span><span class="n">d</span> <span class="p">)</span>
+    <span class="n">alpha1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span> <span class="n">h1</span><span class="o">/</span><span class="n">a</span> <span class="p">)</span>
+    <span class="n">alpha2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span> <span class="n">h2</span><span class="o">/</span><span class="n">b</span> <span class="p">)</span>
 
     <span class="n">alpha</span> <span class="o">=</span> <span class="mi">180</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span> <span class="n">alpha1</span> <span class="o">+</span> <span class="n">alpha2</span> <span class="p">)</span> <span class="c1"># en deg.</span>
     
@@ -173,7 +171,7 @@ jQuery(document).ready(function($) {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 
 <div class="inner_cell">
     <div class="input_area">

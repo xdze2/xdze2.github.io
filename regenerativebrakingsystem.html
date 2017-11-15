@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+          <title>xdze2</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+
+
+    <meta name="tags" content="physique" />
+    <meta name="tags" content="drafts" />
+
+
+<!-- <script src="/theme/js/MathJax.js" type="text/javascript"></script> -->
+<!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script> -->
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'center', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!-- <script src="/theme/js/jquery.min.js" type="text/javascript"></script> -->
+
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $("div.collapseheader").click(function () {
+    $header = $(this).children("span").first();
+    $codearea = $(this).children(".input_area");
+    console.log($(this).children());
+    $codearea.slideToggle(500, function () {
+        $header.text(function () {
+            return $codearea.is(":visible") ? "masquer le code" : "voir le code";
+        });
+    });
+});
+});
+</script>
+</head>
+
+<body>
+        <div id="side">
+            <header id="banner" >
+                    <img src="/theme/images/header.png" />
+                    <h1><a href="/">xdze2 <strong></strong></a></h1>
+            </header><!-- /#banner -->
+            <nav id="menu"><ul>
+
+
+            <img src="/theme/images/tag_icon.png"   />
+                <li ><a href="/tag/physique.html">physique</a></li>
+                <li ><a href="/tag/statistiques.html">statistiques</a></li>
+                <li ><a href="/tag/visualisation.html">visualisation</a></li>
+                <li ><a href="/tag/algorithme.html">algorithme</a></li>
+
+                <li><a href="/tags.html">[plus]</a></li>
+            </ul>
+            <p>
+              <a href='/hello.html'><img src="/theme/images/mail.png"   /></a>
+            </p>
+          </nav><!-- /#menu -->
+        </div>
+        <div id="content">
+<section id="article">
+
+  <header>
+      <img src="/theme/images/doc22.png"    />
+      <span>
+      <h1 class="entry-title">Regenerative braking system for bicycle</h1>
+      <span class='summary_date' title="2017-11-14T13:00:00+01:00">
+        novembre 2017
+      </span>
+
+        <span class='summary_tag'><a href='tag/physique.html'>physique, </a></span>
+        <span class='summary_tag'><a href='tag/drafts.html'>drafts</a></span>
+
+  </span>
+  </header>
+
+
+
+  <div class="article-content">
+    <h1>Regenerative braking system for bicycle</h1>
+<p>Ceux qui font du vélo en ville savent que démarer et accélerer est ce qui demande le plus d'effort.  Un cycliste évite donc le plus possible de devoir s'arreter (parfois en désaccord avec le code de la route). </p>
+<p>Hors l'énergie que nous coûte le démarrage correspond à l'énergie dissiper par les freins lors de l'arret. </p>
+<p>Comment procurer une aide au démarrage en vélo en utilisant l'énergie à priori perdu lors du freinage ?</p>
+<p>Pour qu'un tel système soit intéressant, j'image quelques conditions: </p>
+<ul>
+<li>Low tech (c.a.d. principalement non électrique).</li>
+<li>Il doit être adaptable sur un vélo existant (c.a.d. dans le moyeu ou attachable sur le cadre).</li>
+<li>Le système doit être raisonablement simple (pas pneumatique ou hydrolique).</li>
+</ul>
+<p>Il existe plusieurs brevets et projets s'attaquant à cette question. </p>
+<p>On peut noter cette vidéo de <a href="https://www.youtube.com/watch?v=wxhyJAr-YCM">P. Cortona</a> qui semble presenter un prototype fonctionnel et raisonable. Malheureusement, on ne trouve pas plus d'information. Le projet <code>Quirky.com</code> cité n'existe plus. </p>
+<p>Et avec un projet, universitaire, avec un volant d'inertie: <a href="https://www.youtube.com/watch?v=5FJcEvijjks">KERS bicycle technology university project at AIT</a>.</p>
+<p>Le brevet de <a href="https://www.google.com/patents/US4744577">Mark R. Brent et Jim M. Papadopoulos (1986)</a> semble correspondre à mes conditions (système dans le moyeu). J'ai donc commencé par analyser ce brevet pour en comprendre le fonctionnement de ce mécanisme. </p>
+<h2>Analyse du brevet de Mark R. Brent et Jim M. Papadopoulos (1986)</h2>
+<h3>Prior art</h3>
+<ul>
+<li>
+<p>Le ratio energie stocker par rapport au poids est supérieure pour les volant d'inertie (Flywheels)... mais ces systèmes sont lourds et complexe (paliers, transmission variable)</p>
+</li>
+<li>
+<p>Deux brevets cités: Pepper  et Cauchon. </p>
+</li>
+<li>Ressort métallique non utilisable parce que trop lourds pour stocker l'énergie necessaire. </li>
+</ul>
+<h3>Figures annotées</h3>
+<p><img src="regenerativeBraking/images/brevet_Fig1_color.jpg" alt="Fig1" width='600px' />
+ <img src="regenerativeBraking/images/brevet_Fig2_color.jpg" alt="Fig1" width='800px' />
+ <img src="regenerativeBraking/images/brevet_Fig3_color.jpg" alt="Fig1" width='600px' /></p>
+<p>Voir la légende <a href="regenerativeBraking/images/figures_legende.txt">ici</a>.</p>
+<h3>Schéma cinématique</h3>
+<p>Pour mieux comprendre le fonctionement du mécanisme un schéma aide. </p>
+<p><img src="regenerativeBraking/images/sch_cinematique_brevet.png" alt="cinematique" width='800px' /></p>
+<p>Il y a deux commandes qui bloque ou libère chacune un embrayage (ou mécanisme de bloquage). Le système à donc théoriquement 4 états possibles. </p>
+<ul>
+<li><strong>frein bloqué seul</strong>: la couronne est entrainée par la roue. L'engrennage soleil tourne alors dans le sens inverse. Ceci emagasine de l'énergie dans le ressort. </li>
+<li>
+<p><strong>'Release' bloqué seul</strong>: Alors le ressort est en prise direct avec la roue. L'énergie du ressort est transmise à la roue qui tourne vers l'avant. à noter qu'il n'y a pas de réduction de vitesse de rotation possible ici. </p>
+</li>
+<li>
+<p><strong>tout libre</strong>: La roue n'entraine aucune engrenage... rien ne se passe. </p>
+</li>
+<li><strong>tout bloqué</strong>: Le mécanisme est bloqué... problème.</li>
+</ul>
+<p><em>Rq:</em> un cliquet est utilisé dans le brevet. </p>
+<h3>Ce qui est bien:</h3>
+<ul>
+<li>Actionné par le frein (friction)... mais est-ce réelement bien ?</li>
+<li><em>Planet Gear</em>: le mécanisme permet l'inversion du sens de rotation entre la charge et la décharge relativement simplement. </li>
+<li>Quand l'engrenage <em>Sun</em> est bloqué (c.a.d. ressort au max) alors l'engrenage <em>Ring</em> est aussibloqué: le comportement est alors celui d'un vrai frein.</li>
+</ul>
+<h3>Ce qui n'est pas super:</h3>
+<ul>
+<li>L'<em>Elastic material</em> est en dehors du Hub! (voir Fig. 1)</li>
+<li>Le système de frein est questionable: système de levier non décrit et appuis en un point unique sur le <em>brake pad</em>...</li>
+<li>
+<p>L'important mécanisme d'engagement <em>Clutch 220</em> est non décrit. </p>
+</li>
+<li>
+<p>Pas de freinage d'urgence. Il faut toujours charger le ressort à fond avant de pouvoir bloquer la roue. Cece limite l'avantage d'un système actionné par le frein.</p>
+</li>
+<li>
+<p>Pas de vrai dosage du frein... l'énergie est perdu en friction quand on ne freine pas au maximum... (Mais est-ce que c'est possible de faire autrement sans variateur continu ?)</p>
+</li>
+</ul>
+<h3>Bugs dans le brevet:</h3>
+<ul>
+<li>Le <em>Lever 219</em> est dessiné avec une mauvaise orientation sur Fig. 3 par rapport à la Fig. 2</li>
+<li>Qu'elle est l'utilité du <em>Planet alignement disc 216</em> ? Les axes des planétaires sont fixés au <em>Reaction arm 211</em>. Le <em>Planet alignement disc 216</em> rend donc solidaire les <em>Planet Gears</em> avec le <em>Sun Gear</em> ce qui n'a pas de sens...</li>
+<li>Le dessin du <em>Ratchets 24</em> est plein. On devrait voir le passage de l'axe... </li>
+</ul>
+<h3>Brevets citant</h3>
+<p>to do</p>
+<h2>Comment serait le système idéal?</h2>
+<p>Le système idéal devrait être transparent dans son utilisation, c.a.d:</p>
+<ul>
+<li>Release Command automatique si le pédalier tourne ?  </li>
+<li>freinage d'urgence si frein au max... </li>
+</ul>
+<p>Il peut être plus simple/avantageux que le système soit bien distinct des freins. Il faut le voir alors plus comme un moyen de ralentissement que comme un système d'arrêt. On l'actionne dans l'anticipation de l'arrêt, puis on freine pour poser le pied à terre.</p>
+<h2>Energie stockée dans un ressort</h2>
+<p>Le premier inconvénient de la solution proposée dans le brevet est que le matériaux élastique est placé sur le cadre, en dehors du système mécanique. On peut se demander si un ressort spiral métallique ne pourrait pas convenir, malgré le problème du poids indiqué dans le brevet. </p>
+<p>La première question à répondre est le dimensionnement du ressort. </p>
+<p><img src="regenerativeBraking/images/map_h2cm_N3.png" alt="map dimensionnement" /></p>
+<p>Effectivement la masse est un facteur fortement limitant.</p>
+<ul>
+<li>autre type de ressort ( gaz mais linéaire ) </li>
+<li>matériau du futur</li>
+<li>alpha_max ?</li>
+</ul>
+  </div><!-- /.entry-content -->
+
+
+
+</section>
+        </div>
+
+</body>
+</html>
