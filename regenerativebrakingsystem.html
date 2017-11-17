@@ -9,7 +9,7 @@
 
 
     <meta name="tags" content="physique" />
-    <meta name="tags" content="drafts" />
+    <meta name="tags" content="vélo" />
 
 
 <!-- <script src="/theme/js/MathJax.js" type="text/javascript"></script> -->
@@ -91,7 +91,7 @@ jQuery(document).ready(function($) {
       </span>
 
         <span class='summary_tag'><a href='tag/physique.html'>physique, </a></span>
-        <span class='summary_tag'><a href='tag/drafts.html'>drafts</a></span>
+        <span class='summary_tag'><a href='tag/velo.html'>vélo</a></span>
 
   </span>
   </header>
@@ -109,9 +109,9 @@ jQuery(document).ready(function($) {
 <li>Il doit être adaptable sur un vélo existant (c.a.d. dans le moyeu ou attachable sur le cadre).</li>
 <li>Le système doit être raisonablement simple (pas pneumatique ou hydrolique).</li>
 </ul>
-<p>Il existe plusieurs brevets et projets s'attaquant à cette question. </p>
+<p>Il existe beaucoup de brevets et projets s'attaquant à cette question. </p>
 <p>On peut noter cette vidéo de <a href="https://www.youtube.com/watch?v=wxhyJAr-YCM">P. Cortona</a> qui semble presenter un prototype fonctionnel et raisonable. Malheureusement, on ne trouve pas plus d'information. Le projet <code>Quirky.com</code> cité n'existe plus. </p>
-<p>Et avec un projet, universitaire, avec un volant d'inertie: <a href="https://www.youtube.com/watch?v=5FJcEvijjks">KERS bicycle technology university project at AIT</a>.</p>
+<p>Et avec un projet, universitaire, avec un volant d'inertie: <a href="https://www.youtube.com/watch?v=5FJcEvijjks">KERS bicycle technology university project at AIT</a>. Et aussi the <a href="https://www.wired.com/2011/08/regenerative-flywheel-powered-bicycle/">Maxwell von Stein’s bike</a>.</p>
 <p>Le brevet de <a href="https://www.google.com/patents/US4744577">Mark R. Brent et Jim M. Papadopoulos (1986)</a> semble correspondre à mes conditions (système dans le moyeu). J'ai donc commencé par analyser ce brevet pour en comprendre le fonctionnement de ce mécanisme. </p>
 <h2>Analyse du brevet de Mark R. Brent et Jim M. Papadopoulos (1986)</h2>
 <h3>Prior art</h3>
@@ -120,19 +120,21 @@ jQuery(document).ready(function($) {
 <p>Le ratio energie stocker par rapport au poids est supérieure pour les volant d'inertie (Flywheels)... mais ces systèmes sont lourds et complexe (paliers, transmission variable)</p>
 </li>
 <li>
-<p>Deux brevets cités: Pepper  et Cauchon. </p>
+<p>Deux brevets cités: Pepper et <a href="https://www.google.com/patents/US2965393">P. Cauchon</a>. Dans le brevet de P. Cauchon, l'embrayage du système se fait par un galet venant en contact avec le pneu. Des ressorts métalliques semblent être utilisés pour stocker l'énergie. </p>
 </li>
-<li>Ressort métallique non utilisable parce que trop lourds pour stocker l'énergie necessaire. </li>
+<li>
+<p>Ici, les ressort métallique sont considérés non utilisable parce que trop lourds pour stocker l'énergie necessaire. Un élastique caoutchouc est préféré. </p>
+</li>
 </ul>
 <h3>Figures annotées</h3>
-<p><img src="regenerativeBraking/images/brevet_Fig1_color.jpg" alt="Fig1" width='600px' />
- <img src="regenerativeBraking/images/brevet_Fig2_color.jpg" alt="Fig1" width='800px' />
- <img src="regenerativeBraking/images/brevet_Fig3_color.jpg" alt="Fig1" width='600px' /></p>
+<p><a href="regenerativeBraking/images/brevet_Fig1_color.jpg"><img src="regenerativeBraking/images/brevet_Fig1_color.jpg" alt="Fig1" width='250px' /></a>
+ <a href="regenerativeBraking/images/brevet_Fig2_color.jpg"><img src="regenerativeBraking/images/brevet_Fig2_color.jpg" alt="Fig1" width='250px' /></a>
+ <a href="regenerativeBraking/images/brevet_Fig3_color.jpg"><img src="regenerativeBraking/images/brevet_Fig3_color.jpg" alt="Fig1" width='250px' /></a></p>
 <p>Voir la légende <a href="regenerativeBraking/images/figures_legende.txt">ici</a>.</p>
 <h3>Schéma cinématique</h3>
 <p>Pour mieux comprendre le fonctionement du mécanisme un schéma aide. </p>
 <p><img src="regenerativeBraking/images/sch_cinematique_brevet.png" alt="cinematique" width='800px' /></p>
-<p>Il y a deux commandes qui bloque ou libère chacune un embrayage (ou mécanisme de bloquage). Le système à donc théoriquement 4 états possibles. </p>
+<p>Il y a deux commandes qui bloque ou libère chacune un embrayage (ou mécanisme de bloquage). Le système à donc théoriquement <strong>4 états possibles :</strong> </p>
 <ul>
 <li><strong>frein bloqué seul</strong>: la couronne est entrainée par la roue. L'engrennage soleil tourne alors dans le sens inverse. Ceci emagasine de l'énergie dans le ressort. </li>
 <li>
@@ -147,8 +149,12 @@ jQuery(document).ready(function($) {
 <h3>Ce qui est bien:</h3>
 <ul>
 <li>Actionné par le frein (friction)... mais est-ce réelement bien ?</li>
-<li><em>Planet Gear</em>: le mécanisme permet l'inversion du sens de rotation entre la charge et la décharge relativement simplement. </li>
-<li>Quand l'engrenage <em>Sun</em> est bloqué (c.a.d. ressort au max) alors l'engrenage <em>Ring</em> est aussibloqué: le comportement est alors celui d'un vrai frein.</li>
+<li>
+<p><em>Planet Gear</em>: le mécanisme permet l'inversion du sens de rotation entre la charge et la décharge relativement simplement. N'est pas forcement nécessaire, si les deux extremités du ressort sont accessibles. </p>
+</li>
+<li>
+<p>Quand l'engrenage <em>Sun</em> est bloqué (c.a.d. ressort au max) alors l'engrenage <em>Ring</em> est aussibloqué: le comportement est alors celui d'un vrai frein.</p>
+</li>
 </ul>
 <h3>Ce qui n'est pas super:</h3>
 <ul>
@@ -170,24 +176,40 @@ jQuery(document).ready(function($) {
 <li>Qu'elle est l'utilité du <em>Planet alignement disc 216</em> ? Les axes des planétaires sont fixés au <em>Reaction arm 211</em>. Le <em>Planet alignement disc 216</em> rend donc solidaire les <em>Planet Gears</em> avec le <em>Sun Gear</em> ce qui n'a pas de sens...</li>
 <li>Le dessin du <em>Ratchets 24</em> est plein. On devrait voir le passage de l'axe... </li>
 </ul>
-<h3>Brevets citant</h3>
-<p>to do</p>
-<h2>Comment serait le système idéal?</h2>
-<p>Le système idéal devrait être transparent dans son utilisation, c.a.d:</p>
-<ul>
-<li>Release Command automatique si le pédalier tourne ?  </li>
-<li>freinage d'urgence si frein au max... </li>
-</ul>
-<p>Il peut être plus simple/avantageux que le système soit bien distinct des freins. Il faut le voir alors plus comme un moyen de ralentissement que comme un système d'arrêt. On l'actionne dans l'anticipation de l'arrêt, puis on freine pour poser le pied à terre.</p>
-<h2>Energie stockée dans un ressort</h2>
+<h1>Energie stockable dans un ressort ?</h1>
 <p>Le premier inconvénient de la solution proposée dans le brevet est que le matériaux élastique est placé sur le cadre, en dehors du système mécanique. On peut se demander si un ressort spiral métallique ne pourrait pas convenir, malgré le problème du poids indiqué dans le brevet. </p>
-<p>La première question à répondre est le dimensionnement du ressort. </p>
-<p><img src="regenerativeBraking/images/map_h2cm_N3.png" alt="map dimensionnement" /></p>
-<p>Effectivement la masse est un facteur fortement limitant.</p>
+<p>La première question à répondre est donc le dimensionnement du ressort. </p>
+<p>On peut tirer sur un matériau élastique jusqu'à ce qu'il case (ou bien se déforme plastiquement). La limite élastique du matériau (yield strength, yield stress) est donc limitante dans la quantité d'énergie stockable.</p>
+<p><img src="regenerativeBraking/images/graph_def_contrainte.jpg" alt="graph deformation/contrainte" /></p>
+<p>L'énergie élastique par unité de volume est :
+$$
+\delta U_{max} = \frac{\sigma_Y^2}{2\,E} 
+$$</p>
+<p>où $E$ est le module de Young et $\sigma_Y$ la contrainte correspondant à la limite élastique du matériau.</p>
+<p>Pour un ressort de volume $V$ fabriqué dans un matériau de densité $\rho$ :
+$$
+U_{max} = \frac{\sigma_Y^2}{2\,E} \, V = \frac{\sigma_Y^2}{2\,E} \, \frac{m_{ressort}}{\rho}
+$$</p>
+<p>Nous pouvons donc comparer les matériaux entre-eux en utilisant le critère : $\frac{\sigma_Y^2}{E\,\rho}$.</p>
+<p>Voir le notebook <a href="https://github.com/xdze2/xdze2.github.io-src/blob/master/content/regenerativeBraking/dimensionnement.ipynb"><code>Dimensionnement</code></a> pour le calcul et les références des valeurs. </p>
+<p>Voici les résultats pour quelques matériaux. Pour que cela soit plus parlant, la masse du ressort nécessaire pour stocker l'énergie cinétique d'un cycliste de 90kg et roulant à 15 km/h est calculée.</p>
+<div class="highlight"><pre><span></span>                          masse ressort    rho;        E;   sigma_Y
+             Acier struct. : 60.938 kg     7.8;  200 GPa;   200 MPa 
+             Acier ressort :  1.354 kg     7.8;  160 GPa;  1200 MPa 
+       Corde à piano (6mm) :  1.138 kg     7.8;  210 GPa;  1500 MPa 
+         Alliage de Titane :  0.798 kg     4.4;  120 GPa;  1020 MPa 
+       Corde à piano (1mm) :  0.529 kg     7.8;  210 GPa;  2200 MPa 
+          Caoutchouc butyl :  0.177 kg     1.2;    7 MPa;     9 MPa 
+        Caoutchouc naturel :      4 g      0.7;    1.5 MPa;  20 MPa
+</pre></div>
+
+
+<p>Le caoutchouc naturel semble bien le meilleur candidat. Le caoutchouc butyl est celui utilisé pour les chambres à air. Il faut noté que le comportement du caoutchouc n'est pas du tout linéaire. La valeur obtenue est donc fortement approximative. </p>
+<p><em>Rq:</em> Les fibres de verre ou de carbones semblent aussi très intéressantes.</p>
+<h2>La suite</h2>
 <ul>
-<li>autre type de ressort ( gaz mais linéaire ) </li>
-<li>matériau du futur</li>
-<li>alpha_max ?</li>
+<li>Regarder le brevet de <a href="https://www.google.com/patents/US6557877">Regenerative braking and driving apparatus (2003)</a> de Jason Dunkley qui utilise un ressort de torsion monté dans le moyeu. </li>
+<li>Affiner le dimensionnement avec un ressort de torsion, ou spirale</li>
 </ul>
   </div><!-- /.entry-content -->
 
