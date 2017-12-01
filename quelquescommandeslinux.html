@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110491502-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-110491502-1');
+    </script>
+
           <title>xdze2</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="/theme/css/normalize.css" />
@@ -100,35 +110,49 @@ jQuery(document).ready(function($) {
 
   <div class="article-content">
     <h1>Démarrer un VirtualEnv python</h1>
-<div class="highlight"><pre><span></span>    $ virtualenv -p /usr/bin/python3 py3
-    $ source ./py3/bin/activate
+<div class="highlight"><pre><span></span>$ virtualenv -p /usr/bin/python3 py3
+$ <span class="nb">source</span> ./py3/bin/activate
+
+$ virtualenv --system-site-packages -p /usr/bin/python3 py3
 </pre></div>
 
 
 <h2>et installer les librairies python "de base"</h2>
-<div class="highlight"><pre><span></span>    $ pip install jupyter matplotlib scipy pandas
+<div class="highlight"><pre><span></span>$ pip install jupyter matplotlib scipy pandas
 </pre></div>
 
 
 <p>et lancer <code>jupyter</code>:</p>
-<div class="highlight"><pre><span></span>    $ jupyter notebook
+<div class="highlight"><pre><span></span>$ jupyter notebook
 </pre></div>
 
 
+<ul>
+<li>
+<p>pour créer la liste des paquets (et enregistrer puis installer):</p>
+<p>$ pip freeze  &gt; requirements.txt
+$ pip freeze --local -r requirements.txt
+$ pip freeze --local &gt; requirements.txt
+$ pip install -r requirements.txt</p>
+</li>
+</ul>
 <h1>Générer un mot de passe aléatoire</h1>
-<div class="highlight"><pre><span></span>   $ apg
-</pre></div>
-
-
+<p>$ apg</p>
 <h1>Scan local network</h1>
-<div class="highlight"><pre><span></span>    $ arp-scan 192.168.0.0/24
+<div class="highlight"><pre><span></span>$ arp-scan <span class="m">192</span>.168.0.0/24
 
-    $ nmap -O -v scanme.nmap.org
+$ nmap -O -v scanme.nmap.org
 </pre></div>
 
 
 <h1>Serveur http python</h1>
-<div class="highlight"><pre><span></span>    $ python -m SimpleHTTPServer
+<div class="highlight"><pre><span></span>$ python -m SimpleHTTPServer
+</pre></div>
+
+
+<h1>Voir les variables d'environement</h1>
+<div class="highlight"><pre><span></span>$ printenv
+$ <span class="nb">echo</span> <span class="nv">$MA_VARIABLE</span>
 </pre></div>
   </div><!-- /.entry-content -->
 
