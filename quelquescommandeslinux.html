@@ -109,7 +109,8 @@ jQuery(document).ready(function($) {
 
 
   <div class="article-content">
-    <h1>Démarrer un VirtualEnv python</h1>
+    <h1>Python related</h1>
+<h2>Démarrer un VirtualEnv python</h2>
 <div class="highlight"><pre><span></span>$ virtualenv -p /usr/bin/python3 py3
 $ <span class="nb">source</span> ./py3/bin/activate
 
@@ -117,12 +118,19 @@ $ virtualenv --system-site-packages -p /usr/bin/python3 py3
 </pre></div>
 
 
-<h2>et installer les librairies python "de base"</h2>
+<p>Pour que jupyter retrouve le bon kernel (<a href="https://ipython.readthedocs.io/en/stable/install/kernel_install.html#kernels-for-different-environments">ref.</a>):</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">source</span> py3/bin/activate
+$ pip install ipykernel
+$ python -m ipykernel install --user --name py3 --display-name <span class="s2">&quot;Py3 (env)&quot;</span>
+</pre></div>
+
+
+<h3>et installer les librairies python "de base"</h3>
 <div class="highlight"><pre><span></span>$ pip install jupyter matplotlib scipy pandas
 </pre></div>
 
 
-<p>et lancer <code>jupyter</code>:</p>
+<p>Pour lancer <code>jupyter</code>:</p>
 <div class="highlight"><pre><span></span>$ jupyter notebook
 </pre></div>
 
@@ -136,21 +144,24 @@ $ pip freeze --local &gt; requirements.txt
 $ pip install -r requirements.txt</p>
 </li>
 </ul>
-<h1>Générer un mot de passe aléatoire</h1>
+<h2>Serveur http python</h2>
+<div class="highlight"><pre><span></span>$ python -m SimpleHTTPServer
+</pre></div>
+
+
+<p>Avec python3:
+    $ python3 -m http.server 8850    </p>
+<h1>Linux</h1>
+<h2>Générer un mot de passe aléatoire</h2>
 <p>$ apg</p>
-<h1>Scan local network</h1>
+<h2>Scan local network</h2>
 <div class="highlight"><pre><span></span>$ arp-scan <span class="m">192</span>.168.0.0/24
 
 $ nmap -O -v scanme.nmap.org
 </pre></div>
 
 
-<h1>Serveur http python</h1>
-<div class="highlight"><pre><span></span>$ python -m SimpleHTTPServer
-</pre></div>
-
-
-<h1>Voir les variables d'environement</h1>
+<h2>Voir les variables d'environement</h2>
 <div class="highlight"><pre><span></span>$ printenv
 $ <span class="nb">echo</span> <span class="nv">$MA_VARIABLE</span>
 </pre></div>

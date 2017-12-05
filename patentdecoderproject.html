@@ -116,7 +116,7 @@ jQuery(document).ready(function($) {
     <p><a href="https://xdze2.github.io/nailclipper/view/US20060180169.html"><img src='https://raw.githubusercontent.com/xdze2/patent_decoder/master/Screenshot-US20060180169.png' style='width:100%;' alt='screenshot'/></a></p>
 <p>Voir en action avec les brevets du <a href="https://xdze2.github.io/nailclipper/">coupe-ongles</a>.</p>
 <h1>Patent Decoder</h1>
-<p>Projet d'interface pour visualiser des brevets avec <em>un point de vue technique</em>, c'est-à-dire avec les figures, la légende et le texte de description technique. Pas de revendications, date de priorité... etc</p>
+<p>Projet d'interface pour visualiser des brevets avec <em>un point de vue technique</em>, c'est-à-dire avec les figures, la légende et le texte de description technique. Pas de revendications ou de date de priorité... etc</p>
 <p>Les données sont obtenues entre autres avec <a href="https://console.cloud.google.com/launcher/partners/patents-public-data">google BigQuery et ses Patents Public Data</a>. L'interface web est réalisée avec Flask, puis le site statique est obtenu avec Flask-Frozen.</p>
 <p>Un des gros aspects du projet est d'<strong>extraire les images</strong> depuis les PDF des brevets. Ceci est réalisé avec la libraire <code>ndimage</code> de scipy. Une certaine succesion d'opérations de <a href="https://fr.wikipedia.org/wiki/Morphologie_math%C3%A9matique">dilatation et d'érosion</a> permet de détecter la présence d'une figure (a contrario du texte) puis de trouver la zone où elle s'étend. L'astuce est de chercher les zones encloses larges.</p>
 <p><img src='https://raw.githubusercontent.com/xdze2/patent_decoder/master/illu_algoextractimg.png'  width="300"  alt='étape extraction figure'/></p>
