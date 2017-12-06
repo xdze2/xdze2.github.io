@@ -18,9 +18,10 @@
         <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
 
 
-    <meta name="tags" content="modélisation" />
-    <meta name="tags" content="physique" />
-    <meta name="tags" content="openFoam" />
+    <meta name="tags" content="javascript" />
+    <meta name="tags" content="visualisation" />
+    <meta name="tags" content="projet" />
+    <meta name="tags" content="data" />
 
 
 <!-- <script src="/theme/js/MathJax.js" type="text/javascript"></script> -->
@@ -98,14 +99,15 @@ jQuery(document).ready(function($) {
   <header>
       <img src="/theme/images/doc22.png"    />
       <span>
-      <h1 class="entry-title">Tube & OpenFoam</h1>
-      <span class='summary_date' title="2017-09-06T20:00:00+02:00">
-        septembre 2017
+      <h1 class="entry-title">Les Mots Des Journaux</h1>
+      <span class='summary_date' title="2017-05-20T11:00:00+02:00">
+        mai 2017
       </span>
 
-        <span class='summary_tag'><a href='tag/modelisation.html'>modélisation, </a></span>
-        <span class='summary_tag'><a href='tag/physique.html'>physique, </a></span>
-        <span class='summary_tag'><a href='tag/openfoam.html'>openFoam</a></span>
+        <span class='summary_tag'><a href='tag/javascript.html'>javascript, </a></span>
+        <span class='summary_tag'><a href='tag/visualisation.html'>visualisation, </a></span>
+        <span class='summary_tag'><a href='tag/projet.html'>projet, </a></span>
+        <span class='summary_tag'><a href='tag/data.html'>data</a></span>
 
   </span>
   </header>
@@ -113,46 +115,19 @@ jQuery(document).ready(function($) {
 
 
   <div class="article-content">
-    <h1>Physique - écoulement dans un tuyau</h1>
-<p><a href="https://en.wikipedia.org/wiki/Hagen%E2%80%93Poiseuille_equation">Écoulement de Poiseuille</a></p>
-<p>$$
-\Delta = 8 \mu \, \frac{U}{R^2}
-$$</p>
-<p>$$
-Re = 2 R \, U \, \frac{\rho}{\mu}
-$$</p>
+    <p><img src='visualisation/images/Screenshot-LMdJx01.png' alt='screenshot 1'
+            style="width:800px;" /></p>
+<p><strong>Projet de <a href="https://books.google.com/ngrams">n-gram-viewer</a> permettant d'explorer l'actualité du passé. </strong></p>
 <ul>
-<li>R: rayon (m)</li>
-<li>U: vitesse à l'entrée (m/s)</li>
-<li>$\rho$: densité (kg/m3)</li>
-<li>$\mu$: viscosité dynamique (Pa.s)</li>
+<li>Les données sont issus de flux RSS de quelques journaux français.</li>
+<li>Les librairies javascript utilisées sont <a href="http://darsa.in/sly/examples/horizontal.html">scroll Sly</a>, 
+<a href="https://github.com/jakesgordon/bin-packing">Bin packing with Packer</a>, 
+time series graph avec <a href="http://metricsgraphicsjs.org/">metricsgraphicsjs</a>, dynamic auto complete input avec 
+<a href="http://jstayton.github.io/jquery-marcopolo/">marcopolo</a>, jQuery</li>
+<li>Les librairies python utilisées sont, entres autres, <a href="https://pythonhosted.org/feedparser/">RSS feedparser</a>, segmentation des mots avec <a href="https://github.com/kodexlab/eleve">ELeVE</a>, data base SqLite3</li>
 </ul>
-<p>La viscosité dynamique de l'eau est $ \mu_{eau} \approx 1e^{-3} Pa.s$ à une température de 20°C. </p>
-<p>Géométrie :
-<em> R = 3 mm
-</em> L = 51 mm</p>
-<p>...
-* U = 0.1 m/s ... Re = 600</p>
-<h1>Choix du solver</h1>
-<ul>
-<li><code>Simple</code> :  steady-state</li>
-<li><code>Piso</code>   : transient  - explicit</li>
-<li>
-<p><code>Pimple</code> : transient - implicit</p>
-</li>
-<li>
-<p><code>simpleFoam</code> : Steady, turbulent</p>
-</li>
-<li><code>icoFoam</code> : Transient, laminar, Newtonian</li>
-<li><code>pimpleFoam</code> : Transient, turbulent, large time step (implicit)</li>
-<li><code>pisoFoam</code> : transient, turbulent</li>
-</ul>
-<p>https://www.cfd-online.com/Forums/openfoam-solving/68072-pimplefoam-vs-simplefoam-vs-pisofoam-vs-icofoam.html</p>
-<p>http://www.openfoam.com/documentation/user-guide/standard-solvers.php</p>
-<h1>Paramètres physiques</h1>
-<h3>transportProperties</h3>
-<div class="highlight"><pre><span></span>    nu              [0 2 -1 0 0 0 0] 1e-6;
-</pre></div>
+<p><img src='visualisation/images/Screenshot-LMdJx03.png' alt='screenshot 3'
+    style="width:800px;" /></p>
   </div><!-- /.entry-content -->
 
 
