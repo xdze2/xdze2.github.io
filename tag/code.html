@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110491502-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-110491502-1');
+    </script>
+
         <title>xdze2</title>
         <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="/theme/css/notebook.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css" />
 
 <!-- <script src="/theme/js/MathJax.js" type="text/javascript"></script> -->
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+<!-- <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script> -->
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
 <script type="text/javascript">
 init_mathjax = function() {
     if (window.MathJax) {
@@ -55,64 +70,44 @@ jQuery(document).ready(function($) {
             </header><!-- /#banner -->
             <nav id="menu"><ul>
 
-                <li ><a href="/tag/statistiques.html">statistiques</a></li>
-                <li ><a href="/tag/visualisation.html">visualisation</a></li>
-                <li ><a href="/tag/fractal.html">fractal</a></li>
-                <li ><a href="/tag/ebauche.html">ébauche</a></li>
-                <li ><a href="/tag/algorithme.html">algorithme</a></li>
-                <li  class="active"><a href="/tag/code.html">code</a></li>
+
+            <img src="/theme/images/tag_icon.png"   />
+                <li ><a href="/tag/projet.html">projet</a></li>
                 <li ><a href="/tag/physique.html">physique</a></li>
-                <li ><a href="/tag/a-propos.html">à propos</a></li>
-                <li ><a href="/tag/blocnote.html">blocnote</a></li>
-                <li ><a href="/tag/optimisation.html">optimisation</a></li>
-                <li><a href="/tags.html">[...]</a></li>
-            </ul></nav><!-- /#menu -->
+                <li ><a href="/tag/modélisation.html">modélisation</a></li>
+                <li ><a href="/tag/statistiques.html">statistiques</a></li>
+                <li ><a href="/tag/algorithme.html">algorithme</a></li>
+                <li ><a href="/tag/visualisation.html">visualisation</a></li>
+
+                <li><a href="/tags.html">[plus]</a></li>
+            </ul>
+            <p>
+              <a href='/hello.html'><img src="/theme/images/mail.png"   /></a>
+            </p>
+          </nav><!-- /#menu -->
         </div>
         <div id="content">
 <section id="postlist">
 
 <h1>
-(tag)
-  <img src="/theme/images/folder24.png"   />
+  <img src="/theme/images/tag_icon.png"   />
   Code
 </h1>
 
 <div class='articles-list'> 
 <article>
-<a href="/Mandelbrot.html" rel="bookmark" title="Permalink to Deep Zoom Image et Mandelbrot">
+<a href="/lmbda.html" rel="bookmark" title="Permalink to lambda calculus">
 
-          <img src="/physique/images/mandelbrot.png" class="thumbnail">
 
-      <h2 class="entry-title">Deep Zoom Image et Mandelbrot</h2>
+      <h2 class="entry-title">lambda calculus</h2>
       <p class='tag'>
-        <!-- <span class='summary_date'>mars 2017</span> -->
-        <!-- <span class='summary_date'>physique</span> -->
-           <span>physique, </span>
-           <span>code, </span>
-           <span>fractal</span>
-       <p>
-       <p class='summary'>
-         Calcul d'une pyramide d'images, pour créer une vue interactive zoomable de l'ensemble fractal de Mandelbrot.
-       </p>
-
-</a>
-</article>
-
-
-<article>
-<a href="/shaphefromfocus.html" rel="bookmark" title="Permalink to Shape from focus">
-
-          <img src="/physique/images/shapefromfocus.jpg" class="thumbnail">
-
-      <h2 class="entry-title">Shape from focus</h2>
-      <p class='tag'>
-        <!-- <span class='summary_date'>mars 2017</span> -->
-        <!-- <span class='summary_date'>physique</span> -->
-           <span>physique, </span>
+        <!-- <span class='summary_date'>mars 2018</span> -->
+        <!-- <span class='summary_date'>misc</span> -->
+           <span>algorithme, </span>
            <span>code</span>
        <p>
        <p class='summary'>
-         Traitement d'image pour augmenter la profondeur de champ d'un cube d'image de microscope.
+         vrai = (x, y) => x; faux = (x, y) => y;
        </p>
 
 </a>
@@ -124,10 +119,6 @@ jQuery(document).ready(function($) {
 
 </section><!-- /#content -->
         </div>
-        <footer id="sitefooter">
-                <address id="about">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>.
-                </address><!-- /#about -->
-        </footer><!-- /#contentinfo -->
+
 </body>
 </html>
