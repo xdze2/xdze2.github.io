@@ -1,0 +1,264 @@
+
+/* Bluerobot colors
+orange #f66300
+blue #66a4d5
+dark blue 00156b
+green 00bf66*/
+
+body {
+  background-color: white;
+  color: black;
+  margin:2px;
+  padding:12px;
+  padding-bottom:0px;
+}
+
+a:link    { color: blue; text-decoration: none;      }
+a:hover   { color: blue; text-decoration: underline; }
+a:visited { color: blue;                             }
+
+h1 a { color: inherit !important }
+h2 a { color: inherit !important }
+h3 a { color: inherit !important }
+h4 a { color: inherit !important }
+h5 a { color: inherit !important }
+h6 a { color: inherit !important }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0px; padding: 0px;
+}
+
+/*  Structure  */
+#side, #content {
+  display: inline-block;
+  vertical-align: top;
+}
+#side {
+    width: 170px;
+}
+#content {
+  max-width: 700px;
+  width:90%;
+  margin-left: 45px;
+  margin-top: 40px;
+}
+
+/* Banner & Menu */
+
+#banner h1, #menu {
+    margin:0;
+    padding: 0;
+    padding-left: 22px;
+}
+#banner h1 {
+    padding-top:20px;
+    margin-bottom:18px;
+
+    font-family: monospace;
+    font-size:18px;
+    font-weight:normal;
+}
+
+#menu ul {
+    list-style-type: none;
+    padding: 0;  margin: 0;
+    padding:1px;
+    font-family: monospace;
+}
+#menu li {
+    padding-bottom: 1px;
+}
+#menu li.active a {
+    font-weight: bold;
+}
+
+#menu .menuinfolink {
+    font-weight: normal;
+    text-decoration: none;
+    font-size:80%;
+    color:black;
+    font-family:sans-serif;
+    vertical-align: middle;
+}
+/* -- Content Page -- */
+#content {
+    font-family: serif;
+    margin-bottom: 4em;
+}
+
+/* -- Content post-list (index.html) -- */
+#postlist h1, #tagslist h1 {
+  margin:0;
+  padding:0;
+  margin-left:.6em;
+  margin-bottom: 1em;
+  font-weight: normal;
+  font-family: monospace;
+  font-size: 18px;
+}
+div.articles-list {
+  width: 100%; display: block;
+  -webkit-column-count: 3; /* Chrome, Safari, Opera */
+  -moz-column-count: 3; /* Firefox */
+  column-count: 3;
+}
+.articles-list article {
+  display: inline-block;
+  /*width: 30%;*/
+  width: 100%;
+  /*padding:3px;*/
+  /*border: 1px solid grey;*/
+  vertical-align: top;
+  margin-bottom:8px;
+}
+.articles-list article>a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding:3px;
+  border: 1px solid black;
+  color: black;
+}
+.thumbnail {
+  width:100%;
+  /*opacity: 1;
+  filter:grayscale(50%);*/
+}
+.articles-list article>a:hover {
+  /*border: 1px solid #FA1107;*/
+  color: black;
+   /*#FA1107;*/
+  text-decoration: none;
+  box-shadow: 2px 2px #444;
+  position: relative;
+  left:-1px;
+  top:-1px;
+}
+.articles-list article>a:active {
+  box-shadow: 0px 0px;
+  position: static;
+}
+.articles-list article>a:hover .thumbnail {
+  opacity: 1;
+  filter:grayscale(0%);
+}
+
+.articles-list article h2 {
+  margin:0;
+  padding:0;
+  font-family: sans-serif;
+  font-size: 98%;
+  line-height: 90%;
+  margin-top:4px;
+}
+.articles-list article p {
+  margin: 0;
+  padding: 0;
+  margin-left: 1px;
+}
+.articles-list article p.summary {
+  margin-bottom: 3px;
+  margin-top: 6px;
+}
+.articles-list p.tag {
+  margin-top: 2px;
+  font-size: 84%;
+  font-weight: normal;
+  font-family: monospace;
+}
+.articles-list .tag span {
+  padding-right: 0.01em;
+}
+
+.summary_date, .summary_date>a {
+  font-size: 84%;
+  font-weight: bold;
+  font-family: monospace;
+  text-decoration: none;
+  margin-right: 1em;
+}
+
+.summary_tag {
+  font-size: 84%;
+  font-family: monospace;
+  display: inline;
+  padding: 0;
+  margin: 0;
+}
+.summary_tag a {
+  text-decoration: none;
+  color: black;
+  display: inline;
+  padding: 0;
+}
+.summary_tag>a:hover {
+  color: blue;
+}
+/* -- Content Article -- */
+#article header {
+  margin-bottom: 1.5em;
+}
+#article header h1 {
+  font-family: sans-serif;
+  font-size: 98%;
+}
+
+#article header span, #article header a {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 1.1;
+}
+#article header>img {
+  margin-right: 6px;
+}
+.article-content {
+  font-size: 100%;
+  line-height: 1.5;
+}
+
+/*  Code ipynb  */
+.article-content pre {
+  padding:6px;
+  padding-left:12px;
+  border-radius: 6px;
+
+  margin-top: .4em;
+  margin-bottom: .4em;
+  font-size:84%;
+}
+.prompt, .anchor-link {
+  display: none;
+}
+.cell p {
+  margin:0;
+}
+.output_subarea pre {
+  white-space: pre-wrap;
+  -moz-white-space: pre-wrap;
+  -o-white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.output {
+  margin-bottom: 1.2em;
+}
+/* Page footer */
+#sitefooter {
+    text-align:left;
+    margin-top:30px;
+    position: absolute;
+    bottom: 10px;
+    font-size: 80%;
+    width: 170px;
+}
+
+/* Tag page */
+
+#tagslist ul {
+  list-style-type: none;
+
+}
+#tagslist li {
+  padding: 3px;
+  display: inline-block;
+}
